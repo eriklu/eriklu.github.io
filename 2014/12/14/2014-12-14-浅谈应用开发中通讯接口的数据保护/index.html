@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="应用开发,加密," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="###浅谈应用开发中通讯接口的数据保护 很多居心不良的人一直在企图窥测我们宝贵的数据，我们如何来保护我们的数据，实现真正的的安全性呢。">
+<meta name="keywords" content="应用开发,加密">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈应用开发中通讯接口的数据保护">
+<meta property="og:url" content="http://eriklu.github.io/2014/12/14/2014-12-14-浅谈应用开发中通讯接口的数据保护/index.html">
+<meta property="og:site_name" content="弦歌雅意的小屋">
+<meta property="og:description" content="###浅谈应用开发中通讯接口的数据保护 很多居心不良的人一直在企图窥测我们宝贵的数据，我们如何来保护我们的数据，实现真正的的安全性呢。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-08T06:30:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅谈应用开发中通讯接口的数据保护">
+<meta name="twitter:description" content="###浅谈应用开发中通讯接口的数据保护 很多居心不良的人一直在企图窥测我们宝贵的数据，我们如何来保护我们的数据，实现真正的的安全性呢。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://eriklu.github.io/2014/12/14/2014-12-14-浅谈应用开发中通讯接口的数据保护/"/>
+
+
+
+
+
+  <title>浅谈应用开发中通讯接口的数据保护 | 弦歌雅意的小屋</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">弦歌雅意的小屋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/14/2014-12-14-浅谈应用开发中通讯接口的数据保护/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Erik Lu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="弦歌雅意的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">浅谈应用开发中通讯接口的数据保护</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-12-14T08:00:00+08:00">
+                2014-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>###浅谈应用开发中通讯接口的数据保护</p>
+<p>很多居心不良的人一直在企图窥测我们宝贵的数据，我们如何来保护我们的数据，实现真正的的安全性呢。</p>
+<a id="more"></a>
+<h4 id="数据加密模型"><a href="#数据加密模型" class="headerlink" title="数据加密模型"></a>数据加密模型</h4><ul>
+<li><p>古典加密<br>古典加密是指加密完全依赖于算法的加密方法。在古代军事等领域广泛应用。现在计算机编码中的base64编码算法可以算是一种比较典型的古典加密算法。</p>
+</li>
+<li><p>现代加密算法<br>加密算法公开，数据的保密性完全依赖于密码的保密性。在现在计算机领域主要有两大流派：</p>
+<ol>
+<li>对称加密算法<br>特点：加解密过程使用同一个密钥，密钥泄露则保护数据拾取保护。这类算法有很多。DES、3DES、bu’tongAES、IDEA、RC2等是这类的杰出代表。</li>
+<li>公钥加密算法<br>特点：加密解密使用不同的密钥，所以公钥可以发送给很多人，而不会泄露加密数据。典型算法有：RSA、DSA、ECC。</li>
+</ol>
+</li>
+</ul>
+<h4 id="常见的攻击手段"><a href="#常见的攻击手段" class="headerlink" title="常见的攻击手段"></a>常见的攻击手段</h4><ul>
+<li>窃取<br>窃取用户有价值的信息。如密码。常见的有键盘钩子、木马病毒。这里我们主要谈论到的就是用网络侦听工具拦截网络数据。</li>
+<li>篡改<br>修改通讯数据。比如用户转帐时看到的是转<strong>1000</strong>元。通过修改数据改为<strong>10000</strong>元，而用户根本毫无察觉。</li>
+<li>重放<br>把用户转帐1000元的通讯包记录下来，反复向服务器发送，导致用用户的钱不断被划走。这类攻击最容易被开发者忽略。</li>
+<li>伪造<br>知道了转帐的通讯协议，直接构造一个转帐1000元的数据包，发给服务器。</li>
+<li>抵赖<br>用户转了1000元，然后后悔了，告诉说这1000元不是他转的。银行就是通过给用户发一个U盾，来防止用户抵赖。虽然很多人都认为U盾是用来加密数据的。U盾在加密数据中起到了一定的作用。但是防止用户抵赖才是他的根本角色。</li>
+</ul>
+<h4 id="常见的窃取数据的手段"><a href="#常见的窃取数据的手段" class="headerlink" title="常见的窃取数据的手段"></a>常见的窃取数据的手段</h4><ul>
+<li>侦听信道<br>该方式主要是利用工具拦截网络通讯包。如果通讯数据是明文传输的，则侦听者可以直接获得侦听数据。如果数据是加密的，这侦听途径失败。但是这里要提的是，侦听者可以通过中间者攻击方式拦截到https加密的数据。这里工具有：fiddler、firebug、charlie等。<br>通过侦听信道，即可实现窃取、篡改、重发、伪造等绝大多数攻击。</li>
+<li>逆向应用<br>通过逆向程序发现应用的通讯接口协议。理论上，没有应用可一阻挡一个意志坚定、智力非凡的逆向工作者。不过这类逆向工作者毕竟只是少说，我们通过一些保护手段还是能阻止95%以上蹩脚的逆向工作者。我们的目标不是欺骗福尔摩斯这样的大侦探，而是瞒过雷斯垂德探员即可。</li>
+</ul>
+<p>因为逆向应用的门槛较高，所以我们在开发中主要都是防止第一类攻击。第二类攻击主要还是靠一些对应用的加密工具来实现，如代码混淆，应用加壳。</p>
+<h4 id="常见的保护手段"><a href="#常见的保护手段" class="headerlink" title="常见的保护手段"></a>常见的保护手段</h4><ul>
+<li>HTTPS/SSL<br>这是最容易实现的保护手段。现代语言基本都提供了这样的基础设施来支持SSL Socket。而使用HTTPS在客户端仅需要把地址从http变为https。当然这需要您拥有一个CA签名的证书，并在服务端配置他。当然为了节约成本，您也可以生成自签名证书，通过合理的配置，自签名证书可以达到CA签名证书同样好的效果。<br>为了防止中间者攻击，你还需要在客户端验证证书。Web程序因为是使用浏览器浏览，所以没办法阻止中间者攻击。https的不足在于，连接建立的握手时间更长，所以在网络socket没有重用保持的情况下，效率会有所降低。</li>
+<li>自己写算法加密数据<ol>
+<li>内置固定密钥到客户端<br>虽然可能采用了AES等加密算法，但是因为密钥内置了。所以加密模型退化为<strong>古典加密模型</strong>, 只要攻击者破译了密码，所有的客户端都不在安全，所有后续的通讯也不在安全。<br>该方法还存在一个问题，就是形同的明文生成相同的密文。攻击者可以通过伪造明文来破解出密文。</li>
+<li>每次应用第一次连接时交换密钥<br>攻击者破译的密码仅一次有效。攻击者需要破解密钥交换协议。这可以把许多侦听类攻击者挡在门外。<br>该方法对应用的开发难度加大。任何通讯发起前都需要确保密钥已交换完成。现代应用可能有多个通讯发起点，所以确保密钥被正确的交换了至关重要。</li>
+</ol>
+</li>
+<li>效率至上、数据保密情不是很重要，但是需要阻止第三方发起的模拟请求<br>并不是所有的接口数据都很重要。对不重要的数据进行加密会降低系统吞吐量和消耗更多的系统计算资源。就像我们看到不是网站所有的页面都启用了Https。但是我们不希望第三方模拟发送请求获取我们的数据、甚至是偷窃用户数据。<br>这时我们可以考虑不对数据进行加密，改为对通讯数据进行签名。通过对通讯数据混合Salt进行签名。因为攻击者不知道salt的值，仅仅窃听信道是不能模拟出用户请求的。 如果在通讯数据中加入时间因素，还可以防止重放攻击。</li>
+</ul>
+<p>因为防抵赖需要对用户身份做特殊认证，大多数应用不具备这一点。一般认为密码登录即为当前用户。加密可以防止大多说攻击。防重放攻击需要特殊实现，一般是加入请求的时间量。</p>
+<p>希望以上提到的方法能给您参考和启发，从而开发出安全的应用程序。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/应用开发/" rel="tag"># 应用开发</a>
+          
+            <a href="/tags/加密/" rel="tag"># 加密</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/12/12/2014-12-12-系统头文件被修改导致项目不能编译/" rel="next" title="系统头文件被修改导致项目不能编译。">
+                <i class="fa fa-chevron-left"></i> 系统头文件被修改导致项目不能编译。
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/12/15/2014-12-15-解密被加密的类-Locus Pro 3.40 APK Crack 分享三/" rel="prev" title="解密被加密的类-Locus Pro 3.40 APK Crack 分享三">
+                解密被加密的类-Locus Pro 3.40 APK Crack 分享三 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Erik Lu" />
+          <p class="site-author-name" itemprop="name">Erik Lu</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据加密模型"><span class="nav-number">1.</span> <span class="nav-text">数据加密模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的攻击手段"><span class="nav-number">2.</span> <span class="nav-text">常见的攻击手段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的窃取数据的手段"><span class="nav-number">3.</span> <span class="nav-text">常见的窃取数据的手段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的保护手段"><span class="nav-number">4.</span> <span class="nav-text">常见的保护手段</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Erik Lu</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

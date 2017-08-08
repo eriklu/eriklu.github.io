@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="smali,逆向工程,Locus Pro,android," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="下载数据终于想办法绕过去了，但是启动应用后，应用还是退出了，究竟是什么原因呢？ 处理资源中的非ascii字符现在启动应用，应用异常退出，抛出异常信息如下:">
+<meta name="keywords" content="smali,逆向工程,Locus Pro,android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="处理资源中的非ascii字符--Locus Pro 3.40 APK Crack 分享五">
+<meta property="og:url" content="http://eriklu.github.io/2014/12/17/2014-12-17-处理资源中的非ascii字符--Locus Pro 3.40 APK Crack 分享五/index.html">
+<meta property="og:site_name" content="弦歌雅意的小屋">
+<meta property="og:description" content="下载数据终于想办法绕过去了，但是启动应用后，应用还是退出了，究竟是什么原因呢？ 处理资源中的非ascii字符现在启动应用，应用异常退出，抛出异常信息如下:">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-08T06:30:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="处理资源中的非ascii字符--Locus Pro 3.40 APK Crack 分享五">
+<meta name="twitter:description" content="下载数据终于想办法绕过去了，但是启动应用后，应用还是退出了，究竟是什么原因呢？ 处理资源中的非ascii字符现在启动应用，应用异常退出，抛出异常信息如下:">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://eriklu.github.io/2014/12/17/2014-12-17-处理资源中的非ascii字符--Locus Pro 3.40 APK Crack 分享五/"/>
+
+
+
+
+
+  <title>处理资源中的非ascii字符--Locus Pro 3.40 APK Crack 分享五 | 弦歌雅意的小屋</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">弦歌雅意的小屋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/17/2014-12-17-处理资源中的非ascii字符--Locus Pro 3.40 APK Crack 分享五/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Erik Lu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="弦歌雅意的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">处理资源中的非ascii字符--Locus Pro 3.40 APK Crack 分享五</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-12-17T08:00:00+08:00">
+                2014-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/逆向工程/" itemprop="url" rel="index">
+                    <span itemprop="name">逆向工程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>下载数据终于想办法绕过去了，但是启动应用后，应用还是退出了，究竟是什么原因呢？</p>
+<h3 id="处理资源中的非ascii字符"><a href="#处理资源中的非ascii字符" class="headerlink" title="处理资源中的非ascii字符"></a>处理资源中的非ascii字符</h3><p>现在启动应用，应用异常退出，抛出异常信息如下:<br><a id="more"></a></p>
+<blockquote>
+<p>12-15 11:51:59.396: E/AndroidRuntime(32656): FATAL EXCEPTION: main<br>12-15 11:51:59.396: E/AndroidRuntime(32656): java.lang.RuntimeException: Unable to start activity ComponentInfo{menion.android.locus.pro/com.asamm.locus.basic.MainActivityBasic}: android.view.InflateException: Binary XML file line #162: Error inflating class o.ﾇ<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2180)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2230)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.app.ActivityThread.access$600(ActivityThread.java:141)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1234)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.os.Handler.dispatchMessage(Handler.java:99)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.os.Looper.loop(Looper.java:137)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.app.ActivityThread.main(ActivityThread.java:5041)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at java.lang.reflect.Method.invokeNative(Native Method)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at java.lang.reflect.Method.invoke(Method.java:511)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:793)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:560)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at dalvik.system.NativeStart.main(Native Method)<br>12-15 11:51:59.396: E/AndroidRuntime(32656): Caused by: android.view.InflateException: Binary XML file line #162: Error inflating class o.ﾇ<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:698)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.view.LayoutInflater.rInflate(LayoutInflater.java:746)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.view.LayoutInflater.rInflate(LayoutInflater.java:749)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.view.LayoutInflater.rInflate(LayoutInflater.java:749)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.view.LayoutInflater.rInflate(LayoutInflater.java:749)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.view.LayoutInflater.inflate(LayoutInflater.java:489)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.view.LayoutInflater.inflate(LayoutInflater.java:396)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.view.LayoutInflater.inflate(LayoutInflater.java:352)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.view.View.inflate(View.java:16465)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at o._efbe83.onCreate(:284)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.app.Activity.performCreate(Activity.java:5104)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1080)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2144)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    … 11 more<br><strong>12-15 11:51:59.396: E/AndroidRuntime(32656): Caused by: java.lang.ClassNotFoundException: Didn’t find class “o.ﾇ” on path: /data/app/menion.android.locus.pro-1.apk</strong><br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at dalvik.system.BaseDexClassLoader.findClass(BaseDexClassLoader.java:65)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at java.lang.ClassLoader.loadClass(ClassLoader.java:501)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at java.lang.ClassLoader.loadClass(ClassLoader.java:461)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.view.LayoutInflater.createView(LayoutInflater.java:552)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:687)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    … 23 more</p>
+</blockquote>
+<p>提示很明显找不到一个类:<strong>“o.ﾇ”</strong>。</p>
+<p>这是因为资源中引用到了类名，而这个类名现在已经不存在了。<br>我们需要把资源中的类名替换为新的类名。<br>需要替换的文件有Androidmanifeste.xml和layout文件夹下的xml文件。</p>
+<p>如何替换资源中的特殊字符，请参考我的博客:<br><a href="http://eriklu.github.io/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/%E5%A4%84%E7%90%86%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E4%B8%AD%E5%BC%95%E7%94%A8%E5%88%B0%E4%BA%86%E9%9D%9EASCII%E5%AD%97%E7%AC%A6%E7%9A%84%E7%B1%BB%E5%90%8D%E5%AD%97%E7%AC%A6%E4%B8%B2--Android%20%E9%80%86%E5%90%91%E7%B3%BB%E5%88%97%E5%9B%9B.html">处理资源文件中引用到了非ASCII字符的类名字符串–Android 逆向系列四</a><br>我已经提供了代码的参考实现：<br><a href="https://github.com/eriklu/SmaliDebugTool/blob/master/SmaliDebugTool/java/misc/AXMLStringTransformer.java" target="_blank" rel="external">AXMLStringTransformer.java</a><br>我们把资源文件处理后，重新打包，运行。<br>应用终于启动了，但是应用变成了免费版本。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/smali/" rel="tag"># smali</a>
+          
+            <a href="/tags/逆向工程/" rel="tag"># 逆向工程</a>
+          
+            <a href="/tags/Locus-Pro/" rel="tag"># Locus Pro</a>
+          
+            <a href="/tags/android/" rel="tag"># android</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/12/16/2014-12-16-准备运行需要的数据--Locus Pro 3.40 APK Crack 分享四/" rel="next" title="准备运行需要的数据--Locus Pro 3.40 APK Crack 分享四">
+                <i class="fa fa-chevron-left"></i> 准备运行需要的数据--Locus Pro 3.40 APK Crack 分享四
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/12/18/2014-12-18-解除功能限制--Locus Pro 3.40 APK Crack 分享六/" rel="prev" title="解除功能限制--Locus Pro 3.40 APK Crack 分享六">
+                解除功能限制--Locus Pro 3.40 APK Crack 分享六 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Erik Lu" />
+          <p class="site-author-name" itemprop="name">Erik Lu</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">70</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#处理资源中的非ascii字符"><span class="nav-number">1.</span> <span class="nav-text">处理资源中的非ascii字符</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Erik Lu</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

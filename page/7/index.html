@@ -260,6 +260,152 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/08/2014-12-08-IOS7、IOS8 autoLayout的一个区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Erik Lu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="弦歌雅意的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/12/08/2014-12-08-IOS7、IOS8 autoLayout的一个区别/" itemprop="url">IOS7、IOS8 autoLayout的一个区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-12-08T08:00:00+08:00">
+                2014-12-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="IOS7、IOS8-autoLayout的一个区别"><a href="#IOS7、IOS8-autoLayout的一个区别" class="headerlink" title="IOS7、IOS8 autoLayout的一个区别"></a>IOS7、IOS8 autoLayout的一个区别</h3><p>最近学习<strong>autolayout</strong>。根视图有一个子视图。当一个点击事件发生时，子视图从屏幕底部移动到顶部。在<strong>storyboard</strong>里面设计子视图约束时，没办法设置顶部约束常量为一个屏幕高度。所以该在<strong>viewDidLoad</strong>里面来设置。代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;!--more--&gt;</div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    ……</div><div class="line">    NSLayoutConstraint *myConstaint = nil;</div><div class="line">    NSArray *constaints = [self.view constraints];</div><div class="line">    for(NSLayoutConstraint *constaint in constaints)&#123;</div><div class="line">        if(constaint.firstItem==self.viewW &amp;&amp; constaint.secondItem==self.view &amp;&amp; constaint.firstAttribute == NSLayoutAttributeTop)&#123;</div><div class="line">            myConstaint = constaint;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    //代码1</div><div class="line">    myConstaint.constant = screen_height;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在IOS 7上代码运行正常。但是在IOS 8上，执行到代码1处，<strong>myConstaint</strong>的值为<strong>nil</strong>。不论<strong>viewW</strong>是否处于hidden状态。</p>
+<p>在IOS8上，把上面代码放在<strong>viewWillAppear</strong>.执行到代码1处，<strong>myConstaint</strong>的值<strong>不</strong>为<strong>nil</strong>。</p>
+<p>看来在加载view并执行自动布局时IOS7和IOS8机制是有差别的。在IOS7上，<strong>viewDidLoad</strong>执行时，自动布局应该已经执行完毕。 在IOS 8上， <strong>viewDidLoad</strong>执行时，自动布局尚未完成， <strong>viewWillAppear</strong>执行时，自动布局才完成。这是界面开始显示。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/07/2014-12-07-实现重打包--Locus Pro 3.40 APK Crack 分享二/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1138,153 +1284,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/02/2014-12-02-Android apk 逆向 -- Android 逆向系列一/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Erik Lu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="弦歌雅意的小屋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/12/02/2014-12-02-Android apk 逆向 -- Android 逆向系列一/" itemprop="url">Android apk 逆向 -- Android 逆向系列一</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-12-02T08:00:00+08:00">
-                2014-12-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/逆向工程/" itemprop="url" rel="index">
-                    <span itemprop="name">逆向工程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="Android-apk-逆向-–-Android-逆向系列一"><a href="#Android-apk-逆向-–-Android-逆向系列一" class="headerlink" title="Android apk 逆向 – Android 逆向系列一"></a>Android apk 逆向 – Android 逆向系列一</h3><h3 id="常用工具介绍"><a href="#常用工具介绍" class="headerlink" title="常用工具介绍"></a>常用工具介绍</h3><ol>
-<li>ADT android应用开发工具包，用来开发一些代码，必要时可以给应用添加一些自己开发的功能，也可以写一些调试工具类代码。
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/12/02/2014-12-02-Android apk 逆向 -- Android 逆向系列一/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/02/2014-12-02-发表在看雪论坛的旧文章/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1383,6 +1382,153 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2014/12/02/2014-12-02-发表在看雪论坛的旧文章/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/02/2014-12-02-Android apk 逆向 -- Android 逆向系列一/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Erik Lu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="弦歌雅意的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2014/12/02/2014-12-02-Android apk 逆向 -- Android 逆向系列一/" itemprop="url">Android apk 逆向 -- Android 逆向系列一</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-12-02T08:00:00+08:00">
+                2014-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/逆向工程/" itemprop="url" rel="index">
+                    <span itemprop="name">逆向工程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Android-apk-逆向-–-Android-逆向系列一"><a href="#Android-apk-逆向-–-Android-逆向系列一" class="headerlink" title="Android apk 逆向 – Android 逆向系列一"></a>Android apk 逆向 – Android 逆向系列一</h3><h3 id="常用工具介绍"><a href="#常用工具介绍" class="headerlink" title="常用工具介绍"></a>常用工具介绍</h3><ol>
+<li>ADT android应用开发工具包，用来开发一些代码，必要时可以给应用添加一些自己开发的功能，也可以写一些调试工具类代码。
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/12/02/2014-12-02-Android apk 逆向 -- Android 逆向系列一/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1567,152 +1713,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2009/12/29/2009-12-29-翻译Load a Dll From Memory!/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Erik Lu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="弦歌雅意的小屋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2009/12/29/2009-12-29-翻译Load a Dll From Memory!/" itemprop="url">翻译Load a Dll From Memory!</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2009-12-29T08:00:00+08:00">
-                2009-12-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/文章翻译/" itemprop="url" rel="index">
-                    <span itemprop="name">文章翻译</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>本篇指南是讲解如何不借助文件系统的帮助来从内存中载入DLL的技术。<br>    作者：Joachim Bauch<br>    联系方式: mail◎joachim-bauch.de<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2009/12/29/2009-12-29-翻译Load a Dll From Memory!/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1763,7 +1763,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-count">72</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

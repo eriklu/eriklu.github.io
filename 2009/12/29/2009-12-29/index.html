@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Load a Dll From Memory!前言本篇指南是讲解如何不借助文件系统的帮助来从内存中载入DLL的技术。    作者：Joachim Bauch    联系方式: mail◎joachim-bauch.de    版权： Creative Commons License(by-sa)">
+<meta name="keywords" content="Dll">
+<meta property="og:type" content="article">
+<meta property="og:title" content="翻译Load a Dll From Memory!">
+<meta property="og:url" content="http://eriklu.github.io/2009/12/29/2009-12-29/index.html">
+<meta property="og:site_name" content="弦歌雅意的小屋">
+<meta property="og:description" content="Load a Dll From Memory!前言本篇指南是讲解如何不借助文件系统的帮助来从内存中载入DLL的技术。    作者：Joachim Bauch    联系方式: mail◎joachim-bauch.de    版权： Creative Commons License(by-sa)">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-27T07:33:54.115Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="翻译Load a Dll From Memory!">
+<meta name="twitter:description" content="Load a Dll From Memory!前言本篇指南是讲解如何不借助文件系统的帮助来从内存中载入DLL的技术。    作者：Joachim Bauch    联系方式: mail◎joachim-bauch.de    版权： Creative Commons License(by-sa)">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://eriklu.github.io/2009/12/29/2009-12-29/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>翻译Load a Dll From Memory! | 弦歌雅意的小屋</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">弦歌雅意的小屋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2009/12/29/2009-12-29/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Erik Lu">
+      <meta itemprop="description" content="从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="弦歌雅意的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">翻译Load a Dll From Memory!
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2009-12-29 08:00:00" itemprop="dateCreated datePublished" datetime="2009-12-29T08:00:00+08:00">2009-12-29</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-27 15:33:54" itemprop="dateModified" datetime="2019-06-27T15:33:54+08:00">2019-06-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/翻译/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Load-a-Dll-From-Memory"><a href="#Load-a-Dll-From-Memory" class="headerlink" title="Load a Dll From Memory!"></a>Load a Dll From Memory!</h3><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>本篇指南是讲解如何不借助文件系统的帮助来从内存中载入DLL的技术。<br>    作者：Joachim Bauch<br>    联系方式: mail◎joachim-bauch.de<br>    版权： Creative Commons License(by-sa)</p>
+<a id="more"></a> 
+
+<h4 id="内容提纲"><a href="#内容提纲" class="headerlink" title="内容提纲"></a>内容提纲</h4><ul>
+<li>简介</li>
+<li>PE 文件格式</li>
+<li>DOS header /DOS stub 格式</li>
+<li>PE header 格式</li>
+<li>Section header 格式</li>
+<li>加载library</li>
+<li>分配内存空间</li>
+<li>拷贝Section内容到目标位置</li>
+<li>基址重定位</li>
+<li>内存访问权限设置</li>
+<li>通知library被进程加载</li>
+<li>调用导出函数</li>
+<li>释放library</li>
+<li>MemoryModule工具包</li>
+<li>下载地址</li>
+<li>已知的问题</li>
+<li>License</li>
+<li>移植版本</li>
+<li>版权声明</li>
+</ul>
+<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>  Windows平台提供的加载library的API（LoadLibarary,<br>LoadLibraryEx）只能加载文件系统中的Library.<br>没有体哦那个从内存中加载Dll的功能。但是，有些情况下又需要这样的功能。譬如，你不想在发布包中包含很多文件，又或者你想给那些逆向工作者一些苦头吃。这时一个常见的做法是先把dll文件写到一个临时文件中，然后从临时文件中导入它。当程序终止时把临时文件删除。<br>PE文件格式<br>  绝大多数包含执行代码的二进制文件（.exe、 .dll、 .sys）都有相同的文件格式。这种文件格式包括下面几个部分：</p>
+<ul>
+<li>DOS header</li>
+<li>DOS stub</li>
+<li>PE header</li>
+<li>Section header</li>
+<li>Section 1</li>
+<li>Section 2</li>
+<li>…</li>
+<li>Section n</li>
+</ul>
+<p>下面将简单描述各个组成部分。（注：在头文件winnt.h中可以找到下面要介绍的所有数据结构）</p>
+<ul>
+<li>DOS header /DOS stub 格式<br>DOS格式部分有两部分组成。分别是DOS header和DOS stub<br>DOS头部存在的作用仅仅是为了向后兼容的目的。跟在DOS header后面的是DOS Stub数据，DOS stub用来显示一条错误信息来告诉用户该文件不能在DOS模式下运行。<br>微软对DOS Header的声明如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">typedef struct _IMAGE_DOS_HEADER &#123;      // DOS .EXE header</span><br><span class="line">  WORD   e_magic;                     // Magic number</span><br><span class="line">  WORD   e_cblp;                      // Bytes on last page of file</span><br><span class="line">  WORD   e_cp;                        // Pages in file</span><br><span class="line">  WORD   e_crlc;                      // Relocations</span><br><span class="line">  WORD   e_cparhdr;                   // Size of header in paragraphs</span><br><span class="line">  WORD   e_minalloc;                  // Minimum extra paragraphs needed</span><br><span class="line">  WORD   e_maxalloc;                  // Maximum extra paragraphs needed</span><br><span class="line">  WORD   e_ss;                        // Initial (relative) SS value</span><br><span class="line">  WORD   e_sp;                        // Initial SP value</span><br><span class="line">  WORD   e_csum;                      // Checksum</span><br><span class="line">  WORD   e_ip;                        // Initial IP value</span><br><span class="line">  WORD   e_cs;                        // Initial (relative) CS value</span><br><span class="line">  WORD   e_lfarlc;                    // File address of relocation table</span><br><span class="line">  WORD   e_ovno;                      // Overlay number</span><br><span class="line">  WORD   e_res[4];                    // Reserved words</span><br><span class="line">  WORD   e_oemid;                     // OEM identifier (for e_oeminfo)</span><br><span class="line">  WORD   e_oeminfo;                   // OEM information; e_oemid specific</span><br><span class="line">  WORD   e_res2[10];                  // Reserved words</span><br><span class="line">  LONG   e_lfanew;                    // File address of new exe header</span><br><span class="line">  &#125; IMAGE_DOS_HEADER, *PIMAGE_DOS_HEADER;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>PE header 格式<br>PE Header用来描述和section相关的信息。可执行文件用section来保存执行代码和数据，以及从其他模块导入的函数的信息和本模块导出的函数信息等。<br>PE Header的定义如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typedef struct _IMAGE_NT_HEADERS &#123;</span><br><span class="line">    DWORD Signature;</span><br><span class="line">    IMAGE_FILE_HEADER FileHeader;</span><br><span class="line">    IMAGE_OPTIONAL_HEADER32 OptionalHeader;</span><br><span class="line">&#125; IMAGE_NT_HEADERS32, *PIMAGE_NT_HEADERS32;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>FileHeader字段描述了文件的物理格式，如目录信息、Symbols的信息等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">typedef struct _IMAGE_FILE_HEADER &#123;</span><br><span class="line">    WORD    Machine;</span><br><span class="line">    WORD    NumberOfSections;</span><br><span class="line">    DWORD   TimeDateStamp;</span><br><span class="line">    DWORD   PointerToSymbolTable;</span><br><span class="line">    DWORD   NumberOfSymbols;</span><br><span class="line">    WORD    SizeOfOptionalHeader;</span><br><span class="line">    WORD    Characteristics;</span><br><span class="line">&#125; IMAGE_FILE_HEADER, *PIMAGE_FILE_HEADER;</span><br><span class="line">​```   </span><br><span class="line">- 字段OptionalHeader保存模块的逻辑信息，这些信息包括需要的操作系统版本，需要的内存大小和入口点信息。</span><br><span class="line">- </span><br><span class="line">​``` C </span><br><span class="line">typedef struct _IMAGE_OPTIONAL_HEADER &#123;</span><br><span class="line">    //</span><br><span class="line">    // Standard fields.</span><br><span class="line">    //</span><br><span class="line"></span><br><span class="line">    WORD    Magic;</span><br><span class="line">    BYTE    MajorLinkerVersion;</span><br><span class="line">    BYTE    MinorLinkerVersion;</span><br><span class="line">    DWORD   SizeOfCode;</span><br><span class="line">    DWORD   SizeOfInitializedData;</span><br><span class="line">    DWORD   SizeOfUninitializedData;</span><br><span class="line">    DWORD   AddressOfEntryPoint;</span><br><span class="line">    DWORD   BaseOfCode;</span><br><span class="line">    DWORD   BaseOfData;</span><br><span class="line"></span><br><span class="line">    //</span><br><span class="line">    // NT additional fields.</span><br><span class="line">    //</span><br><span class="line"></span><br><span class="line">    DWORD   ImageBase;</span><br><span class="line">    DWORD   SectionAlignment;</span><br><span class="line">    DWORD   FileAlignment;</span><br><span class="line">    WORD    MajorOperatingSystemVersion;</span><br><span class="line">    WORD    MinorOperatingSystemVersion;</span><br><span class="line">    WORD    MajorImageVersion;</span><br><span class="line">    WORD    MinorImageVersion;</span><br><span class="line">    WORD    MajorSubsystemVersion;</span><br><span class="line">    WORD    MinorSubsystemVersion;</span><br><span class="line">    DWORD   Win32VersionValue;</span><br><span class="line">    DWORD   SizeOfImage;</span><br><span class="line">    DWORD   SizeOfHeaders;</span><br><span class="line">    DWORD   CheckSum;</span><br><span class="line">    WORD    Subsystem;</span><br><span class="line">    WORD    DllCharacteristics;</span><br><span class="line">    DWORD   SizeOfStackReserve;</span><br><span class="line">    DWORD   SizeOfStackCommit;</span><br><span class="line">    DWORD   SizeOfHeapReserve;</span><br><span class="line">    DWORD   SizeOfHeapCommit;</span><br><span class="line">    DWORD   LoaderFlags;</span><br><span class="line">    DWORD   NumberOfRvaAndSizes;</span><br><span class="line">    IMAGE_DATA_DIRECTORY DataDirectory[IMAGE_NUMBEROF_DIRECTORY_ENTRIES];</span><br><span class="line">&#125; IMAGE_OPTIONAL_HEADER32, *PIMAGE_OPTIONAL_HEADER32;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>字段DataDirectory保存着模块中定义的（IMAGE_NUMBEROF_DIRECTORY_ENTRIES）<br>个逻辑项(Conpontents)的入口:<br>Index Desription<br>0 导出函数块<br>1 导入函数块<br>2 资源块<br>4 异常信息块<br>5 基地址重定位表块<br>6 调试信息块<br>7 架构(Architecture)特定的数据块<br>8 全局指针块<br>9 线程本地存储块<br>10  载入配置块<br>11  Bound imports<br>12  导入地址表块<br>13  延迟加载导入块<br>14  COM运行时描述块</p>
+<p>对于只是加载DLL的任务来说，我们仅仅用到导入块和基地址重定位表块。不过为了调用导出的函数，我们还需要用到导出函数块。<br>Section header格式<br>  这一部分数据保存在PE header部分的OPtionalHeader字段后面。为了方便定位section<br>header的位置，微软提供了一个宏定义IMAGE_FIRST_SECTION，它的值等于SectionHeader的开始地址相对于PE<br>Header基地址的位移。<br>  Section header实际上是一个存储着文件中每一个Section的信息的列表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">typedef struct _IMAGE_SECTION_HEADER &#123;</span><br><span class="line">    BYTE    Name[IMAGE_SIZEOF_SHORT_NAME];</span><br><span class="line">    union &#123;</span><br><span class="line">            DWORD   PhysicalAddress;</span><br><span class="line">            DWORD   VirtualSize;</span><br><span class="line">    &#125; Misc;</span><br><span class="line">    DWORD   VirtualAddress;</span><br><span class="line">    DWORD   SizeOfRawData;</span><br><span class="line">    DWORD   PointerToRawData;</span><br><span class="line">    DWORD   PointerToRelocations;</span><br><span class="line">    DWORD   PointerToLinenumbers;</span><br><span class="line">    WORD    NumberOfRelocations;</span><br><span class="line">    WORD    NumberOfLinenumbers;</span><br><span class="line">    DWORD   Characteristics;</span><br><span class="line">&#125; IMAGE_SECTION_HEADER, *PIMAGE_SECTION_HEADER;</span><br></pre></td></tr></table></figure>
+
+<p>  而一个Section中可以包含代码，数据，重定位信息，资源，导出导入函数等信息。</p>
+<h4 id="加载Library"><a href="#加载Library" class="headerlink" title="加载Library"></a>加载Library</h4><p>  为了模拟PE loader的过程，我们首先必须弄清楚从把文件读入内存中开始到准备好可以被程序使用为止，都需要执行那些步骤。<br>  当我们调用LoadLibrary时，Windows主要做了了以下工作：</p>
+<ol>
+<li>打开指定的文件并检查DOS和PE头部。</li>
+<li>在PEHeader.OptionalHeader.ImageBase处分配PEHeader.Optionalheader.SizeOfImage个字节的内存。</li>
+<li>分析section header,从IMAGE_SECTION_HEADER结构中的VirtualAddress属性中获取每个section的开始地址相对与ImageBase的位移。把section中的内容拷贝到正确的位置。</li>
+<li>如果分配的地址不同于ImageBase, 代码和数据块中的参数必须做相应的调整。这一步就是传说中的relocation.</li>
+<li>Library中用到的导入信息也必须通过加载相应的模块来解决。</li>
+<li>各个section对应的内存区必须根据各个Section的特征来进行访问限制。这时那些标记为可以丢弃的section占用的内存可以被释放。这些section通常保存都是导入时需要用到的临时数据（例如基地址重定位信息）的。</li>
+<li>现在library已经被成功的加载了，现在可以使用Dll_PROCESS_ATTACH标志来调用library的入口函数通知library正在被进程加载。</li>
+</ol>
+<p>下面我们将详细的描述各个步骤。</p>
+<ul>
+<li><p>分配内存<br>为了利用window提供了设置内存块访问限制的功能，必须使用VirtualAlloc来预订（或分配）library需要的所有内存。因为我们需要约束对这些内存的访问。例如我们应该阻止对代码区和常量区的写操作。<br>OptionalHeader中保存有Library需要的内存块的大小。如果可能，我们必须预订ImageBase中指定的内存。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Memory = VirtualAlloc((LPVOID)(PEHeader-&gt;OptionalHeader.ImageBase),</span><br><span class="line">    PEHeader-&gt;OptionalHeader.SizeOfImage,</span><br><span class="line">    MEM_RESERVE, PAGE_READWRITE);</span><br></pre></td></tr></table></figure>
+
+<p>如果预订到的地址不是ImageBase中指定的地址，那么必须执行后面描述的基地址重定位步骤。</p>
+</li>
+<li><p>拷贝Section的内容<br>分配内存以后，就可以把section中的内容拷贝到系统中了。这时需要通过分析Section Header中的数据来找到section部分的数据在文件中的位置和在内存中的目标位置。<br>在数据拷贝之前，需要先提交要使用的内存块。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Dest = VirtualAlloc(baseAddress + section-&gt;VirtualAddress,</span><br><span class="line">    Section-&gt;SizeOfRawData,</span><br><span class="line">MEM_COMMIT,</span><br><span class="line">PAGE_READWRITE);</span><br></pre></td></tr></table></figure>
+
+<p>对于没有在文件中保存数据（如保存运行中用到的参数的section）的区块，SizeOfRawData字段的值为0.这时你可以用OptionalHeader字段中的SizeOfInitializedData 或 SizeOfUninitializedData字段。具体选用那个字段取决于section的Characteristics字段中IMAGE_SCN_CNT_INITIALIZED_DATA和IMAGE_SCN_CNT_UNINITIALIZED_DATA标志位的值。</p>
+</li>
+<li><p>基地址重定位</p>
+<p>​</p>
+<p>Library中的代码/数据section中的用到的所有内存地址都以一种相对于基地址位移的方式进行保存。而基地址则保存在OptionalHeader的ImageBase字段中。如果library不能被加载到指定的基地址，那么这些内存地址的地址都必须进行调整，术语称之为重定位。PE文件中的基地址重定位表保存这些需要重定位的内存地址。我们可以在OptionalHeader的DataDirectory字段中保存的第5个字典入口处找到基地址重定位表。</p>
+<p>​</p>
+<p>这个表由一系列的IMAGE_BASE_RELOCATION数据结构组成。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typedef struct _IMAGE_BASE_RELOCATION &#123;</span><br><span class="line">    DWORD   VirtualAddress;</span><br><span class="line">    DWORD   SizeOfBlock;</span><br><span class="line">//  WORD    TypeOffset[1];</span><br><span class="line">&#125; IMAGE_BASE_RELOCATION;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>重定位表包含（SizeOfBlock – IMAGE_SIZEOF_BASE_RELOCATION）/ 2个项，每个项由16位bit组成。其中高4位bit定义了重定位的类型，低12位定义了相对于VirtualAddress的位移。<br>  在DLL文件中仅有以下类型有效<br>  IMAGE_REL_BASED_ABSOLUTE<br>    没有重定位操作，仅用作填充<br>  IMAGE_REL_BASED_HIGHLOW<br>    用分配到的地址与ImageBase的差值再加上offset处的32位地址的和作为重定位后的地址。.</p>
+<ul>
+<li><p>处理导入信息</p>
+<p>​</p>
+<p>OptionalHeader中DataDirectory字段中的第一个(基于0开始)选项(entry)中包含了一组library列表，保存着本library需要用到的所有library.列表中的选项的格式定义如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  typedef struct _IMAGE_IMPORT_DESCRIPTOR &#123;</span><br><span class="line">    union &#123;</span><br><span class="line">          DWORD   Characteristics;            // 0 for terminating null import descriptor</span><br><span class="line">DWORD   OriginalFirstThunk;         // RVA to original unbound IAT (PIMAGE_THUNK_DATA)</span><br><span class="line">    &#125;;</span><br><span class="line">    DWORD   TimeDateStamp;                  // 0 if not bound,</span><br><span class="line">                                            // -1 if bound, and real date\time stamp</span><br><span class="line">                                            //     in IMAGE_DIRECTORY_ENTRY_BOUND_IMPORT (new BIND)</span><br><span class="line">                                            // O.W. date/time stamp of DLL bound to (Old BIND)</span><br><span class="line"></span><br><span class="line">    DWORD   ForwarderChain;                 // -1 if no forwarders</span><br><span class="line">    DWORD   Name;</span><br><span class="line">    DWORD   FirstThunk;                     // RVA to IAT (if bound this IAT has actual addresses)</span><br><span class="line">&#125; IMAGE_IMPORT_DESCRIPTOR;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>Name项保存着引用到的library名字（如kernel32.dll）的C字符串指针。OriginalFirstThunk项为一个列表指针，指向需要从外部导入的函数名的列表。FirstThunk项保存的也是一个列表指针。给指针指向一系列函数地址，这些地址需要用引用的函数的地址来填充。<br>  处理导入函数时，需要并行的访问这两个表，导入第一个表中函数名指定的函数，同时把返回地址保存在第二个列表相应的位置上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    nameRef = (DWORD*)(baseAddress + importDesc-&gt;OriginalFirstThunk);</span><br><span class="line">    symbolRef = (DWORD *)(baseAddress + importDest-&gt;FirstThunk);</span><br><span class="line">    for( ; *nameRef; nameRef++, symbolRef++)&#123;</span><br><span class="line">      PIMAGE_IMPORT_BY_NAME thunkData = </span><br><span class="line">(PIMAGE_IMPORT_BY_NAME)(codeBase + *nameRef);</span><br><span class="line">      *symbolRef = (DWORD)GetProcAddress(handle, (LPCSTR)&amp;thunkData-&gt;Name);</span><br><span class="line">      if(*funcRef == 0)&#123;</span><br><span class="line">        handleImportError():</span><br><span class="line">        return;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>内存访问权限设置</p>
+<p>​</p>
+<p>每一个section的Characteristics字段中保存有该section的访问许可权限。访问权限可以是下列值中的一个或它们的组合。</p>
+<p>​</p>
+<p>IMAGE_SCN_MEN_EXCEUTE</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">表示该section中包含的数据是可执行的代码</span><br></pre></td></tr></table></figure>
+
+<p>IMAGE_SCN_MEN_READ</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">表示该section中的数据是只读的</span><br></pre></td></tr></table></figure>
+
+<p>IMAGE_SCN_MEN_WRITE</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">表示该section中的数据是可写的。</span><br></pre></td></tr></table></figure>
+
+<p>section中的权限最后会被映射到下列内存权限值中的一个</p>
+<p>​</p>
+<p>  PAGE_NOACCESS</p>
+<p>​</p>
+<p>  PAGE_WRITECOPY</p>
+<p>​</p>
+<p>  PAGE_READONLY</p>
+<p>​</p>
+<p>  PAGE_READWRITE</p>
+<p>​</p>
+<p>  PAGE_EXECUTE</p>
+<p>​</p>
+<p>  PAGE_EXECUTE_WRITECOPY</p>
+<p>​</p>
+<p>  PAGE_EXECUTE_READ</p>
+<p>​</p>
+<p>  PAGE_EXECUTE_READWRITE</p>
+<p>​</p>
+<p>  现在我们可以用ViretualProtect函数来给内存加上访问限制。加上限制后，当以不被许可的方式访问内存时windows将会抛出一个异常。</p>
+<p>​</p>
+<p>  除了前面提到的3中权限外，下面两种权限也可以被加到section中</p>
+<p>​</p>
+<p>  IMAGE_SCN_MEN_DISCARDABLE</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">该section中的内容在完成导入后可以丢弃。通常为重定位表section设置这个标识。</span><br></pre></td></tr></table></figure>
+
+<p>  IMAGE_SCN_MEN_NOT_CACHED</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果section中设置这个标识，那么windows将不会对该section的内存数据进行缓存。同时会额外给section占用的内存指定PAGE_NOCACHE保护权限</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="通知library被进程加载"><a href="#通知library被进程加载" class="headerlink" title="通知library被进程加载"></a>通知library被进程加载</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">加载的最后一步是调用DLL的入口点函数(入口点函数由AddressOfEntryPoint指定), 通知library它应经被加载到一个进程中了。</span><br><span class="line">入口点函数的定义如下：</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typedef BOOL (WINAPI * DllEntryProc)(HINSTANCE hinstDll, DWORD fdwReason, LPVOID lpReserved);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">所以我们最后要执行的代码就是:</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">DllEntryProc entry = (DllEntryProc)(baseAddress </span><br><span class="line">+ PEHeader-&gt;OptionalHeader.AddressOfEntryPoint);</span><br><span class="line">    (*entry)((HINSTANCE)baseAddress, DLL_PROCESS_ATTACH, 0);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">以后我们就可以像使用其他正常加载的library一样使用该library中的导出函数了。</span><br></pre></td></tr></table></figure>
+
+<h4 id="调用导出函数"><a href="#调用导出函数" class="headerlink" title="调用导出函数"></a>调用导出函数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">为了调用library中的导出函数，我们需要找出要调用的函数名对应到symbol的入口点。</span><br><span class="line">OptionalHeader中的DataDirectory字段中的第0项中保存指向导出函数的信息记录的指针。</span><br><span class="line">导出函数记录的定义如下：</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">    typedef struct _IMAGE_EXPORT_DIRECTORY &#123;</span><br><span class="line">    DWORD   Characteristics;</span><br><span class="line">    DWORD   TimeDateStamp;</span><br><span class="line">    WORD    MajorVersion;</span><br><span class="line">    WORD    MinorVersion;</span><br><span class="line">    DWORD   Name;</span><br><span class="line">    DWORD   Base;</span><br><span class="line">    DWORD   NumberOfFunctions;</span><br><span class="line">    DWORD   NumberOfNames;</span><br><span class="line">    DWORD   AddressOfFunctions;     // RVA from base of image</span><br><span class="line">    DWORD   AddressOfNames;         // RVA from base of image</span><br><span class="line">    DWORD   AddressOfNameOrdinals;  // RVA from base of image</span><br><span class="line">&#125; IMAGE_EXPORT_DIRECTORY, *PIMAGE_EXPORT_DIRECTORY;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">第一步要找出函数名在导出Symbols中的ordinal number.因此我们要同时顺序的遍历AddressOfNames数组和AddressOfNameOrDinals数组直到找到要调用的函数名,同时也找到了函数对应的ordinal number。</span><br></pre></td></tr></table></figure>
+
+<p>  AddressOfFunctions数组中的第ordinal number个元素中保存的就是我们要调用的函数地址。</p>
+<h4 id="释放library"><a href="#释放library" class="headerlink" title="释放library"></a>释放library</h4><p>  要释放自定义加载的libiary，仅需执行一下步骤:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. 用下面的方式调用入口点函数</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DllEntryProc entry = (DllEntryProc)(baseAddress + PEHeader-&gt;OptionalHeader.AddrssOfEntryPoint);</span><br><span class="line">  (*entry)((HINSTANCE)baseAddress, DLL_PROCESS_DETACH/* 原文中本处使用的是 DLL_PROCESS_ATTACH 估计为笔误*/, 0);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2. 释放加载的library.</span><br><span class="line">3. 释放分配的内存</span><br></pre></td></tr></table></figure>
+
+<h4 id="MemoryModule工具包"><a href="#MemoryModule工具包" class="headerlink" title="MemoryModule工具包"></a>MemoryModule工具包</h4><p>  MemoryModule是一个用来从内存中载入DLL的C语言工具包。<br>  它的接口非常类似Windows 提供的载入library的API接口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef void *HMEMORYMODULE;</span><br><span class="line">HMEMORYMODULE MemoryLoadLibrary(const void *(;</span><br><span class="line">FARPROC MemoryGetProcAddress(HMEMORYMODULE, const char* );</span><br><span class="line">void MenoryFreeLibrary(HMEMORYMODULE);</span><br></pre></td></tr></table></figure>
+
+<h5 id="下载位置"><a href="#下载位置" class="headerlink" title="下载位置"></a>下载位置</h5><p>  你总是可以从Subversion服务器<a href="http://fancycode.com/viewcvs/MemofyModule/trunk/下载最新的版本。" target="_blank" rel="noopener">http://fancycode.com/viewcvs/MemofyModule/trunk/下载最新的版本。</a><br>  下面是已经发布的版本中的下载地址：<br>  version 0.02(使用Mozilla许可证发布版)<br>    <a href="http://www.joachim-bauch.de/tutorials/downloads/MemoryModule-0.0.2.zip" target="_blank" rel="noopener">http://www.joachim-bauch.de/tutorials/downloads/MemoryModule-0.0.2.zip</a><br>  Version 0.01(第一次公开发布版)<br>      <a href="http://www.joachim-bauch.de/tutorials/downloads/MemoryModule-0.0.1.zip" target="_blank" rel="noopener">http://www.joachim-bauch.de/tutorials/downloads/MemoryModule-0.0.1.zip</a></p>
+<h5 id="已知的问题"><a href="#已知的问题" class="headerlink" title="已知的问题"></a>已知的问题</h5><p>  所有分配的内存都是使用PAGE_READWRITE模式提交的，而没有使用Section中设置的权限，我不肯定这一决定在所有的情况下都正确。</p>
+<h5 id="License"><a href="#License" class="headerlink" title="License"></a>License</h5><p>  Since version 0.0.2, the MemoryModule library is released under the<br>Mozilla Public License(MPL).Version 0.0.1 has been released under the<br>Lesser General Public License(LGPL).<br>  It is provided as-is without ANY warranty. You may use it at your own risk.<br>  以上授权文件不做翻译，以免误导大家。我已经尽可能的保证了上面的话和原文一致。但是建议此部分读者最好阅读原版。</p>
+<h5 id="版本移植"><a href="#版本移植" class="headerlink" title="版本移植"></a>版本移植</h5><p>  Thomas heller 把MemoryModule增加到py2exe中用来创建可以被Python脚本执行的单一文件。<br>  Martin Offenwanger 把MemoryModule移植到了Delphi平台，你可以访问下面的地址下载。<br>  <a href="http://www.dsplayer.de/open_source_projects/BTMemoryModule.zip" target="_blank" rel="noopener">http://www.dsplayer.de/open_source_projects/BTMemoryModule.zip</a>    </p>
+<h4 id="版权声明"><a href="#版权声明" class="headerlink" title="版权声明"></a>版权声明</h4><p>  MemoryModule Library 和 本指南 版权所有(c)2004-2006 Joachim Bauch.</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/Dll/" rel="tag"># Dll</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2008/12/30/2008-12-30/" rel="next" title="Blaze Video Magic 3.0 注册机制分析">
+                <i class="fa fa-chevron-left"></i> Blaze Video Magic 3.0 注册机制分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/12/01/2014-11-31/" rel="prev" title="发表在看雪论坛的旧文章">
+                发表在看雪论坛的旧文章 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Erik Lu">
+            
+              <p class="site-author-name" itemprop="name">Erik Lu</p>
+              <div class="site-description motion-element" itemprop="description">从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/eriklu" title="GitHub &rarr; https://github.com/eriklu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Load-a-Dll-From-Memory"><span class="nav-number">1.</span> <span class="nav-text">Load a Dll From Memory!</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内容提纲"><span class="nav-number">1.2.</span> <span class="nav-text">内容提纲</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">1.3.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加载Library"><span class="nav-number">1.4.</span> <span class="nav-text">加载Library</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通知library被进程加载"><span class="nav-number">1.5.</span> <span class="nav-text">通知library被进程加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调用导出函数"><span class="nav-number">1.6.</span> <span class="nav-text">调用导出函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#释放library"><span class="nav-number">1.7.</span> <span class="nav-text">释放library</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MemoryModule工具包"><span class="nav-number">1.8.</span> <span class="nav-text">MemoryModule工具包</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#下载位置"><span class="nav-number">1.8.1.</span> <span class="nav-text">下载位置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#已知的问题"><span class="nav-number">1.8.2.</span> <span class="nav-text">已知的问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#License"><span class="nav-number">1.8.3.</span> <span class="nav-text">License</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#版本移植"><span class="nav-number">1.8.4.</span> <span class="nav-text">版本移植</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#版权声明"><span class="nav-number">1.9.</span> <span class="nav-text">版权声明</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2014 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Erik Lu</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

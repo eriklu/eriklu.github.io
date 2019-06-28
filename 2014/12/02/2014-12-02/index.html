@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Android apk 逆向 – 工具篇常用工具介绍 ADT android应用开发工具包，用来开发一些代码，必要时可以给应用添加一些自己开发的功能，也可以写一些调试工具类代码。">
+<meta name="keywords" content="Android,Apktool">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android apk 逆向 -- 工具篇">
+<meta property="og:url" content="http://eriklu.github.io/2014/12/02/2014-12-02/index.html">
+<meta property="og:site_name" content="弦歌雅意的小屋">
+<meta property="og:description" content="Android apk 逆向 – 工具篇常用工具介绍 ADT android应用开发工具包，用来开发一些代码，必要时可以给应用添加一些自己开发的功能，也可以写一些调试工具类代码。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-27T07:33:31.213Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android apk 逆向 -- 工具篇">
+<meta name="twitter:description" content="Android apk 逆向 – 工具篇常用工具介绍 ADT android应用开发工具包，用来开发一些代码，必要时可以给应用添加一些自己开发的功能，也可以写一些调试工具类代码。">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://eriklu.github.io/2014/12/02/2014-12-02/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Android apk 逆向 -- 工具篇 | 弦歌雅意的小屋</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">弦歌雅意的小屋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/02/2014-12-02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Erik Lu">
+      <meta itemprop="description" content="从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="弦歌雅意的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android apk 逆向 -- 工具篇
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2014-12-02 08:00:00" itemprop="dateCreated datePublished" datetime="2014-12-02T08:00:00+08:00">2014-12-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-27 15:33:31" itemprop="dateModified" datetime="2019-06-27T15:33:31+08:00">2019-06-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/逆向工程/" itemprop="url" rel="index"><span itemprop="name">逆向工程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Android-apk-逆向-–-工具篇"><a href="#Android-apk-逆向-–-工具篇" class="headerlink" title="Android apk 逆向 – 工具篇"></a>Android apk 逆向 – 工具篇</h3><h4 id="常用工具介绍"><a href="#常用工具介绍" class="headerlink" title="常用工具介绍"></a>常用工具介绍</h4><ol>
+<li><p>ADT android应用开发工具包，用来开发一些代码，必要时可以给应用添加一些自己开发的功能，也可以写一些调试工具类代码。</p>
+<a id="more"></a> 
+</li>
+<li><p>NDK android开发so库的工具包。包含一些工具可以查看so库文件的信息。</p>
+</li>
+<li><p>ApkTool 重量级APK逆向工具，可以把apk文件解包、重打包。最大的问题是经常遇到一些不能识别的资源，终止解包过程。</p>
+</li>
+<li><p>dex2jar 一组工具包，总重要的功能是把dex文件反编译为class文件。另一个重要功能就是给apk文件签名。</p>
+</li>
+<li><p>class文件查看工具: JD-GUI(老牌工具，速度快，有些代码反编译不了)、luyten-0.4.3.jar(能比JD-GUI反编译更多代码，但是功能不及JD-GUI)</p>
+</li>
+<li><p>AXMLPrinter2.jar 显示apk中xml文件的内容。在apktool不能工作时可以帮大忙。</p>
+</li>
+<li><p>BakeSmali 把apk反编译成smali代码的工具。apktool已经集成了该功能。</p>
+</li>
+<li><p>DroidBox apk沙箱模拟器</p>
+</li>
+<li><p>APIMonitor api调用监控工具</p>
+</li>
+<li><p>反汇编工具：IDA、Hopper Disassembler(Mac平台)</p>
+</li>
+<li><p>网络抓包工具：wireshark、fidler2、minisniffer、Charles、Eavesdrop(Mac平台)</p>
+</li>
+<li><p>集成工具: APKDB、ADBIDE</p>
+</li>
+<li><p>二进制文件编辑工具:UtralEdit、0xED(Mac平台)、Hex Fiend(Mac平台)</p>
+</li>
+<li><p>shell、cygwin 代码查找好帮手</p>
+</li>
+<li><p>其他工具</p>
+<ol>
+<li>在线base64、MD5、SHA1计算网站</li>
+<li>bouncycastle加密套件，android系统内置了该加密套件，而Oracle JDK默认没有内置，有些实现细节的不同会导致相同的代码加解密结果不同。</li>
+<li>smali指令表、arm汇编指令表</li>
+</ol>
+</li>
+</ol>
+<h4 id="常见目标"><a href="#常见目标" class="headerlink" title="常见目标"></a>常见目标</h4><ol>
+<li>解除apk的部分功能限制</li>
+<li>寻找apk通讯加密算法</li>
+<li>删除广告</li>
+<li>探索某些功能的实现方法</li>
+<li>汉化</li>
+<li>加入广告牟利</li>
+<li>……</li>
+</ol>
+<h4 id="常规步骤"><a href="#常规步骤" class="headerlink" title="常规步骤"></a>常规步骤</h4><ol>
+<li>用apktool把apk解包。<br> 解包命令行：java -jar apktool.jar d xxx.apk -o outdir -f<br> 如果遇到资源解包出错，可以增加 -r 选项禁用解析资源功能。禁用后输出的资源文件是原始格式，可以用AXMLPrinter2.jar查看<br> 集成工具会自动调用完成解包。</li>
+<li>用解压工具解压apk中的classes.dex文件，用dex2jar工具把dex文件转换成jar文件。<br> windows平台可以直接把classes.dex拖动到d2j-dex2jar.bat文件上<br> linux/mac平台执行 d2j-dex2jar.sh classes.dex<br> 最后会在当前目录生成classes-dex2jar.jar</li>
+<li>使用DJ-GUI查看classes-dex2jar.jar，寻找相关功能代码，完成自己计划的目标。</li>
+<li>根据需要修改smali文件，添加自己想要的功能。这一步会综合使用“常用工具介绍”的各种工具。</li>
+<li>用apktool工具重新打包<br> 重打包命令：java -jar apktool.jar b apkdir -o xxx.apk -f<br> 这里apktool要用到apt包中的aapt工具，确保合适的配置了path环境变量，包含了aapt所在的路径</li>
+<li>用dex2jar工具对生成的apk重新签名<br> 签名工具为:d2j-apk-sign<br> windows平台可以直接把xxx.apk拖动到d2j-apk-sign.bat文件上<br> linux/mac平台执行 d2j-apk-sign.sh xxx.apk</li>
+<li>把签名后的apk文件，安装到设备上或模拟器上进行测试，若OK结束，否则返回第3步。</li>
+</ol>
+<h4 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h4><ol>
+<li><p>apktool提示资源id找不到？</p>
+<p> 方法一：使用－r参数，禁用资源解析功能能。如果仅凭代码就可以解决您的问题，这种方法最简单了。</p>
+<p> 方法二、升级您的apktool到最新版。</p>
+<p> 方法三、寻找合适的 framework.res添加到apktool里面     </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令行: java -jar apktool.jar if framework.res</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用JD-GUI查看代码时部分方法代码不能反编译？</p>
+<p> 反编译工具不能完美的翻遍出源代码，特别时混淆后的代码。经验表明含有大量分支和异常的代码容易反编译不了。大型函数反编译不了。</p>
+<p> 可以换用luyten试试。</p>
+<p> 直接阅读smali代码</p>
+</li>
+<li><p>为什么JD-GUI中显示的代码中函数名、字段名都是a、b这些无意义的字母。</p>
+<p> 因为class代码较容易被反编译，所以一般情况下，开发者都会对对代码进行混淆，来增加逆向的难度。</p>
+</li>
+<li><p>为什么JD-GUI中显示的代码中函数名、字段名除了a、b这些无意义的字母，还有一些不认识的飞ascii字符。</p>
+<p> 也是混淆器的作用。这样生成的文件名不能在window平台长创建。</p>
+</li>
+<li><p>为什么修改后的apk文件安装不了？</p>
+<p> 建议使用adb工具进行安装。<br> adb时adt工具包中的工具。<br> 在手机开启调试模式后，使用下面的命令行安装。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb install -r xxx-signed.apk</span><br></pre></td></tr></table></figure>
+
+<p> 失败时会提示原因。根据原因采取相应措施</p>
+</li>
+<li><p>修改后的应用运行中退出。</p>
+<p> 可能原因： </p>
+<ol>
+<li>修改的smali文件存在错误，生成的class文件不能通过虚拟机的校验。</li>
+<li>apk中存在签名校验，检测到签名改变后退出。使用adt开发包中的monitor工具查看运行时日志。因为真机的输出消息比较多，建议使用模拟器来测试。</li>
+</ol>
+</li>
+</ol>
+<h4 id="修改smali文件注意事项"><a href="#修改smali文件注意事项" class="headerlink" title="修改smali文件注意事项"></a>修改smali文件注意事项</h4><ol>
+<li>注意调整.local的参数个数。</li>
+<li>充分利用即将要被赋值的变量。</li>
+<li>只能使用v0~v15变量。</li>
+<li>数值常量使用16进制表示。如0x1</li>
+<li>如果增加指令较多，建议写成单独的函数来调用。</li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/Apktool/" rel="tag"># Apktool</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/12/01/2014-12-01/" rel="next" title="启航">
+                <i class="fa fa-chevron-left"></i> 启航
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/12/03/2014-12-03/" rel="prev" title="绕过APK包签名检测机制">
+                绕过APK包签名检测机制 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Erik Lu">
+            
+              <p class="site-author-name" itemprop="name">Erik Lu</p>
+              <div class="site-description motion-element" itemprop="description">从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/eriklu" title="GitHub &rarr; https://github.com/eriklu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Android-apk-逆向-–-工具篇"><span class="nav-number">1.</span> <span class="nav-text">Android apk 逆向 – 工具篇</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用工具介绍"><span class="nav-number">1.1.</span> <span class="nav-text">常用工具介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见目标"><span class="nav-number">1.2.</span> <span class="nav-text">常见目标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常规步骤"><span class="nav-number">1.3.</span> <span class="nav-text">常规步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见问题"><span class="nav-number">1.4.</span> <span class="nav-text">常见问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改smali文件注意事项"><span class="nav-number">1.5.</span> <span class="nav-text">修改smali文件注意事项</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2014 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Erik Lu</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

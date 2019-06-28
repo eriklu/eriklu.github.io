@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Locus Map Pro 3.4.0 Patch笔记分享Locus Map Pro APK介绍“Locus Map Pro - Outdoor GPS”是一款户外徒步软件。具有记录徒步轨迹，显示加载离线地图等功能。">
+<meta name="keywords" content="逆向工程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Locus Map Pro 3.40 Patch笔记">
+<meta property="og:url" content="http://eriklu.github.io/2014/12/07/2014-12-07/index.html">
+<meta property="og:site_name" content="弦歌雅意的小屋">
+<meta property="og:description" content="Locus Map Pro 3.4.0 Patch笔记分享Locus Map Pro APK介绍“Locus Map Pro - Outdoor GPS”是一款户外徒步软件。具有记录徒步轨迹，显示加载离线地图等功能。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/eriklu/eriklu.github.io/master/images/locus_macore.so.png">
+<meta property="og:updated_time" content="2019-06-27T07:32:10.926Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Locus Map Pro 3.40 Patch笔记">
+<meta name="twitter:description" content="Locus Map Pro 3.4.0 Patch笔记分享Locus Map Pro APK介绍“Locus Map Pro - Outdoor GPS”是一款户外徒步软件。具有记录徒步轨迹，显示加载离线地图等功能。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/eriklu/eriklu.github.io/master/images/locus_macore.so.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://eriklu.github.io/2014/12/07/2014-12-07/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Locus Map Pro 3.40 Patch笔记 | 弦歌雅意的小屋</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">弦歌雅意的小屋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/07/2014-12-07/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Erik Lu">
+      <meta itemprop="description" content="从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="弦歌雅意的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Locus Map Pro 3.40 Patch笔记
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2014-12-07 08:00:00" itemprop="dateCreated datePublished" datetime="2014-12-07T08:00:00+08:00">2014-12-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-27 15:32:10" itemprop="dateModified" datetime="2019-06-27T15:32:10+08:00">2019-06-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Locus-Map/" itemprop="url" rel="index"><span itemprop="name">Locus Map</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Locus-Map-Pro-3-4-0-Patch笔记分享"><a href="#Locus-Map-Pro-3-4-0-Patch笔记分享" class="headerlink" title="Locus Map Pro 3.4.0 Patch笔记分享"></a>Locus Map Pro 3.4.0 Patch笔记分享</h3><h4 id="Locus-Map-Pro-APK介绍"><a href="#Locus-Map-Pro-APK介绍" class="headerlink" title="Locus Map Pro APK介绍"></a>Locus Map Pro APK介绍</h4><p>“Locus Map Pro - Outdoor GPS”是一款户外徒步软件。具有记录徒步轨迹，显示加载离线地图等功能。</p>
+<a id="more"></a> 
+
+<p>因为软件是外国公司开发的，没有支持中文。国内用户因为语言的问题使用极不方便。该软件在德国Android<br> App市场，Google Play，<br>三星市场上架。为了减小开发包的大小，从3.10开始，ApK用到的部分so库需要从服务器上下载。下载过程会检测用户使用的APK市场，并需要登录用户帐号。因为众多周知的原因，我们大陆形成了独特的APK市场。手机厂家的自定义系统中根本没有内置这三家市场软件，导致用户直接下载失败。而APK开发者显然没考虑到中国市场的问题，所以仅仅提示“网络故障”，搞得用户莫名其妙。很多付费购买了APK的用户也无法正常使用。<br>基于这两点原因，特别是第二条，在开发者没有支持中国市场之前，我们只能自力更生的解决这些问题。</p>
+<h4 id="研究目的"><a href="#研究目的" class="headerlink" title="研究目的"></a>研究目的</h4><ul>
+<li>汉化软件，方便国人使用</li>
+<li>能顺利安装APK</li>
+</ul>
+<h4 id="需要解决的问题和困难"><a href="#需要解决的问题和困难" class="headerlink" title="需要解决的问题和困难"></a>需要解决的问题和困难</h4><ul>
+<li>因为需要重新打包，所以需要绕过APK的签名检测。</li>
+<li>为了方便安装，需要把要下载的so内置到apk中。</li>
+<li>因为不需要再下载so文件，所以需要绕过下载检测流程。</li>
+<li>因为没有产生真正的购买过程，所以增强特性会被禁用，变成免费版本。所以需要解除限制。</li>
+</ul>
+<p>现在我们以3.40版本为例，探讨如何解决上面的问题。</p>
+<h4 id="解除签名限制"><a href="#解除签名限制" class="headerlink" title="解除签名限制"></a>解除签名限制</h4><p>首先用apktool对apk解包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar apktool2.0.jar d Locus3.40.apk -f -o outdir</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下：</p>
+<blockquote>
+<p>I: Using Apktool 2.0.0-Beta7 on Locus3.40.apk<br>I: Loading resource table…<br>I: Decoding AndroidManifest.xml with resources…<br>I: Loading resource table from file: C:\Users\monkey\apktool\framework\1.apk<br>I: Regular manifest package…<br>I: Decoding file-resources…<br>W: Could not decode attr value, using undecoded value instead: ns=, name=style,<br>value=0x7f0d0066<br>W: Could not decode attr value, using undecoded value instead: ns=, name=style,<br>value=0x7f0d0047<br>W: Could not decode attr value, using undecoded value instead: ns=, name=style,<br>value=0x7f0d007f<br>W: Could not decode attr value, using undecoded value instead: ns=, name=style,<br>value=0x7f0d0066<br>W: Could not decode attr value, using undecoded value instead: ns=, name=style,<br>value=0x7f0d006e<br>I: Decoding values <em>/</em> XMLs…<br><strong>Can’t find framework resources for package of id: -1.</strong> You must install proper framework files, see project website for more info.</p>
+</blockquote>
+<p>很不幸，解析资源时遇到不能识别的资源id（原因见黑体部分），解包过程退出。</p>
+<p>我们先不处理资源，增加-r参数后，重新解包。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar apktool2.0.jar d Locus3.40.apk -f -o outdir -r</span><br></pre></td></tr></table></figure>
+
+<p>这次输出如下<br>I: Using Apktool 2.0.0-Beta7 on Locus3.40.apk<br>I: Loading resource table…<br>I: Copying raw resources…<br>I: Loading resource table…<br>I: Baksmaling…<br>I: Copying assets and libs…<br>I: Copying unknown files/dir…<br>I: Copying original files…</p>
+<p>解包过程顺利完成。</p>
+<p>现在我们在smali文件中查找字符串<strong>“Landroid/content/pm/Signature;”</strong>, 在Mn.2.smali中找到下面的函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">.method private static ･([Landroid/content/pm/Signature;)Z</span><br><span class="line">    .locals 2</span><br><span class="line"></span><br><span class="line">    .line 0</span><br><span class="line">    if-eqz p0, :cond_0</span><br><span class="line"></span><br><span class="line">    array-length v0, p0</span><br><span class="line"></span><br><span class="line">    if-nez v0, :cond_1</span><br><span class="line"></span><br><span class="line">    .line 298</span><br><span class="line">    :cond_0</span><br><span class="line">    const/4 v0, 0x0</span><br><span class="line"></span><br><span class="line">    return v0</span><br><span class="line"></span><br><span class="line">    .line 299</span><br><span class="line">    :cond_1</span><br><span class="line">    const/4 v0, 0x0</span><br><span class="line"></span><br><span class="line">    aget-object v0, p0, v0</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v0&#125;, Landroid/content/pm/Signature;-&gt;hashCode()I</span><br><span class="line"></span><br><span class="line">    move-result v0</span><br><span class="line"></span><br><span class="line">    const v1, 0x1a222754</span><br><span class="line"></span><br><span class="line">    if-ne v0, v1, :cond_2</span><br><span class="line"></span><br><span class="line">    .line 301</span><br><span class="line">    const/4 v0, 0x1</span><br><span class="line"></span><br><span class="line">    return v0</span><br><span class="line"></span><br><span class="line">    .line 302</span><br><span class="line">    :cond_2</span><br><span class="line">    const/4 v0, 0x0</span><br><span class="line"></span><br><span class="line">    aget-object v0, p0, v0</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v0&#125;, Landroid/content/pm/Signature;-&gt;hashCode()I</span><br><span class="line"></span><br><span class="line">    move-result v0</span><br><span class="line"></span><br><span class="line">    const v1, -0x53ad97d7</span><br><span class="line"></span><br><span class="line">    if-ne v0, v1, :cond_3</span><br><span class="line"></span><br><span class="line">    .line 304</span><br><span class="line">    const/4 v0, 0x1</span><br><span class="line"></span><br><span class="line">    return v0</span><br><span class="line"></span><br><span class="line">    .line 306</span><br><span class="line">    :cond_3</span><br><span class="line">    const/4 v0, 0x0</span><br><span class="line"></span><br><span class="line">    return v0</span><br><span class="line">.end method</span><br></pre></td></tr></table></figure>
+
+<p>这段代码是计算签名的hashcode，如何值为-0x53ad97d7或0x1a222754就认为签名是合法的。估计签名分别为免费版和pro版的签名证书是不同的。<br>这里有两种办法来绕过，一种是修改跳转指令：<strong>if-ne</strong>改为<strong>if-eq</strong>;另一种是比较前给<strong>v0</strong>重新赋值为和<strong>v1</strong>相同的值：<strong>const v0, -0x53ad97d7</strong>.
+任选一种，修改后重新打包。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar  apktool2.0.jar b outdir -f -o Locus3.40_modi.apk</span><br></pre></td></tr></table></figure>
+
+<p>I: Using Apktool 2.0.0-Beta7 on out<br>I: Smaling…<br>Exception in<br>thread “main”<br>org.jf.dexlib2.writer.util.TryListBuilder$InvalidTryException: Multile<br>overlapping catches for Ljava/lang/Exception; with differenthandlers<br>        at org.jf.dexlib2.writer.util.TryListBuilder$MutableTryBlock.addHandler(TryListBuilder.java:180)<br>        at org.jf.dexlib2.writer.util.TryListBuilder.addHandler(TryListBuilder.java:311)<br>        at org.jf.dexlib2.writer.util.TryListBuilder.massageTryBlocks(TryListBuilder.java:69)<br>        at org.jf.dexlib2.writer.DexWriter.writeCodeItem(DexWriter.java:881)<br>        at org.jf.dexlib2.writer.DexWriter.writeDebugAndCodeItems(DexWriter.java:759)<br>        at org.jf.dexlib2.writer.DexWriter.writeTo(DexWriter.java:214)<br>        at org.jf.dexlib2.writer.DexWriter.writeTo(DexWriter.java:192)<br>        at brut.androlib.src.SmaliBuilder.build(SmaliBuilder.java:58)<br>        at brut.androlib.src.SmaliBuilder.build(SmaliBuilder.java:41)<br>        at brut.androlib.Androlib.buildSourcesSmali(Androlib.java:337)<br>        at brut.androlib.Androlib.buildSources(Androlib.java:298)<br>        at brut.androlib.Androlib.build(Androlib.java:284)<br>        at brut.androlib.Androlib.build(Androlib.java:258)<br>        at brut.apktool.Main.cmdBuild(Main.java:233)<br>        at brut.apktool.Main.main(Main.java:88)</p>
+<p>很不幸，打包失败了。<br>使我们修改的原因导致的麽。实践证明，无论我们是否做修改，都无法打包成功。那我们该怎么解决这个问题呢。下面我们就来揭晓答案。</p>
+<h4 id="重新打包"><a href="#重新打包" class="headerlink" title="重新打包"></a>重新打包</h4><p>前面我们发现用apktool把APK解包后，无法重新打包。这是什么原因呢？分析发现这是因为开发者在生成APK包的时候对代码进行了混淆。很多Java类的类名、方法名、字段名都被替换为非ascii字符。导致重新打包失败。例如上一篇我们修改的签名验证的函数就是如此。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">.method private static ･([Landroid/content/pm/Signature;)Z</span><br><span class="line">    .locals 2</span><br><span class="line"></span><br><span class="line">    .line 0</span><br><span class="line">    if-eqz p0, :cond_0</span><br><span class="line"></span><br><span class="line">    array-length v0, p0</span><br><span class="line"></span><br><span class="line">    if-nez v0, :cond_1</span><br><span class="line"></span><br><span class="line">    .line 298</span><br><span class="line">    :cond_0</span><br><span class="line">    const/4 v0, 0x0</span><br><span class="line"></span><br><span class="line">    return v0</span><br><span class="line"></span><br><span class="line">    .line 299</span><br><span class="line">    :cond_1</span><br><span class="line">    const/4 v0, 0x0</span><br><span class="line"></span><br><span class="line">    aget-object v0, p0, v0</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v0&#125;, Landroid/content/pm/Signature;-&gt;hashCode()I</span><br><span class="line"></span><br><span class="line">    move-result v0</span><br><span class="line"></span><br><span class="line">    const v1, 0x1a222754</span><br><span class="line"></span><br><span class="line">    if-ne v0, v1, :cond_2</span><br><span class="line"></span><br><span class="line">    ……</span><br><span class="line">.end method</span><br></pre></td></tr></table></figure>
+
+<p>我们可以看到函数名不是我们常见的ascii字符。<br>如果我们想重新打包，就要首先解决这个问题。</p>
+<h5 id="把字符串重新映射为ascii码"><a href="#把字符串重新映射为ascii码" class="headerlink" title="把字符串重新映射为ascii码"></a>把字符串重新映射为ascii码</h5><p>利用混淆类似的原理。混淆是把ascii字符串映射为非ascii字符，我们需要一个类似的逆向过程。<br>这里我们借助apktool来帮我们完成这个工作。</p>
+<p>apktool的代码是开源的。我们需要对代码做一些修改，让生成类名、字段名、方法名、代码内字符串的部分做一些修改，从而生成ascii字符的名称。</p>
+<p>修改apktool源代码的过程在此略过，感兴趣的可以参考<a href="http://eriklu.github.io/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/%E6%88%98%E8%83%9C%E6%B7%B7%E6%B7%86%E5%90%8E%E7%9A%84%E9%9D%9EASCII%E5%AD%97%E7%AC%A6%20--%20Android%20%E9%80%86%E5%90%91%E7%B3%BB%E5%88%97%E4%B8%89.html">《战胜混淆后的非ASCII字符 – Android 逆向系列三》</a></p>
+<p>我们把修改代码后编译出来的apk命名为apktool_modi.jar</p>
+<p>重新操作，我们发现可以打包成功了。<br>让我们暂时停下来休息一下，去解决接下来的挑战。</p>
+<p>重新打包后，安装，程序直接退出。因为有些需要的类被加密了，解密后反射方法的方法名已经被映射为ascii，所以无法反射出相关方法，导致空指针异常。所以我们需要把类解密出来，并进行处理。</p>
+<h4 id="解密被加密的类"><a href="#解密被加密的类" class="headerlink" title="解密被加密的类"></a>解密被加密的类</h4><p>重新打包后，安装，程序直接退出，查看系统日志，提示如下异常信息。<br>程序出现空指针异常。</p>
+<blockquote>
+<p>12-15 09:09:29.264: E/AndroidRuntime(857): FATAL EXCEPTION: main<br>12-15<br> 09:09:29.264: E/AndroidRuntime(857): java.lang.RuntimeException: Unable<br> to get provider locus.api.core.LocusDataProvider:<br>java.lang.NullPointerException<br>12-15 09:09:29.264: E/AndroidRuntime(857):     at android.app.ActivityThread.installProvider(ActivityThread.java:4822)<br>12-15 09:09:29.264: E/AndroidRuntime(857):     at android.app.ActivityThread.installContentProviders(ActivityThread.java:4432)<br>12-15 09:09:29.264: E/AndroidRuntime(857):     at android.app.ActivityThread.handleBindApplication(ActivityThread.java:4372)<br>12-15 09:09:29.264: E/AndroidRuntime(857):     at android.app.ActivityThread.access$1300(ActivityThread.java:141)<br>12-15 09:09:29.264: E/AndroidRuntime(857):     at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1294)<br>12-15 09:09:29.264: E/AndroidRuntime(857):     at android.os.Handler.dispatchMessage(Handler.java:99)<br>12-15 09:09:29.264: E/AndroidRuntime(857):     at android.os.Looper.loop(Looper.java:137)<br>12-15 09:09:29.264: E/AndroidRuntime(857):     at android.app.ActivityThread.main(ActivityThread.java:5041)<br>12-15 09:09:29.264: E/AndroidRuntime(857):     at java.lang.reflect.Method.invokeNative(Native Method)<br>12-15 09:09:29.264: E/AndroidRuntime(857):     at java.lang.reflect.Method.invoke(Method.java:511)<br>12-15<br> 09:09:29.264: E/AndroidRuntime(857):     at<br>com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:793)<br>12-15 09:09:29.264: E/AndroidRuntime(857):     at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:560)<br>12-15 09:09:29.264: E/AndroidRuntime(857):     at dalvik.system.NativeStart.main(Native Method)<br>12-15 09:09:29.264: E/AndroidRuntime(857): Caused by: java.lang.NullPointerException<br><strong>12-15 09:09:29.264: E/AndroidRuntime(857):     at com.asamm.locus.core.MainApplication._cb8b(:103)</strong><br>12-15 09:09:29.264: E/AndroidRuntime(857):     at o._c5a7.onCreate(:43)<br>12-15 09:09:29.264: E/AndroidRuntime(857):     at android.content.ContentProvider.attachInfo(ContentProvider.java:1058)<br>12-15 09:09:29.264: E/AndroidRuntime(857):     at android.app.ActivityThread.installProvider(ActivityThread.java:4819)<br>12-15 09:09:29.264: E/AndroidRuntime(857):     … 12 more</p>
+</blockquote>
+<p>分析异常发现，最后抛出异常的应用层函数为<br><strong>12-15 09:09:29.264: E/AndroidRuntime(857):     at com.asamm.locus.core.MainApplication._cb8b(:103)</strong></p>
+<p>异常中显示了代码行数103(<strong>Locus编译时没有删除调试信息，所以可以显示行号。若删除调试信息，这里显示的是指令位移</strong>)。<br>直接在MainApplication.smali文件中搜索”.line 103”(不包含引号).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br></pre></td><td class="code"><pre><span class="line">……</span><br><span class="line">.line 102</span><br><span class="line">    new-instance v0, Lcom/asamm/locus/core/MainApplication$if;</span><br><span class="line"></span><br><span class="line">    invoke-direct &#123;v0, p0&#125;, Lcom/asamm/locus/core/MainApplication$if;-&gt;&lt;init&gt;(Lcom/asamm/locus/core/MainApplication;)V</span><br><span class="line"></span><br><span class="line">    iput-object v0, p0, Lcom/asamm/locus/core/MainApplication;-&gt;_cb8e:Lcom/asamm/locus/core/MainApplication$if;</span><br><span class="line"></span><br><span class="line">    .line 103</span><br><span class="line">    iget-object v7, p0, Lcom/asamm/locus/core/MainApplication;-&gt;_cb8e:Lcom/asamm/locus/core/MainApplication$if;</span><br><span class="line"></span><br><span class="line">    move-object v6, v7</span><br><span class="line"></span><br><span class="line">    move-object v6, v7</span><br><span class="line"></span><br><span class="line">    iget-object v0, v7, Lcom/asamm/locus/core/MainApplication$if;-&gt;_efbda5:Lcom/asamm/locus/core/MainApplication;</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v0&#125;, Lcom/asamm/locus/core/MainApplication;-&gt;getApplicationContext()Landroid/content/Context;</span><br><span class="line"></span><br><span class="line">    move-result-object v8</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;&#125;, Lo/Mn;-&gt;_cb88()Z</span><br><span class="line"></span><br><span class="line">    move-result v0</span><br><span class="line"></span><br><span class="line">    if-eqz v0, :cond_2</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;v8&#125;, Landroid/preference/PreferenceManager;-&gt;getDefaultSharedPreferences(Landroid/content/Context;)Landroid/content/SharedPreferences;</span><br><span class="line"></span><br><span class="line">    move-result-object v9</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v8&#125;, Landroid/content/Context;-&gt;getResources()Landroid/content/res/Resources;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    move-object v8, v0</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v0&#125;, Landroid/content/res/Resources;-&gt;getConfiguration()Landroid/content/res/Configuration;</span><br><span class="line"></span><br><span class="line">    move-result-object v10</span><br><span class="line"></span><br><span class="line">    const-string v0, &quot;KEY_S_LANGUAGE&quot;</span><br><span class="line"></span><br><span class="line">    const-string v1, &quot;default&quot;</span><br><span class="line"></span><br><span class="line">    invoke-interface &#123;v9, v0, v1&#125;, Landroid/content/SharedPreferences;-&gt;getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    move-object v9, v0</span><br><span class="line"></span><br><span class="line">    const-string v1, &quot;default&quot;</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v0, v1&#125;, Ljava/lang/String;-&gt;equals(Ljava/lang/Object;)Z</span><br><span class="line"></span><br><span class="line">    move-result v0</span><br><span class="line"></span><br><span class="line">    if-nez v0, :cond_2</span><br><span class="line"></span><br><span class="line">    iget-object v0, v10, Landroid/content/res/Configuration;-&gt;locale:Ljava/util/Locale;</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v0&#125;, Ljava/util/Locale;-&gt;getLanguage()Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v0, v9&#125;, Ljava/lang/String;-&gt;equals(Ljava/lang/Object;)Z</span><br><span class="line"></span><br><span class="line">    move-result v0</span><br><span class="line"></span><br><span class="line">    if-nez v0, :cond_2</span><br><span class="line"></span><br><span class="line">    const-string v12, &quot;_&quot;</span><br><span class="line"></span><br><span class="line">    move-object v11, v9</span><br><span class="line"></span><br><span class="line">    new-instance v0, Ljava/util/ArrayList;</span><br><span class="line"></span><br><span class="line">    invoke-direct &#123;v0&#125;, Ljava/util/ArrayList;-&gt;&lt;init&gt;()V</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;v9, v12, v0&#125;, Lo/Mm;-&gt;_efbda5(Ljava/lang/String;Ljava/lang/String;Ljava/util/ArrayList;)Ljava/util/ArrayList;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    move-object v11, v0</span><br><span class="line"></span><br><span class="line">    invoke-interface &#123;v0&#125;, Ljava/util/List;-&gt;size()I</span><br><span class="line"></span><br><span class="line">    move-result v0</span><br><span class="line"></span><br><span class="line">    const/4 v1, 0x1</span><br><span class="line"></span><br><span class="line">    if-ne v0, v1, :cond_1</span><br><span class="line"></span><br><span class="line">    new-instance v0, Ljava/util/Locale;</span><br><span class="line"></span><br><span class="line">    invoke-direct &#123;v0, v9&#125;, Ljava/util/Locale;-&gt;&lt;init&gt;(Ljava/lang/String;)V</span><br><span class="line"></span><br><span class="line">    iput-object v0, v7, Lcom/asamm/locus/core/MainApplication$if;-&gt;_cb8b:Ljava/util/Locale;</span><br><span class="line"></span><br><span class="line">    goto :goto_0</span><br><span class="line"></span><br><span class="line">    :cond_1</span><br><span class="line">    new-instance v0, Ljava/util/Locale;</span><br><span class="line"></span><br><span class="line">    const/4 v1, 0x0</span><br><span class="line"></span><br><span class="line">    invoke-interface &#123;v11, v1&#125;, Ljava/util/List;-&gt;get(I)Ljava/lang/Object;</span><br><span class="line"></span><br><span class="line">    move-result-object v1</span><br><span class="line"></span><br><span class="line">    check-cast v1, Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    const/4 v2, 0x1</span><br><span class="line"></span><br><span class="line">    invoke-interface &#123;v11, v2&#125;, Ljava/util/List;-&gt;get(I)Ljava/lang/Object;</span><br><span class="line"></span><br><span class="line">    move-result-object v2</span><br><span class="line"></span><br><span class="line">    check-cast v2, Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    invoke-direct &#123;v0, v1, v2&#125;, Ljava/util/Locale;-&gt;&lt;init&gt;(Ljava/lang/String;Ljava/lang/String;)V</span><br><span class="line"></span><br><span class="line">    iput-object v0, v7, Lcom/asamm/locus/core/MainApplication$if;-&gt;_cb8b:Ljava/util/Locale;</span><br><span class="line"></span><br><span class="line">    :goto_0</span><br><span class="line">    iget-object v0, v7, Lcom/asamm/locus/core/MainApplication$if;-&gt;_cb8b:Ljava/util/Locale;</span><br><span class="line"></span><br><span class="line">    iput-object v0, v10, Landroid/content/res/Configuration;-&gt;locale:Ljava/util/Locale;</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v8&#125;, Landroid/content/res/Resources;-&gt;getDisplayMetrics()Landroid/util/DisplayMetrics;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v8, v10, v0&#125;, Landroid/content/res/Resources;-&gt;updateConfiguration(Landroid/content/res/Configuration;Landroid/util/DisplayMetrics;)V</span><br><span class="line"></span><br><span class="line">    :cond_2</span><br><span class="line">    iget-object v0, v6, Lcom/asamm/locus/core/MainApplication$if;-&gt;_efbda5:Lcom/asamm/locus/core/MainApplication;</span><br><span class="line"></span><br><span class="line">    goto :goto_1</span><br><span class="line"></span><br><span class="line">    :catchall_0</span><br><span class="line">    move-exception v0</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v0&#125;, Ljava/lang/Throwable;-&gt;getCause()Ljava/lang/Throwable;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    throw v0</span><br><span class="line"></span><br><span class="line">    :goto_1</span><br><span class="line">    :try_start_0</span><br><span class="line">    const/4 v1, 0x1</span><br><span class="line"></span><br><span class="line">    new-array v1, v1, [Ljava/lang/Object;</span><br><span class="line"></span><br><span class="line">    const/4 v2, 0x0</span><br><span class="line"></span><br><span class="line">    aput-object v0, v1, v2</span><br><span class="line"></span><br><span class="line">#**加载加密的o.LY类**</span><br><span class="line">    const-string v0, &quot;o.LY&quot;</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;v0&#125;, Lo/LY$_e383bb;-&gt;_cb8f(Ljava/lang/String;)Ljava/lang/Class;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    const-string v2, &quot;_cb8b&quot;</span><br><span class="line"></span><br><span class="line">    const/4 v3, 0x1</span><br><span class="line"></span><br><span class="line">    new-array v3, v3, [Ljava/lang/Class;</span><br><span class="line"></span><br><span class="line">    const-class v4, Lcom/asamm/locus/core/MainApplication;</span><br><span class="line"></span><br><span class="line">    const/4 v5, 0x0</span><br><span class="line"></span><br><span class="line">    aput-object v4, v3, v5</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v0, v2, v3&#125;, Ljava/lang/Class;-&gt;getMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    const/4 v2, 0x0</span><br><span class="line">#**抛出异常的实际是下面这句，因为v0为null值**</span><br><span class="line">    invoke-virtual &#123;v0, v2, v1&#125;, Ljava/lang/reflect/Method;-&gt;invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;</span><br><span class="line">    :try_end_0</span><br><span class="line">    .catchall &#123;:try_start_0 .. :try_end_0&#125; :catchall_0</span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+
+<p>代码中通过调用<strong>o/LY$_e383bb</strong>的<strong>_cb8f</strong>方法加载一个类定义对象。奇怪的是我们翻查了代码，没有发现<strong>o.LY</strong>类的存在。一度我怀疑是<strong>APKTool</strong>工具存在问题，部分类在反编译时丢失了。查看了<strong>apktool</strong>代码，发现dex文件中显示的类的个数和解析出的类的个数相同。分析<strong>o/LY$_e383bb</strong>的<strong>_cb8f</strong>的方法，发现是这里面动态的实现了加载o.LY类。</p>
+<p>LY$_e383bb.smali文件又9338行，这里就简单介绍下里面的实现原理。<br>有一个类加载器和o.LY类的代码被压缩加密后存储为字节数组，存储为类的静态字段。类先解密类加载器代码，然后用类加载器代码加载o.LY类。</p>
+<p>现在解释下找到解密后的类的方法。<br>因为类字节的压缩、加密，解密最终都是通过字节数据来传递的。所以我们先以<strong>[B</strong>来确认代码的相关位置。<br>解密代码的最后一步，从一个数组中读取一个整数值，来作为最终字节码的长度，然后生成该长度的数组，把字节码最终解密到该数组中。</p>
+<p>下面就是找到的符合特征的地方。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line">    :try_start_15</span><br><span class="line">#计算出解密需要的长度</span><br><span class="line">    const/16 v1, 0x26</span><br><span class="line"></span><br><span class="line">    aget-byte v1, v16, v1</span><br><span class="line"></span><br><span class="line">    and-int/lit16 v1, v1, 0xff</span><br><span class="line"></span><br><span class="line">    const/16 v2, 0x27</span><br><span class="line"></span><br><span class="line">    aget-byte v2, v16, v2</span><br><span class="line"></span><br><span class="line">    shl-int/lit8 v2, v2, 0x8</span><br><span class="line"></span><br><span class="line">    int-to-char v2, v2</span><br><span class="line"></span><br><span class="line">    or-int/2addr v1, v2</span><br><span class="line"></span><br><span class="line">    const/16 v2, 0x28</span><br><span class="line"></span><br><span class="line">    aget-byte v2, v16, v2</span><br><span class="line"></span><br><span class="line">    and-int/lit16 v2, v2, 0xff</span><br><span class="line"></span><br><span class="line">    shl-int/lit8 v2, v2, 0x10</span><br><span class="line"></span><br><span class="line">    or-int/2addr v1, v2</span><br><span class="line"></span><br><span class="line">    const/16 v2, 0x29</span><br><span class="line"></span><br><span class="line">    aget-byte v2, v16, v2</span><br><span class="line"></span><br><span class="line">    shl-int/lit8 v2, v2, 0x18</span><br><span class="line"></span><br><span class="line">    or-int/2addr v1, v2</span><br><span class="line"></span><br><span class="line">#计算解压后代码的动态长度，生成合适大小的数组</span><br><span class="line">    new-array v1, v1, [B</span><br><span class="line"></span><br><span class="line">    goto :goto_17</span><br><span class="line"></span><br><span class="line">    :catchall_13</span><br><span class="line">    move-exception v0</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v0&#125;, Ljava/lang/Throwable;-&gt;getCause()Ljava/lang/Throwable;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    throw v0</span><br><span class="line">    :try_end_15</span><br><span class="line">    .catch Ljava/lang/Exception; &#123;:try_start_15 .. :try_end_15&#125; :catch_0</span><br><span class="line"></span><br><span class="line">    :goto_17</span><br><span class="line">    :try_start_16</span><br><span class="line">    const/4 v2, 0x1</span><br><span class="line"></span><br><span class="line">    new-array v4, v2, [Ljava/lang/Object;</span><br><span class="line"></span><br><span class="line">    const/4 v2, 0x0</span><br><span class="line">#数组被放在v4的第一个值中。</span><br><span class="line">    aput-object v1, v4, v2</span><br><span class="line"></span><br><span class="line">    const/16 v2, 0x251</span><br><span class="line"></span><br><span class="line">    const/16 v5, 0x1f4</span><br><span class="line"></span><br><span class="line">    const/16 v6, 0x15</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;v2, v5, v6&#125;, Lo/LY$_e383bb;-&gt;_cb88(III)Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    move-result-object v2</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;v2&#125;, Ljava/lang/Class;-&gt;forName(Ljava/lang/String;)Ljava/lang/Class;</span><br><span class="line"></span><br><span class="line">    move-result-object v2</span><br><span class="line"></span><br><span class="line">    sget-object v5, Lo/LY$_e383bb;-&gt;_cabe:[S</span><br><span class="line"></span><br><span class="line">    const/4 v6, 0x0</span><br><span class="line"></span><br><span class="line">    aget-short v5, v5, v6</span><br><span class="line"></span><br><span class="line">    add-int/lit8 v5, v5, 0x1</span><br><span class="line"></span><br><span class="line">    and-int/lit8 v6, v5, 0xe</span><br><span class="line"></span><br><span class="line">    const/16 v7, 0x252</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;v7, v5, v6&#125;, Lo/LY$_e383bb;-&gt;_cb88(III)Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    move-result-object v5</span><br><span class="line"></span><br><span class="line">    const/4 v6, 0x1</span><br><span class="line"></span><br><span class="line">    new-array v6, v6, [Ljava/lang/Class;</span><br><span class="line"></span><br><span class="line">    const-class v7, [B</span><br><span class="line"></span><br><span class="line">    const/4 v8, 0x0</span><br><span class="line"></span><br><span class="line">    aput-object v7, v6, v8</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v2, v5, v6&#125;, Ljava/lang/Class;-&gt;getMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;</span><br><span class="line"></span><br><span class="line">    move-result-object v2</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v2, v3, v4&#125;, Ljava/lang/reflect/Method;-&gt;invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;</span><br><span class="line"></span><br><span class="line">    move-result-object v2</span><br><span class="line">#这里类自己码已经在内存里解密存在于变量v1里面。</span><br></pre></td></tr></table></figure>
+
+<p>现在我们借助DebugTool工具，把数组信息输出到硬盘上。<br>DebugTool是我写的一组smali代码输出工具。可以在下面地址找到它。<br><a href="https://github.com/eriklu/SmaliDebugTool" target="_blank" rel="noopener">DebugTool</a></p>
+<p>现在我们在代码中增加输出语句。<br>修改上面的代码如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    invoke-virtual &#123;v2, v5, v6&#125;, Ljava/lang/Class;-&gt;getMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;</span><br><span class="line"></span><br><span class="line">    move-result-object v2</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v2, v3, v4&#125;, Ljava/lang/reflect/Method;-&gt;invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;</span><br><span class="line"></span><br><span class="line">    move-result-object v2</span><br><span class="line">#这里类自己码已经在内存里解密存在于变量v1里面。</span><br><span class="line">   invoke-static &#123;v1&#125;, Ldebug/DebugTool;-&gt;log2File([B)V</span><br></pre></td></tr></table></figure>
+
+<p>这段代码里v1的值没有被修改过，所以可以直接输出，否则提前保存v1的原始值。<br>这里类加载器的代码和o.LY的代码都会被输出，o.LY的代码保存在类加载器的后面。所以需要对输出文件处理，提取出o.LY的代码。o.LY的字节码存储为一个dex文件格式。所以我们把它存储为o.LY.dex,让后把它压缩为o.LY.zip，然后重命名为o.LY.apk.<br>最后是用我们自己编译的apktool工具解出o.LY的smali代码.<br>因为原来的目录已经存在了ly.smali,所以我们把这个LY.smali重新命名为LY.4.smali，把它拷贝到我们的locus的smali的o目录下。<br>现在因为我们已经把类代码直接解密出来了，所以不需要在对o.LY的代码解密了，所以替换<strong>o/LY$_e383bb</strong>的内如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.class public Lo/LY$_e383bb;</span><br><span class="line">.super Ljava/lang/Object;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">.method public static _cb8f(Ljava/lang/String;)Ljava/lang/Class;</span><br><span class="line">    .locals 5</span><br><span class="line">    </span><br><span class="line">#这里直接返回o.LY类对象</span><br><span class="line">    const-class v0, Lo/LY;</span><br><span class="line"></span><br><span class="line">    check-cast v0, Ljava/lang/Class;</span><br><span class="line"></span><br><span class="line">    return-object v0</span><br><span class="line">.end method</span><br></pre></td></tr></table></figure>
+
+<p>至此o.LY的代码解密完毕.</p>
+<p>重新打包，运行，还是报错。因为还有一个加密的类<strong>o.aA</strong>.
+用同样的方法处理，再次打包运行。<br>现在发现，apk终于可以运行了， 很是兴奋。但是提示需要下载数据，数据还是下载不了。<br>不要急，接下来我们就解决运行所需要的数据的问题。</p>
+<p>应用程序可以运行了，但是提示运行需要下载大约5M的数据，点击下载，总是提示网络错误。怎么办呢？</p>
+<h4 id="准备运行需要的数据"><a href="#准备运行需要的数据" class="headerlink" title="准备运行需要的数据"></a>准备运行需要的数据</h4><p>分析代码，并综合热心网友提供的信息。发现所谓的需要的数据就是两个.so文件:libproj.so和libjsqlite.so。<br>下载数据需要验证用户的购买信息。支持google play、三星应用市场和德国应用市场的账户信息。<br>要攻克账号这块，困难重重。<br>只好从别的地方下功夫了。<br>热心网友提供了apk的钛备份数据。里面有下载好的.so文件。当然了只有热心网友的手机芯片的版本armv7.这对国内用户差不多就够了。<br>我们就制作armv7特别版吧。</p>
+<p>把两个so文件拷贝到lib\armeabi-v7a目录。</p>
+<p>现在看看哪里加载了这两个so文件。<br>搜索”proj”或”jsql”(包括引号部分)，找到了文件My.2.smali.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br><span class="line">505</span><br><span class="line">506</span><br><span class="line">507</span><br><span class="line">508</span><br><span class="line">509</span><br><span class="line">510</span><br><span class="line">511</span><br><span class="line">512</span><br><span class="line">513</span><br><span class="line">514</span><br><span class="line">515</span><br><span class="line">516</span><br><span class="line">517</span><br><span class="line">518</span><br><span class="line">519</span><br><span class="line">520</span><br><span class="line">521</span><br><span class="line">522</span><br><span class="line">523</span><br><span class="line">524</span><br><span class="line">525</span><br><span class="line">526</span><br><span class="line">527</span><br><span class="line">528</span><br><span class="line">529</span><br><span class="line">530</span><br><span class="line">531</span><br><span class="line">532</span><br><span class="line">533</span><br><span class="line">534</span><br><span class="line">535</span><br><span class="line">536</span><br><span class="line">537</span><br><span class="line">538</span><br><span class="line">539</span><br><span class="line">540</span><br><span class="line">541</span><br><span class="line">542</span><br><span class="line">543</span><br><span class="line">544</span><br><span class="line">545</span><br><span class="line">546</span><br><span class="line">547</span><br><span class="line">548</span><br><span class="line">549</span><br><span class="line">550</span><br><span class="line">551</span><br><span class="line">552</span><br><span class="line">553</span><br><span class="line">554</span><br><span class="line">555</span><br><span class="line">556</span><br><span class="line">557</span><br><span class="line">558</span><br><span class="line">559</span><br><span class="line">560</span><br><span class="line">561</span><br><span class="line">562</span><br><span class="line">563</span><br><span class="line">564</span><br><span class="line">565</span><br><span class="line">566</span><br><span class="line">567</span><br><span class="line">568</span><br><span class="line">569</span><br><span class="line">570</span><br><span class="line">571</span><br><span class="line">572</span><br><span class="line">573</span><br><span class="line">574</span><br><span class="line">575</span><br><span class="line">576</span><br><span class="line">577</span><br><span class="line">578</span><br><span class="line">579</span><br><span class="line">580</span><br><span class="line">581</span><br><span class="line">582</span><br><span class="line">583</span><br><span class="line">584</span><br><span class="line">585</span><br><span class="line">586</span><br><span class="line">587</span><br><span class="line">588</span><br><span class="line">589</span><br><span class="line">590</span><br><span class="line">591</span><br><span class="line">592</span><br><span class="line">593</span><br><span class="line">594</span><br><span class="line">595</span><br></pre></td><td class="code"><pre><span class="line">.class public Lo/My;</span><br><span class="line">.super Ljava/lang/Object;</span><br><span class="line">.source &quot;&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># static fields</span><br><span class="line">.field private static final _cb8a:[Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">.field private static final _efbda5:Ljava/lang/String;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># direct methods</span><br><span class="line">.method static constructor &lt;clinit&gt;()V</span><br><span class="line">    .locals 3</span><br><span class="line"></span><br><span class="line">    .line 0</span><br><span class="line">    const-class v0, Lo/My;</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v0&#125;, Ljava/lang/Class;-&gt;getSimpleName()Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    sput-object v0, Lo/My;-&gt;_efbda5:Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    .line 28</span><br><span class="line">    const/4 v0, 0x3</span><br><span class="line"></span><br><span class="line">    new-array v0, v0, [Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    const-string v1, &quot;database_sqlcipher&quot;</span><br><span class="line"></span><br><span class="line">    const/4 v2, 0x0</span><br><span class="line"></span><br><span class="line">    aput-object v1, v0, v2</span><br><span class="line"></span><br><span class="line">    const-string v1, &quot;sqlcipher_android&quot;</span><br><span class="line"></span><br><span class="line">    const/4 v2, 0x1</span><br><span class="line"></span><br><span class="line">    aput-object v1, v0, v2</span><br><span class="line"></span><br><span class="line">    const-string v1, &quot;stlport_shared&quot;</span><br><span class="line"></span><br><span class="line">    const/4 v2, 0x2</span><br><span class="line"></span><br><span class="line">    aput-object v1, v0, v2</span><br><span class="line"></span><br><span class="line">    sput-object v0, Lo/My;-&gt;_cb8a:[Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    return-void</span><br><span class="line">.end method</span><br><span class="line"></span><br><span class="line">.method public constructor &lt;init&gt;()V</span><br><span class="line">    .locals 0</span><br><span class="line"></span><br><span class="line">    .line 0</span><br><span class="line">    invoke-direct &#123;p0&#125;, Ljava/lang/Object;-&gt;&lt;init&gt;()V</span><br><span class="line"></span><br><span class="line">    return-void</span><br><span class="line">.end method</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#检查需要的so温家你是否存在</span><br><span class="line">.method public static _cb8a()Z</span><br><span class="line">    .locals 11</span><br><span class="line"></span><br><span class="line">    .line 0</span><br><span class="line">    new-instance v0, Ljava/io/File;</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;&#125;, Lo/KI;-&gt;_d980()Landroid/content/ContextWrapper;</span><br><span class="line"></span><br><span class="line">    move-result-object v1</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v1&#125;, Landroid/content/Context;-&gt;getFilesDir()Ljava/io/File;</span><br><span class="line"></span><br><span class="line">    move-result-object v1</span><br><span class="line"></span><br><span class="line">    const-string v2, &quot;_libraries.conf&quot;</span><br><span class="line"></span><br><span class="line">    invoke-direct &#123;v0, v1, v2&#125;, Ljava/io/File;-&gt;&lt;init&gt;(Ljava/io/File;Ljava/lang/String;)V</span><br><span class="line"></span><br><span class="line">    .line 50</span><br><span class="line">    move-object v4, v0</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v0&#125;, Ljava/io/File;-&gt;exists()Z</span><br><span class="line"></span><br><span class="line">    move-result v0</span><br><span class="line"></span><br><span class="line">    if-eqz v0, :cond_0</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v4&#125;, Ljava/io/File;-&gt;length()J</span><br><span class="line"></span><br><span class="line">    move-result-wide v0</span><br><span class="line"></span><br><span class="line">    const-wide/16 v2, 0x0</span><br><span class="line"></span><br><span class="line">    cmp-long v0, v0, v2</span><br><span class="line"></span><br><span class="line">    if-nez v0, :cond_1</span><br><span class="line"></span><br><span class="line">    .line 51</span><br><span class="line">    :cond_0</span><br><span class="line">    sget-object v0, Lo/My;-&gt;_efbda5:Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    const-string v1, &quot;areDataReady(), missing config file&quot;</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;v0, v1&#125;, Lo/_c994;-&gt;_cb8b(Ljava/lang/String;Ljava/lang/String;)V</span><br><span class="line"></span><br><span class="line">    .line 52</span><br><span class="line">    const/4 v0, 0x0</span><br><span class="line"></span><br><span class="line">    return v0</span><br><span class="line"></span><br><span class="line">    .line 57</span><br><span class="line">    :cond_1</span><br><span class="line">    :try_start_0</span><br><span class="line">    invoke-static &#123;v4&#125;, Lo/OJ;-&gt;_cabb(Ljava/io/File;)Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    .line 58</span><br><span class="line">    move-object v5, v0</span><br><span class="line"></span><br><span class="line">    if-eqz v0, :cond_2</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v5&#125;, Ljava/lang/String;-&gt;length()I</span><br><span class="line"></span><br><span class="line">    move-result v0</span><br><span class="line"></span><br><span class="line">    if-nez v0, :cond_3</span><br><span class="line"></span><br><span class="line">    .line 59</span><br><span class="line">    :cond_2</span><br><span class="line">    sget-object v0, Lo/My;-&gt;_efbda5:Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    const-string v1, &quot;areDataReady(), empty content of config file&quot;</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;v0, v1&#125;, Lo/_c994;-&gt;_cb8b(Ljava/lang/String;Ljava/lang/String;)V</span><br><span class="line">    :try_end_0</span><br><span class="line">    .catch Ljava/lang/Exception; &#123;:try_start_0 .. :try_end_0&#125; :catch_0</span><br><span class="line"></span><br><span class="line">    .line 60</span><br><span class="line">    const/4 v0, 0x0</span><br><span class="line"></span><br><span class="line">    return v0</span><br><span class="line"></span><br><span class="line">    .line 64</span><br><span class="line">    :cond_3</span><br><span class="line">    :try_start_1</span><br><span class="line">    invoke-static &#123;v5&#125;, Lo/OO;-&gt;_efbda5(Ljava/lang/String;)Lo/aac;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    .line 65</span><br><span class="line">    move-object v5, v0</span><br><span class="line"></span><br><span class="line">    const-string v1, &quot;version&quot;</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v0, v1&#125;, Lo/aac;-&gt;get(Ljava/lang/Object;)Ljava/lang/Object;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;v0&#125;, Lo/Mn;-&gt;_cb8a(Ljava/lang/Object;)I</span><br><span class="line"></span><br><span class="line">    move-result v0</span><br><span class="line"></span><br><span class="line">    .line 66</span><br><span class="line">    move v6, v0</span><br><span class="line"></span><br><span class="line">    const/4 v1, 0x1</span><br><span class="line"></span><br><span class="line">    if-eq v0, v1, :cond_4</span><br><span class="line"></span><br><span class="line">    .line 67</span><br><span class="line">    sget-object v0, Lo/My;-&gt;_efbda5:Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    const-string v1, &quot;areDataReady(), old version, require update&quot;</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;v0, v1&#125;, Lo/_c994;-&gt;_cb8b(Ljava/lang/String;Ljava/lang/String;)V</span><br><span class="line">    :try_end_1</span><br><span class="line">    .catch Ljava/lang/Exception; &#123;:try_start_1 .. :try_end_1&#125; :catch_0</span><br><span class="line"></span><br><span class="line">    .line 68</span><br><span class="line">    const/4 v0, 0x0</span><br><span class="line"></span><br><span class="line">    return v0</span><br><span class="line"></span><br><span class="line">    .line 72</span><br><span class="line">    :cond_4</span><br><span class="line">    :try_start_2</span><br><span class="line">    invoke-static &#123;&#125;, Lo/KI;-&gt;_cabf()I</span><br><span class="line"></span><br><span class="line">    move-result v0</span><br><span class="line"></span><br><span class="line">    if-eq v6, v0, :cond_5</span><br><span class="line"></span><br><span class="line">    .line 73</span><br><span class="line">    sget-object v0, Lo/My;-&gt;_efbda5:Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    const-string v1, &quot;areDataReady(), invalid downloaded version, require update&quot;</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;v0, v1&#125;, Lo/_c994;-&gt;_cb8b(Ljava/lang/String;Ljava/lang/String;)V</span><br><span class="line">    :try_end_2</span><br><span class="line">    .catch Ljava/lang/Exception; &#123;:try_start_2 .. :try_end_2&#125; :catch_0</span><br><span class="line"></span><br><span class="line">    .line 74</span><br><span class="line">    const/4 v0, 0x0</span><br><span class="line"></span><br><span class="line">    return v0</span><br><span class="line"></span><br><span class="line">    .line 78</span><br><span class="line">    :cond_5</span><br><span class="line">    :try_start_3</span><br><span class="line">    const-string v0, &quot;files&quot;</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v5, v0&#125;, Lo/aac;-&gt;get(Ljava/lang/Object;)Ljava/lang/Object;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    check-cast v0, Lo/ZZ;</span><br><span class="line"></span><br><span class="line">    move-object v5, v0</span><br><span class="line"></span><br><span class="line">    .line 79</span><br><span class="line">    const/4 v6, 0x0</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v5&#125;, Lo/ZZ;-&gt;size()I</span><br><span class="line"></span><br><span class="line">    move-result v7</span><br><span class="line"></span><br><span class="line">    :goto_0</span><br><span class="line">    if-ge v6, v7, :cond_a</span><br><span class="line"></span><br><span class="line">    .line 80</span><br><span class="line">    invoke-virtual &#123;v5, v6&#125;, Lo/ZZ;-&gt;get(I)Ljava/lang/Object;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    check-cast v0, Lo/aac;</span><br><span class="line"></span><br><span class="line">    .line 81</span><br><span class="line">    move-object v8, v0</span><br><span class="line"></span><br><span class="line">    const-string v1, &quot;type&quot;</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v0, v1&#125;, Lo/aac;-&gt;get(Ljava/lang/Object;)Ljava/lang/Object;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;v0&#125;, Ljava/lang/String;-&gt;valueOf(Ljava/lang/Object;)Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    move-result-object v9</span><br><span class="line"></span><br><span class="line">    .line 82</span><br><span class="line">    const-string v0, &quot;name&quot;</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v8, v0&#125;, Lo/aac;-&gt;get(Ljava/lang/Object;)Ljava/lang/Object;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;v0&#125;, Ljava/lang/String;-&gt;valueOf(Ljava/lang/Object;)Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    move-result-object v10</span><br><span class="line"></span><br><span class="line">    .line 83</span><br><span class="line">    const-string v0, &quot;hash&quot;</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v8, v0&#125;, Lo/aac;-&gt;get(Ljava/lang/Object;)Ljava/lang/Object;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;v0&#125;, Ljava/lang/String;-&gt;valueOf(Ljava/lang/Object;)Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    move-result-object v8</span><br><span class="line"></span><br><span class="line">    .line 86</span><br><span class="line">    invoke-static &#123;v9, v10&#125;, Lo/My;-&gt;_efbda5(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    .line 87</span><br><span class="line">    move-object v9, v0</span><br><span class="line"></span><br><span class="line">    if-eqz v0, :cond_6</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v9&#125;, Ljava/io/File;-&gt;exists()Z</span><br><span class="line"></span><br><span class="line">    move-result v0</span><br><span class="line"></span><br><span class="line">    if-nez v0, :cond_7</span><br><span class="line"></span><br><span class="line">    .line 88</span><br><span class="line">    :cond_6</span><br><span class="line">    sget-object v0, Lo/My;-&gt;_efbda5:Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    new-instance v1, Ljava/lang/StringBuilder;</span><br><span class="line"></span><br><span class="line">    const-string v2, &quot;areDataReady(), file \&apos;null\&apos; or not exists, file:&quot;</span><br><span class="line"></span><br><span class="line">    invoke-direct &#123;v1, v2&#125;, Ljava/lang/StringBuilder;-&gt;&lt;init&gt;(Ljava/lang/String;)V</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v1, v9&#125;, Ljava/lang/StringBuilder;-&gt;append(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span><br><span class="line"></span><br><span class="line">    move-result-object v1</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v1&#125;, Ljava/lang/StringBuilder;-&gt;toString()Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    move-result-object v1</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;v0, v1&#125;, Lo/_c994;-&gt;_cb8b(Ljava/lang/String;Ljava/lang/String;)V</span><br><span class="line">    :try_end_3</span><br><span class="line">    .catch Ljava/lang/Exception; &#123;:try_start_3 .. :try_end_3&#125; :catch_0</span><br><span class="line"></span><br><span class="line">    .line 89</span><br><span class="line">    const/4 v0, 0x0</span><br><span class="line"></span><br><span class="line">    return v0</span><br><span class="line"></span><br><span class="line">    .line 93</span><br><span class="line">    :cond_7</span><br><span class="line">    :try_start_4</span><br><span class="line">    invoke-virtual &#123;v9&#125;, Ljava/io/File;-&gt;getAbsolutePath()Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;v0&#125;, Lo/OK;-&gt;_cb8e(Ljava/lang/String;)Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    .line 94</span><br><span class="line">    move-object v10, v0</span><br><span class="line"></span><br><span class="line">    if-eqz v0, :cond_8</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v10, v8&#125;, Ljava/lang/String;-&gt;equals(Ljava/lang/Object;)Z</span><br><span class="line"></span><br><span class="line">    move-result v0</span><br><span class="line"></span><br><span class="line">    if-nez v0, :cond_9</span><br><span class="line"></span><br><span class="line">    .line 95</span><br><span class="line">    :cond_8</span><br><span class="line">    sget-object v0, Lo/My;-&gt;_efbda5:Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    new-instance v1, Ljava/lang/StringBuilder;</span><br><span class="line"></span><br><span class="line">    const-string v2, &quot;areDataReady(), invalid MD5, file:&quot;</span><br><span class="line"></span><br><span class="line">    invoke-direct &#123;v1, v2&#125;, Ljava/lang/StringBuilder;-&gt;&lt;init&gt;(Ljava/lang/String;)V</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v1, v9&#125;, Ljava/lang/StringBuilder;-&gt;append(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span><br><span class="line"></span><br><span class="line">    move-result-object v1</span><br><span class="line"></span><br><span class="line">    const-string v2, &quot;, hash:\&apos;&quot;</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v1, v2&#125;, Ljava/lang/StringBuilder;-&gt;append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span><br><span class="line"></span><br><span class="line">    move-result-object v1</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v1, v8&#125;, Ljava/lang/StringBuilder;-&gt;append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span><br><span class="line"></span><br><span class="line">    move-result-object v1</span><br><span class="line"></span><br><span class="line">    const-string v2, &quot;\&apos;, \&apos;&quot;</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v1, v2&#125;, Ljava/lang/StringBuilder;-&gt;append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span><br><span class="line"></span><br><span class="line">    move-result-object v1</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v1, v10&#125;, Ljava/lang/StringBuilder;-&gt;append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span><br><span class="line"></span><br><span class="line">    move-result-object v1</span><br><span class="line"></span><br><span class="line">    const-string v2, &quot;\&apos;&quot;</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v1, v2&#125;, Ljava/lang/StringBuilder;-&gt;append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span><br><span class="line"></span><br><span class="line">    move-result-object v1</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v1&#125;, Ljava/lang/StringBuilder;-&gt;toString()Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    move-result-object v1</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;v0, v1&#125;, Lo/_c994;-&gt;_cb8b(Ljava/lang/String;Ljava/lang/String;)V</span><br><span class="line">    :try_end_4</span><br><span class="line">    .catch Ljava/lang/Exception; &#123;:try_start_4 .. :try_end_4&#125; :catch_0</span><br><span class="line"></span><br><span class="line">    .line 97</span><br><span class="line">    const/4 v0, 0x0</span><br><span class="line"></span><br><span class="line">    return v0</span><br><span class="line"></span><br><span class="line">    .line 79</span><br><span class="line">    :cond_9</span><br><span class="line">    :try_start_5</span><br><span class="line">    add-int/lit8 v6, v6, 0x1</span><br><span class="line"></span><br><span class="line">    goto/16 :goto_0</span><br><span class="line"></span><br><span class="line">    .line 102</span><br><span class="line">    :cond_a</span><br><span class="line">    sget-object v0, Lo/My;-&gt;_efbda5:Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    const-string v1, &quot;areDataReady(), everything ready&quot;</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;v0, v1&#125;, Lo/_c994;-&gt;_cb8b(Ljava/lang/String;Ljava/lang/String;)V</span><br><span class="line">    :try_end_5</span><br><span class="line">    .catch Ljava/lang/Exception; &#123;:try_start_5 .. :try_end_5&#125; :catch_0</span><br><span class="line"></span><br><span class="line">    .line 103</span><br><span class="line">    const/4 v0, 0x1</span><br><span class="line"></span><br><span class="line">    return v0</span><br><span class="line"></span><br><span class="line">    .line 104</span><br><span class="line">    :catch_0</span><br><span class="line">    move-exception v5</span><br><span class="line"></span><br><span class="line">    .line 105</span><br><span class="line">    sget-object v0, Lo/My;-&gt;_efbda5:Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    const-string v1, &quot;areDataReady()&quot;</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;v0, v1, v5&#125;, Lo/_c994;-&gt;_cb8a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Exception;)V</span><br><span class="line"></span><br><span class="line">    .line 106</span><br><span class="line">    invoke-static &#123;v4&#125;, Lo/OJ;-&gt;_e1909d(Ljava/io/File;)Z</span><br><span class="line"></span><br><span class="line">    .line 109</span><br><span class="line">    const/4 v0, 0x1</span><br><span class="line"></span><br><span class="line">    return v0</span><br><span class="line">.end method</span><br><span class="line"></span><br><span class="line">#加载libproj.so</span><br><span class="line">.method public static _cb8b()V</span><br><span class="line">    .locals 3</span><br><span class="line"></span><br><span class="line">    .line 0</span><br><span class="line">    const-string v1, &quot;proj&quot;</span><br><span class="line"></span><br><span class="line">    const-string v0, &quot;lib&quot;</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;v0, v1&#125;, Lo/My;-&gt;_efbda5(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    move-object v2, v0</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v0&#125;, Ljava/io/File;-&gt;exists()Z</span><br><span class="line"></span><br><span class="line">    move-result v0</span><br><span class="line"></span><br><span class="line">    if-eqz v0, :cond_0</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v2&#125;, Ljava/io/File;-&gt;getAbsolutePath()Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;v0&#125;, Ljava/lang/System;-&gt;load(Ljava/lang/String;)V</span><br><span class="line"></span><br><span class="line">    return-void</span><br><span class="line"></span><br><span class="line">    :cond_0</span><br><span class="line">    invoke-static &#123;v1&#125;, Ljava/lang/System;-&gt;loadLibrary(Ljava/lang/String;)V</span><br><span class="line"></span><br><span class="line">    .line 116</span><br><span class="line">    return-void</span><br><span class="line">.end method</span><br><span class="line"></span><br><span class="line">#加载libjsqlite.so</span><br><span class="line">.method public static _cb8e()V</span><br><span class="line">    .locals 3</span><br><span class="line"></span><br><span class="line">    .line 0</span><br><span class="line">    const-string v1, &quot;jsqlite&quot;</span><br><span class="line"></span><br><span class="line">    const-string v0, &quot;lib&quot;</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;v0, v1&#125;, Lo/My;-&gt;_efbda5(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    move-object v2, v0</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v0&#125;, Ljava/io/File;-&gt;exists()Z</span><br><span class="line"></span><br><span class="line">    move-result v0</span><br><span class="line"></span><br><span class="line">    if-eqz v0, :cond_0</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v2&#125;, Ljava/io/File;-&gt;getAbsolutePath()Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    move-result-object v0</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;v0&#125;, Ljava/lang/System;-&gt;load(Ljava/lang/String;)V</span><br><span class="line"></span><br><span class="line">    return-void</span><br><span class="line"></span><br><span class="line">    :cond_0</span><br><span class="line">    invoke-static &#123;v1&#125;, Ljava/lang/System;-&gt;loadLibrary(Ljava/lang/String;)V</span><br><span class="line"></span><br><span class="line">    .line 122</span><br><span class="line">    return-void</span><br><span class="line">.end method</span><br><span class="line"></span><br><span class="line">.method public static _efbda5()I</span><br><span class="line">    .locals 1</span><br><span class="line"></span><br><span class="line">    .line 0</span><br><span class="line">    const/4 v0, 0x1</span><br><span class="line"></span><br><span class="line">    return v0</span><br><span class="line">.end method</span><br><span class="line"></span><br><span class="line">.method private static _efbda5(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;</span><br><span class="line">    .locals 4</span><br><span class="line"></span><br><span class="line">    .line 0</span><br><span class="line">    const-string v0, &quot;lib&quot;</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;p0, v0&#125;, Ljava/lang/String;-&gt;equals(Ljava/lang/Object;)Z</span><br><span class="line"></span><br><span class="line">    move-result v0</span><br><span class="line"></span><br><span class="line">    if-eqz v0, :cond_0</span><br><span class="line"></span><br><span class="line">    .line 137</span><br><span class="line">    new-instance v0, Ljava/io/File;</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;&#125;, Lo/KI;-&gt;_d980()Landroid/content/ContextWrapper;</span><br><span class="line"></span><br><span class="line">    move-result-object v1</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v1&#125;, Landroid/content/Context;-&gt;getFilesDir()Ljava/io/File;</span><br><span class="line"></span><br><span class="line">    move-result-object v1</span><br><span class="line"></span><br><span class="line">    new-instance v2, Ljava/lang/StringBuilder;</span><br><span class="line"></span><br><span class="line">    const-string v3, &quot;lib&quot;</span><br><span class="line"></span><br><span class="line">    invoke-direct &#123;v2, v3&#125;, Ljava/lang/StringBuilder;-&gt;&lt;init&gt;(Ljava/lang/String;)V</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v2, p1&#125;, Ljava/lang/StringBuilder;-&gt;append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span><br><span class="line"></span><br><span class="line">    move-result-object v2</span><br><span class="line"></span><br><span class="line">    const-string v3, &quot;.so&quot;</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v2, v3&#125;, Ljava/lang/StringBuilder;-&gt;append(Ljava/lang/String;)Ljava/lang/StringBuilder;</span><br><span class="line"></span><br><span class="line">    move-result-object v2</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v2&#125;, Ljava/lang/StringBuilder;-&gt;toString()Ljava/lang/String;</span><br><span class="line"></span><br><span class="line">    move-result-object v2</span><br><span class="line"></span><br><span class="line">    invoke-direct &#123;v0, v1, v2&#125;, Ljava/io/File;-&gt;&lt;init&gt;(Ljava/io/File;Ljava/lang/String;)V</span><br><span class="line"></span><br><span class="line">    return-object v0</span><br><span class="line"></span><br><span class="line">    .line 139</span><br><span class="line">    :cond_0</span><br><span class="line">    const-string v0, &quot;file&quot;</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;p0, v0&#125;, Ljava/lang/String;-&gt;equals(Ljava/lang/Object;)Z</span><br><span class="line"></span><br><span class="line">    move-result v0</span><br><span class="line"></span><br><span class="line">    if-eqz v0, :cond_1</span><br><span class="line"></span><br><span class="line">    .line 140</span><br><span class="line">    new-instance v0, Ljava/io/File;</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;&#125;, Lo/KI;-&gt;_d980()Landroid/content/ContextWrapper;</span><br><span class="line"></span><br><span class="line">    move-result-object v1</span><br><span class="line"></span><br><span class="line">    invoke-virtual &#123;v1&#125;, Landroid/content/Context;-&gt;getFilesDir()Ljava/io/File;</span><br><span class="line"></span><br><span class="line">    move-result-object v1</span><br><span class="line"></span><br><span class="line">    invoke-direct &#123;v0, v1, p1&#125;, Ljava/io/File;-&gt;&lt;init&gt;(Ljava/io/File;Ljava/lang/String;)V</span><br><span class="line"></span><br><span class="line">    return-object v0</span><br><span class="line"></span><br><span class="line">    .line 142</span><br><span class="line">    :cond_1</span><br><span class="line">    const/4 v0, 0x0</span><br><span class="line"></span><br><span class="line">    return-object v0</span><br><span class="line">.end method</span><br></pre></td></tr></table></figure>
+
+<p>把两个so加载函数分别修改为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#加载libproj.so</span><br><span class="line">.method public static _cb8b()V</span><br><span class="line">    .locals 3</span><br><span class="line"></span><br><span class="line">    .line 0</span><br><span class="line">    const-string v1, &quot;proj&quot;</span><br><span class="line"></span><br><span class="line">    :cond_0</span><br><span class="line">    invoke-static &#123;v1&#125;, Ljava/lang/System;-&gt;loadLibrary(Ljava/lang/String;)V</span><br><span class="line"></span><br><span class="line">    .line 116</span><br><span class="line">    return-void</span><br><span class="line">.end method</span><br><span class="line"></span><br><span class="line">#加载libjsqlite.so</span><br><span class="line">.method public static _cb8e()V</span><br><span class="line">    .locals 3</span><br><span class="line"></span><br><span class="line">    .line 0</span><br><span class="line">    const-string v1, &quot;jsqlite&quot;</span><br><span class="line"></span><br><span class="line">    :cond_0</span><br><span class="line">    invoke-static &#123;v1&#125;, Ljava/lang/System;-&gt;loadLibrary(Ljava/lang/String;)V</span><br><span class="line"></span><br><span class="line">    .line 122</span><br><span class="line">    return-void</span><br><span class="line">.end method</span><br></pre></td></tr></table></figure>
+
+<p>现在修改.method public static _cb8a()Z函数内容为 ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.method public static _cb8a()Z</span><br><span class="line">    const/4 v0, 0x1</span><br><span class="line"></span><br><span class="line">    return v0</span><br><span class="line">.end method</span><br></pre></td></tr></table></figure>
+
+<p>重新编译打包运行，还是提示需要下载。<br>搜索调用My._cb8a方法的地方。<br>找到下面几个文件</p>
+<blockquote>
+<p>./com/asamm/locus/core/StartScreen$iF.3.smali:    invoke-static {}, Lo/My;-&gt;_cb8a()Z<br>./com/asamm/locus/core/StartScreen$iF.3.smali:    invoke-static {}, Lo/My;-&gt;_cb8a()Z<br>./o/_c4bd.smali:    invoke-static {}, Lo/My;-&gt;_cb8a()Z<br>./o/_efbe83.smali:    invoke-static {}, Lo/My;-&gt;_cb8a()Z<br>./o/My.2.smali:    sput-object v0, Lo/My;-&gt;_cb8a:[Ljava/lang/String;</p>
+</blockquote>
+<p>StartScreen$iF.3.smali像是和启动界面相关的。<br>我们来看一下：<br>找到下面这个方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">.method public _efbda5(ZZ)Z</span><br><span class="line">    .locals 1</span><br><span class="line"></span><br><span class="line">    .line 0</span><br><span class="line">    if-nez p1, :cond_0</span><br><span class="line"></span><br><span class="line">    invoke-static &#123;&#125;, Lo/My;-&gt;_cb8a()Z</span><br><span class="line"></span><br><span class="line">    move-result v0</span><br><span class="line"></span><br><span class="line">    if-nez v0, :cond_1</span><br><span class="line"></span><br><span class="line">    :cond_0</span><br><span class="line">    const/4 v0, 0x1</span><br><span class="line"></span><br><span class="line">    return v0</span><br><span class="line"></span><br><span class="line">    :cond_1</span><br><span class="line">    const/4 v0, 0x0</span><br><span class="line"></span><br><span class="line">    return v0</span><br><span class="line">.end method</span><br></pre></td></tr></table></figure>
+
+<p>我们把它修改会始终返回false,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.method public _efbda5(ZZ)Z</span><br><span class="line">    .locals 1</span><br><span class="line"></span><br><span class="line">    const/4 v0, 0x0</span><br><span class="line"></span><br><span class="line">    return v0</span><br><span class="line"></span><br><span class="line">.end method</span><br></pre></td></tr></table></figure>
+
+<p>再次打包，启动APK，发现不再提示需要下载数据了。</p>
+<p>但是我们仍然没有成功，我们又遇到了别的问题。</p>
+<p>下载数据终于想办法绕过去了，但是启动应用后，应用还是退出了，究竟是什么原因呢？</p>
+<h4 id="处理资源中的非ascii字符"><a href="#处理资源中的非ascii字符" class="headerlink" title="处理资源中的非ascii字符"></a>处理资源中的非ascii字符</h4><p>现在启动应用，应用异常退出，抛出异常信息如下:</p>
+<blockquote>
+<p>12-15 11:51:59.396: E/AndroidRuntime(32656): FATAL EXCEPTION: main<br>12-15<br> 11:51:59.396: E/AndroidRuntime(32656): java.lang.RuntimeException:<br>Unable to start activity<br>ComponentInfo{menion.android.locus.pro/com.asamm.locus.basic.MainActivityBasic}:<br> android.view.InflateException: Binary XML file line #162: Error<br>inflating class o.ﾇ<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2180)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:2230)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.app.ActivityThread.access$600(ActivityThread.java:141)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.app.ActivityThread$H.handleMessage(ActivityThread.java:1234)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.os.Handler.dispatchMessage(Handler.java:99)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.os.Looper.loop(Looper.java:137)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.app.ActivityThread.main(ActivityThread.java:5041)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at java.lang.reflect.Method.invokeNative(Native Method)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at java.lang.reflect.Method.invoke(Method.java:511)<br>12-15<br> 11:51:59.396: E/AndroidRuntime(32656):    at<br>com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:793)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:560)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at dalvik.system.NativeStart.main(Native Method)<br>12-15<br> 11:51:59.396: E/AndroidRuntime(32656): Caused by:<br>android.view.InflateException: Binary XML file line #162: Error<br>inflating class o.ﾇ<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:698)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.view.LayoutInflater.rInflate(LayoutInflater.java:746)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.view.LayoutInflater.rInflate(LayoutInflater.java:749)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.view.LayoutInflater.rInflate(LayoutInflater.java:749)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.view.LayoutInflater.rInflate(LayoutInflater.java:749)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.view.LayoutInflater.inflate(LayoutInflater.java:489)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.view.LayoutInflater.inflate(LayoutInflater.java:396)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.view.LayoutInflater.inflate(LayoutInflater.java:352)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.view.View.inflate(View.java:16465)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at o._efbe83.onCreate(:284)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.app.Activity.performCreate(Activity.java:5104)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1080)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:2144)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    … 11 more<br><strong>12-15<br> 11:51:59.396: E/AndroidRuntime(32656): Caused by:<br>java.lang.ClassNotFoundException: Didn’t find class “o.ﾇ” on path:<br>/data/app/menion.android.locus.pro-1.apk</strong><br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at dalvik.system.BaseDexClassLoader.findClass(BaseDexClassLoader.java:65)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at java.lang.ClassLoader.loadClass(ClassLoader.java:501)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at java.lang.ClassLoader.loadClass(ClassLoader.java:461)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.view.LayoutInflater.createView(LayoutInflater.java:552)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:687)<br>12-15 11:51:59.396: E/AndroidRuntime(32656):    … 23 more</p>
+</blockquote>
+<p>提示很明显找不到一个类:<strong>“o.ﾇ”</strong>。</p>
+<p>这是因为资源中引用到了类名，而这个类名现在已经不存在了。<br>我们需要把资源中的类名替换为新的类名。<br>需要替换的文件有Androidmanifeste.xml和layout文件夹下的xml文件。</p>
+<p>如何替换资源中的特殊字符，请参考我的博客:<br><a href="http://eriklu.github.io/%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B/%E5%A4%84%E7%90%86%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6%E4%B8%AD%E5%BC%95%E7%94%A8%E5%88%B0%E4%BA%86%E9%9D%9EASCII%E5%AD%97%E7%AC%A6%E7%9A%84%E7%B1%BB%E5%90%8D%E5%AD%97%E7%AC%A6%E4%B8%B2--Android%20%E9%80%86%E5%90%91%E7%B3%BB%E5%88%97%E5%9B%9B.html">处理资源文件中引用到了非ASCII字符的类名字符串–Android 逆向系列四</a><br>我已经提供了代码的参考实现：<br><a href="https://github.com/eriklu/SmaliDebugTool/blob/master/SmaliDebugTool/java/misc/AXMLStringTransformer.java" target="_blank" rel="noopener">AXMLStringTransformer.java</a><br>我们把资源文件处理后，重新打包，运行。<br>应用终于启动了，但是应用变成了免费版本。</p>
+<p>现在应用变成了免费版本，不但有广告，还有很多有用的功能用不了，真着急。</p>
+<h4 id="解除功能限制"><a href="#解除功能限制" class="headerlink" title="解除功能限制"></a>解除功能限制</h4><p>首先找到com/asamm/locus/utils/Native/Native.smali文件<br>替换isFullFeatured native方法为下面内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.method public static isFullFeatured(Landroid/app/Application;)Z</span><br><span class="line">    .locals 1</span><br><span class="line">    const v0, 0x1</span><br><span class="line">    return v0</span><br><span class="line">.end method</span><br></pre></td></tr></table></figure>
+
+<p>重新打包，启动，发现广告消失了，APK变为Pro版了。<br>但体验后发现有些功能，如天气仍然不能是用。<br>说明还有些功能限制没有解除.<br>Native.smali文件里有一个函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.method public static native performAction(Landroid/app/Application;Ljava/lang/Runnable;)V</span><br><span class="line">.end method</span><br></pre></td></tr></table></figure>
+
+<p>这个native方法是执行一个线程方法。这个方法在执行操作前，会检测是不是全功能版，我们前面在smali（或者Java层面）把代码修改为全功能版。但是<strong>performAction</strong>调用的是native版本的<strong>isFullFeatured</strong>函数，native版本的函数是没有被修改的。<br>现在我们修改so库中的isFullFeatured函数。</p>
+<p>查看Native.smali的static块函数，发现没有直接load so库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"># direct methods</span><br><span class="line">.method static constructor &lt;clinit&gt;()V</span><br><span class="line">    .locals 13</span><br><span class="line"></span><br><span class="line">    .line 0</span><br><span class="line">    const/16 v0, 0x8f</span><br><span class="line"></span><br><span class="line">    new-array v0, v0, [B</span><br><span class="line"></span><br><span class="line">    fill-array-data v0, :array_0</span><br><span class="line"></span><br><span class="line">    sput-object v0, Lcom/asamm/locus/utils/Native;-&gt;_cb8b:[B</span><br><span class="line"></span><br><span class="line">    #.......</span><br><span class="line">    # 为了节约篇幅，这里删除了大部分代码</span><br><span class="line">    #.......</span><br><span class="line"></span><br><span class="line">    :try_start_18</span><br><span class="line">    #删除释放到sd卡上的so文件</span><br><span class="line">    invoke-virtual &#123;v9&#125;, Ljava/io/File;-&gt;delete()Z</span><br><span class="line">    :try_end_18</span><br><span class="line">    .catch Ljava/lang/Exception; &#123;:try_start_18 .. :try_end_18&#125; :catch_1</span><br><span class="line"></span><br><span class="line">    return-void</span><br><span class="line"></span><br><span class="line">    .line 11</span><br><span class="line">    :catch_1</span><br><span class="line">    return-void</span><br><span class="line"></span><br><span class="line">    nop</span><br><span class="line">    </span><br><span class="line">    ……</span><br></pre></td></tr></table></figure>
+
+<p>该函数解密加密的so文件，，解密后释放到APK的数据目录。动态加载后，删除解密后的so文件。</p>
+<p>在方法的最后几行，找到调用delete函数的地方，注释掉delete函数。<br>修改后的内容为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"># direct methods</span><br><span class="line">.method static constructor &lt;clinit&gt;()V</span><br><span class="line">    .locals 13</span><br><span class="line"></span><br><span class="line">    .line 0</span><br><span class="line">    const/16 v0, 0x8f</span><br><span class="line"></span><br><span class="line">    new-array v0, v0, [B</span><br><span class="line"></span><br><span class="line">    fill-array-data v0, :array_0</span><br><span class="line"></span><br><span class="line">    sput-object v0, Lcom/asamm/locus/utils/Native;-&gt;_cb8b:[B</span><br><span class="line"></span><br><span class="line">    #.......</span><br><span class="line">    # 为了节约篇幅，这里删除了大部分代码</span><br><span class="line">    #.......</span><br><span class="line"></span><br><span class="line">    #:try_start_18</span><br><span class="line">    #删除释放到sd卡上的so文件</span><br><span class="line">    #invoke-virtual &#123;v9&#125;, Ljava/io/File;-&gt;delete()Z</span><br><span class="line">    #:try_end_18</span><br><span class="line">    #.catch Ljava/lang/Exception; &#123;:try_start_18 .. :try_end_18&#125; :catch_1</span><br><span class="line"></span><br><span class="line">    return-void</span><br><span class="line"></span><br><span class="line">    .line 11</span><br><span class="line">    :catch_1</span><br><span class="line">    return-void</span><br><span class="line"></span><br><span class="line">    nop</span><br><span class="line">    </span><br><span class="line">    ……</span><br></pre></td></tr></table></figure>
+
+<p>打包后重新运行程序，退出应用。<br>如果是用的是模拟器，可以用adb shell或dbms工具，把/data/data/menion.android.locus.pro目录下寻找一个隐藏文件，重命名为libmacore.so，然后拷贝出来，如果是设备，就需要root后才能读出来。</p>
+<p>用支持arm指令的反编译程序(推荐IDA)找到<strong>isFullFeatured</strong>函数.<br>这是我用的工具的指令示意图</p>
+<p><img src="https://raw.githubusercontent.com/eriklu/eriklu.github.io/master/images/locus_macore.so.png" alt="isFullFeatured函数的汇编代码"></p>
+<p>我们首先找到返回true的指令代码，查找出对应的指令代码。</p>
+<p>我们选择直接短路函数。<br>arm函数的特征是，寄存器入栈，执行函数指令，寄存器出栈。返回值保存在r0寄存器。</p>
+<p>入栈指令<br>我们修改后的函数指令如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">push.w &#123;r0, r1, r4, r5, r6, r7, r8, lr&#125;</span><br><span class="line">movs r0, #0x1</span><br><span class="line">pop.w  &#123;r2, r3, r4, r5, r6, r7, r8, pc&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们查出来<strong>movs r0, #0x1</strong>的指令字节码为：<strong>01 20</strong> .见上图。<br><strong>pop.w  {r2, r3, r4, r5, r6, r7, r8, pc}</strong>的指令字节码为:<strong>BD E8 FC 81</strong><br>要修改的代码位置为：<strong>0x00001cb4</strong></p>
+<p>我们用二进制编辑文件打开libmacore.so文件，找到位置<strong>0x00001cb4</strong>，把当前位置的内容替换为：<br><strong>01 20 BD E8 FC 81</strong></p>
+<p>修改完毕后保存文件，然后替换lib/armeabi-v7a/libmacore.so文件。</p>
+<p>现在我们只支持armv7a,可以把lib目录下的其他三个芯片色目录删除，减小最后输出包的大小。</p>
+<p>重新打包，安装测试，现在那些原来不能用的功能，如天气，现在可以用了。</p>
+<p>至此：Locus Pro Patch系列完成。</p>
+<p>###写在最后</p>
+<ol>
+<li>该系列文章是对自己所做工作的整理，为了方便其他爱好者DIY，不是原始的分析过程。所以步骤只是解释了怎么做，而没有提及步骤的发现过程。</li>
+<li>apk 压缩文件效率比较低。修改过程中可以把解包目录下的unknown目录中的文件拷贝到别的地方，然后用压缩工具添加。我在这样做后，打包时间从3分多钟降为不到2分钟。对频繁打包的同学，可考虑此方法。</li>
+<li>Patch因为修改短路了部分代码，可能会引起最后做成的apk部分功能不稳定，这可能在所难免。本人能力、财力都有限，不能为Patch给您带来的损失负责，测试练习前，请确认您为完全民事行为能力人。</li>
+<li>应用中要下载的so文件是关于数据库操作，和数学投影变换的，所以在一定的版本更迭期间，功能应该会保持不变，所以可能可以重复利用。</li>
+<li>如果有条件，请支持正版。向开发者反馈，请求提供中文化版本。</li>
+<li>行文仓促，难免有错漏和词不达意的地方，阅读时，请包容。</li>
+</ol>
+<h3 id="最后祝您DIY过程中一切操作顺利。"><a href="#最后祝您DIY过程中一切操作顺利。" class="headerlink" title="最后祝您DIY过程中一切操作顺利。"></a>最后祝您DIY过程中一切操作顺利。</h3>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/逆向工程/" rel="tag"># 逆向工程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/12/06/2014-12-06/" rel="next" title="处理资源文件中引用到了非ASCII字符的类名字符串">
+                <i class="fa fa-chevron-left"></i> 处理资源文件中引用到了非ASCII字符的类名字符串
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/12/12/2014-12-12/" rel="prev" title="系统头文件被修改导致项目不能编译">
+                系统头文件被修改导致项目不能编译 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Erik Lu">
+            
+              <p class="site-author-name" itemprop="name">Erik Lu</p>
+              <div class="site-description motion-element" itemprop="description">从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/eriklu" title="GitHub &rarr; https://github.com/eriklu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Locus-Map-Pro-3-4-0-Patch笔记分享"><span class="nav-number">1.</span> <span class="nav-text">Locus Map Pro 3.4.0 Patch笔记分享</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Locus-Map-Pro-APK介绍"><span class="nav-number">1.1.</span> <span class="nav-text">Locus Map Pro APK介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#研究目的"><span class="nav-number">1.2.</span> <span class="nav-text">研究目的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#需要解决的问题和困难"><span class="nav-number">1.3.</span> <span class="nav-text">需要解决的问题和困难</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解除签名限制"><span class="nav-number">1.4.</span> <span class="nav-text">解除签名限制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重新打包"><span class="nav-number">1.5.</span> <span class="nav-text">重新打包</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#把字符串重新映射为ascii码"><span class="nav-number">1.5.1.</span> <span class="nav-text">把字符串重新映射为ascii码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解密被加密的类"><span class="nav-number">1.6.</span> <span class="nav-text">解密被加密的类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#准备运行需要的数据"><span class="nav-number">1.7.</span> <span class="nav-text">准备运行需要的数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#处理资源中的非ascii字符"><span class="nav-number">1.8.</span> <span class="nav-text">处理资源中的非ascii字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解除功能限制"><span class="nav-number">1.9.</span> <span class="nav-text">解除功能限制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后祝您DIY过程中一切操作顺利。"><span class="nav-number">2.</span> <span class="nav-text">最后祝您DIY过程中一切操作顺利。</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2014 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Erik Lu</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

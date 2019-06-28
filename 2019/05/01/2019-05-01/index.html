@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="给aapt添加支持uincode类名功能aapt 是什么？aapt是Android App资源打包工具。 为什么有这个需求 Android的开发语言Java用uincode字符作为类名、字段名和方法名。 现实中专业开发人员很少用uincode字符作为类名、字段名和方法名。 aapt在开发时没有考虑做这种支持，但其实资源文件中和AndroidManifest.xml中会引用到java类名(Activ">
+<meta name="keywords" content="aapt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给aapt添加支持uincode类名功能">
+<meta property="og:url" content="http://eriklu.github.io/2019/05/01/2019-05-01/index.html">
+<meta property="og:site_name" content="弦歌雅意的小屋">
+<meta property="og:description" content="给aapt添加支持uincode类名功能aapt 是什么？aapt是Android App资源打包工具。 为什么有这个需求 Android的开发语言Java用uincode字符作为类名、字段名和方法名。 现实中专业开发人员很少用uincode字符作为类名、字段名和方法名。 aapt在开发时没有考虑做这种支持，但其实资源文件中和AndroidManifest.xml中会引用到java类名(Activ">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://eriklu.github.io/2019/05/01/2019-05-01/..%5Caapt_patch_1.png">
+<meta property="og:image" content="e:%5CStudy%5C%E6%88%90%E6%9E%9C%5Caapt_patch_2.png">
+<meta property="og:image" content="e:%5CStudy%5C%E6%88%90%E6%9E%9C%5Caapt_patch_4.png">
+<meta property="og:image" content="e:%5CStudy%5C%E6%88%90%E6%9E%9C%5Caapt_patch_6.png">
+<meta property="og:image" content="e:%5CStudy%5C%E6%88%90%E6%9E%9C%5Caapt_patch_7.png">
+<meta property="og:image" content="e:%5CStudy%5C%E6%88%90%E6%9E%9C%5Caapt_patch_8.png">
+<meta property="og:updated_time" content="2019-06-27T07:25:23.027Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="给aapt添加支持uincode类名功能">
+<meta name="twitter:description" content="给aapt添加支持uincode类名功能aapt 是什么？aapt是Android App资源打包工具。 为什么有这个需求 Android的开发语言Java用uincode字符作为类名、字段名和方法名。 现实中专业开发人员很少用uincode字符作为类名、字段名和方法名。 aapt在开发时没有考虑做这种支持，但其实资源文件中和AndroidManifest.xml中会引用到java类名(Activ">
+<meta name="twitter:image" content="http://eriklu.github.io/2019/05/01/2019-05-01/..%5Caapt_patch_1.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://eriklu.github.io/2019/05/01/2019-05-01/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>给aapt添加支持uincode类名功能 | 弦歌雅意的小屋</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">弦歌雅意的小屋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2019/05/01/2019-05-01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Erik Lu">
+      <meta itemprop="description" content="从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="弦歌雅意的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">给aapt添加支持uincode类名功能
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-01 08:00:00" itemprop="dateCreated datePublished" datetime="2019-05-01T08:00:00+08:00">2019-05-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-27 15:25:23" itemprop="dateModified" datetime="2019-06-27T15:25:23+08:00">2019-06-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/逆向工程/" itemprop="url" rel="index"><span itemprop="name">逆向工程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="给aapt添加支持uincode类名功能"><a href="#给aapt添加支持uincode类名功能" class="headerlink" title="给aapt添加支持uincode类名功能"></a>给aapt添加支持uincode类名功能</h3><h4 id="aapt-是什么？"><a href="#aapt-是什么？" class="headerlink" title="aapt 是什么？"></a>aapt 是什么？</h4><p>aapt是Android App资源打包工具。</p>
+<h4 id="为什么有这个需求"><a href="#为什么有这个需求" class="headerlink" title="为什么有这个需求"></a>为什么有这个需求</h4><ol>
+<li>Android的开发语言Java用uincode字符作为类名、字段名和方法名。</li>
+<li>现实中专业开发人员很少用uincode字符作为类名、字段名和方法名。</li>
+<li>aapt在开发时没有考虑做这种支持，但其实资源文件中和AndroidManifest.xml中会引用到java类名(Activity类，自定义View类等)。</li>
+<li>一些商业代码混淆工具利用这个特性增加逆向工程的难度。如把类名混淆为不可见unicode字符，影响人类阅读分析，但不影响虚拟机执行。</li>
+<li>资源文件和AndroidManifest.xml中的类也需要替换为混淆后的类名。这些商业工具在混淆的时候也对资源文件和AndroidManifest.xml进行了相应处理。</li>
+<li>Android逆向人员重新打包App时，需要使用到aapt工具，但aapt无法处理这种情况。</li>
+</ol>
+<a id="more"></a> 
+
+<h4 id="如何解决"><a href="#如何解决" class="headerlink" title="如何解决"></a>如何解决</h4><h5 id="问题的表象"><a href="#问题的表象" class="headerlink" title="问题的表象"></a>问题的表象</h5><p>直接执行aapt会得到下面的错误提示信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">presets_main_layout.xml:7: error: Error parsing XML: not well-formed (invalid token)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;LinearLayout android:orientation=&quot;vertical&quot; style=&quot;@style/Screen.Background&quot;</span><br><span class="line">  xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</span><br><span class="line">    &lt;include layout=&quot;@layout/view_toolbar_activity_top&quot; /&gt;</span><br><span class="line">    &lt;LinearLayout android:id=&quot;@id/linear_layout_root_view&quot; style=&quot;@style/Screen.InnerContainer&quot;&gt;</span><br><span class="line">        &lt;include layout=&quot;@layout/view_loading_switcher_base&quot; /&gt;</span><br><span class="line">        &lt;o.軞 android:id=&quot;@id/view_flipper_main&quot; android:layout_width=&quot;fill_parent&quot; android:layout_height=&quot;fill_parent&quot;&gt;</span><br><span class="line">            ......</span><br><span class="line">        &lt;/o.軞&gt;</span><br><span class="line">    &lt;/LinearLayout&gt;</span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+
+<p>下面是资源文件presets_main_layout.xml的内容</p>
+<h5 id="问题的根源"><a href="#问题的根源" class="headerlink" title="问题的根源"></a>问题的根源</h5><p>​      阅读Android源码知道，aapt使用了expat XML解析库来解析资源xml文件，xmltoc.c文件里的utf8_isname2、 utf8_isname3两个函数用来判断utf-8字符是否为合法的xml元素名字字符。</p>
+<p>我们要做的就是要patch这两个函数</p>
+<p>下面以utf8_isname3函数为例讲解patch过程。</p>
+<p>utf8_isname3函数内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">static int PTRFASTCALL</span><br><span class="line">utf8_isName3(const ENCODING *UNUSED_P(enc), const char *p)</span><br><span class="line">&#123;</span><br><span class="line">  return UTF8_GET_NAMING3(namePages, (const unsigned char *)p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>UTF8_GET_NAMING3是一个宏定义。内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#define UTF8_GET_NAMING3(pages, byte) \</span><br><span class="line">  (namingBitmap[((pages)[((((byte)[0]) &amp; 0xF) &lt;&lt; 4) \</span><br><span class="line">                             + ((((byte)[1]) &gt;&gt; 2) &amp; 0xF)] \</span><br><span class="line">                       &lt;&lt; 3) \</span><br><span class="line">                      + ((((byte)[1]) &amp; 3) &lt;&lt; 1) \</span><br><span class="line">                      + ((((byte)[2]) &gt;&gt; 5) &amp; 1)] \</span><br><span class="line">         &amp; (1u &lt;&lt; (((byte)[2]) &amp; 0x1F)))</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码显示utf8_isName3最终用到了两个全局变量namingBitmap和namePages。</p>
+<p>这两个变量定义在nametab.h中。</p>
+<p>两个全局变量的内容为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">static const unsigned namingBitmap[] = &#123;</span><br><span class="line">0x00000000, 0x00000000, 0x00000000, 0x00000000,</span><br><span class="line">0x00000000, 0x00000000, 0x00000000, 0x00000000,</span><br><span class="line">0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,</span><br><span class="line">0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF,</span><br><span class="line">0x00000000, 0x04000000, 0x87FFFFFE, 0x07FFFFFE,</span><br><span class="line">0x00000000, 0x00000000, 0xFF7FFFFF, 0xFF7FFFFF,</span><br><span class="line">………………</span><br><span class="line"></span><br><span class="line">static const unsigned char namePages[] = &#123;</span><br><span class="line">0x19, 0x03, 0x1A, 0x1B, 0x1C, 0x1D, 0x1E, 0x00,</span><br><span class="line">0x00, 0x1F, 0x20, 0x21, 0x22, 0x23, 0x24, 0x25,</span><br><span class="line">0x10, 0x11, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,</span><br><span class="line">0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x12, 0x13,</span><br><span class="line">0x26, 0x14, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,</span><br><span class="line">………………</span><br></pre></td></tr></table></figure>
+
+<p>我们可以通过在exe中直接查找同时用到这两个变量的代码来定位函数所在位置。</p>
+<p>在expat在解析xml时后, aapt还对类名做了一些检测：允许的类名字符为: “abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ._0123456789$”</p>
+<p>这里的判断逻辑功能存在于Resource.cpp中，Android9.0源码版本中共有4处判断。</p>
+<p>下面是相关的代码片段。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">const char* classIdentChars = &quot;abcdefghijklmnopqrstuvwxyz&quot;</span><br><span class="line">        &quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ._0123456789$&quot;;</span><br><span class="line">………………</span><br><span class="line"></span><br><span class="line">ATTR_OKAY = -1;</span><br><span class="line">…………</span><br><span class="line"></span><br><span class="line">else if (strcmp16(block.getElementName(&amp;len), instrumentation16.string()) == 0) &#123;</span><br><span class="line">                if (validateAttr(manifestPath, finalResTable, block, RESOURCES_ANDROID_NAMESPACE,</span><br><span class="line">                                 &quot;name&quot;, classIdentChars, true) != ATTR_OKAY) &#123;</span><br><span class="line">                    hasErrors = true;</span><br><span class="line">                &#125;</span><br><span class="line">                if (validateAttr(manifestPath, finalResTable, block,</span><br><span class="line">                                 RESOURCES_ANDROID_NAMESPACE, &quot;targetPackage&quot;,</span><br><span class="line">                                 packageIdentChars, true) != ATTR_OKAY) &#123;</span><br><span class="line">                    hasErrors = true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            …………</span><br></pre></td></tr></table></figure>
+
+<h5 id="补丁办法"><a href="#补丁办法" class="headerlink" title="补丁办法"></a>补丁办法</h5><ol>
+<li>patch utf8_isname[23]函数，直接返回1.</li>
+</ol>
+<ol start="2">
+<li>修改相关validateAttr调用的返回值或删除相关对validateAttr调用。</li>
+</ol>
+<h4 id="为执行文件打补丁"><a href="#为执行文件打补丁" class="headerlink" title="为执行文件打补丁"></a>为执行文件打补丁</h4><p>这里我们使用apktool2.40.jar中的aapt_64.exe(jar包的prebuilt\windows目录中)为例。</p>
+<p>apktool对aapt添加了一些功能，提供了windows、linux和macosx三个平台的版本。</p>
+<p>逆向工作人员使用apktool居多。</p>
+<ol>
+<li>用IDA的二进制查找功能查找namePages变量</li>
+</ol>
+<p><img src="..%5Caapt_patch_1.png" alt="aapt_patch_1"></p>
+<p>得到地址0x56CF30</p>
+<p><img src="E:%5CStudy%5C%E6%88%90%E6%9E%9C%5Caapt_patch_2.png" alt="aapt_patch_2"></p>
+<ol start="2">
+<li><p>用同样的方法查找namingBitmap。注意namingBitmap中的值是4字节整数，在变为byte序列时需要倒序。</p>
+<p>如我要以0x04000000, 0x87FFFFFE两个整数为特征值去查找，那么实际查找字节内容为:</p>
+<p>00 00 00 04 FE FF FF 87</p>
+<p>查找后得到地址：0x56C1F0</p>
+</li>
+<li><p>查找引用0x56C1F0的代码块，在附近查找对地址0x56CF30的引用。</p>
+<p>如我们找到下面这一处（代码短小，对两个全局变量都有引用，可对照源码分析一下，会发现对“&amp; 0x1F”相关指令被优化掉了，Android SDK中的版本是有相关指令的）。</p>
+<p><img src="E:%5CStudy%5C%E6%88%90%E6%9E%9C%5Caapt_patch_4.png" alt="aapt_patch_4"></p>
+</li>
+</ol>
+<p>代码结尾附近恰好有mov eax, 1指令，我们把后面改变eax寄存器值得指令”shl eax, cl”和“and eax, [rcx + dx * 4]” nop掉就可以了。</p>
+<p>对找到的其他挤出（2-3）处相应修改, expat相关的代码就patch好了。</p>
+<ol start="4">
+<li><p>查找字符串“_0123456789$”（这里可以使用字符串查找功能），得到地址：0x55AEDD</p>
+<p><img src="E:%5CStudy%5C%E6%88%90%E6%9E%9C%5Caapt_patch_6.png" alt="aapt_patch_6"></p>
+<p>查找相关引用：</p>
+<p><img src="E:%5CStudy%5C%E6%88%90%E6%9E%9C%5Caapt_patch_7.png" alt="aapt_patch_7"></p>
+</li>
+</ol>
+<p>跳转到对应代码：</p>
+<p><img src="E:%5CStudy%5C%E6%88%90%E6%9E%9C%5Caapt_patch_8.png" alt="aapt_patch_8"></p>
+<p>因为代码优化的原因，这里并不像源代码中那样做了直接比较，而是把返回值保存在esi寄存器中了。</p>
+<p>这里我们直接删除call调用的相关指令：直接用”mov, eax, 0FFFFFFFFh”替换”call sub_41FAD0”, 都是5字节指令，完美。</p>
+<p>对其余4处做相应修改。</p>
+<p>至此patch完毕,保存，然后替换apktool.jar中的相应文件即可。</p>
+<h4 id="其他选择"><a href="#其他选择" class="headerlink" title="其他选择"></a>其他选择</h4><p>除了patch,也可以直接用源码进行编译。</p>
+<ol>
+<li>可编译源码。<a href="https://github.com/eriklu/aapt-apktool_v28" target="_blank" rel="noopener">aapt-apktool_v28</a></li>
+<li>apktool aapt源码版本：<a href="https://github.com/iBotPeaches/platform_frameworks_base" target="_blank" rel="noopener">apktool aapt</a></li>
+</ol>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/aapt/" rel="tag"># aapt</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/02/2018-12-02/" rel="next" title="用scale参数解决iOS图片模糊问题">
+                <i class="fa fa-chevron-left"></i> 用scale参数解决iOS图片模糊问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/28/2019-06-28/" rel="prev" title="重生但无浴火">
+                重生但无浴火 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Erik Lu">
+            
+              <p class="site-author-name" itemprop="name">Erik Lu</p>
+              <div class="site-description motion-element" itemprop="description">从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/eriklu" title="GitHub &rarr; https://github.com/eriklu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#给aapt添加支持uincode类名功能"><span class="nav-number">1.</span> <span class="nav-text">给aapt添加支持uincode类名功能</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#aapt-是什么？"><span class="nav-number">1.1.</span> <span class="nav-text">aapt 是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么有这个需求"><span class="nav-number">1.2.</span> <span class="nav-text">为什么有这个需求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何解决"><span class="nav-number">1.3.</span> <span class="nav-text">如何解决</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#问题的表象"><span class="nav-number">1.3.1.</span> <span class="nav-text">问题的表象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#问题的根源"><span class="nav-number">1.3.2.</span> <span class="nav-text">问题的根源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#补丁办法"><span class="nav-number">1.3.3.</span> <span class="nav-text">补丁办法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为执行文件打补丁"><span class="nav-number">1.4.</span> <span class="nav-text">为执行文件打补丁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他选择"><span class="nav-number">1.5.</span> <span class="nav-text">其他选择</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2014 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Erik Lu</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

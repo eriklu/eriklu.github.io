@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="xCode6 单元测试(Uint Test)单元测试的意义(Motion) 找到bug  保证代码质量  持续集成  代码覆盖">
+<meta name="keywords" content="单元测试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xCode6 单元测试(Uint Test)">
+<meta property="og:url" content="http://eriklu.github.io/2015/02/03/2015-02-03/index.html">
+<meta property="og:site_name" content="弦歌雅意的小屋">
+<meta property="og:description" content="xCode6 单元测试(Uint Test)单元测试的意义(Motion) 找到bug  保证代码质量  持续集成  代码覆盖">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-06-27T15:04:30.998Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="xCode6 单元测试(Uint Test)">
+<meta name="twitter:description" content="xCode6 单元测试(Uint Test)单元测试的意义(Motion) 找到bug  保证代码质量  持续集成  代码覆盖">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://eriklu.github.io/2015/02/03/2015-02-03/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>xCode6 单元测试(Uint Test) | 弦歌雅意的小屋</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">弦歌雅意的小屋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2015/02/03/2015-02-03/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Erik Lu">
+      <meta itemprop="description" content="从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="弦歌雅意的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">xCode6 单元测试(Uint Test)
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-02-03 00:00:00" itemprop="dateCreated datePublished" datetime="2015-02-03T00:00:00+08:00">2015-02-03</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-27 23:04:30" itemprop="dateModified" datetime="2019-06-27T23:04:30+08:00">2019-06-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS开发/" itemprop="url" rel="index"><span itemprop="name">iOS开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="xCode6-单元测试-Uint-Test"><a href="#xCode6-单元测试-Uint-Test" class="headerlink" title="xCode6 单元测试(Uint Test)"></a>xCode6 单元测试(Uint Test)</h3><h4 id="单元测试的意义-Motion"><a href="#单元测试的意义-Motion" class="headerlink" title="单元测试的意义(Motion)"></a>单元测试的意义(Motion)</h4><ul>
+<li><p>找到bug</p>
+</li>
+<li><p>保证代码质量</p>
+</li>
+<li><p>持续集成</p>
+</li>
+<li><p>代码覆盖</p>
+<a id="more"></a> 
+
+</li>
+</ul>
+<h4 id="测试框架-XCTest"><a href="#测试框架-XCTest" class="headerlink" title="测试框架(XCTest)"></a>测试框架(XCTest)</h4><p>xcode内置了XCTest框架支持。</p>
+<h4 id="如何写一个测试案例-Test-Case"><a href="#如何写一个测试案例-Test-Case" class="headerlink" title="如何写一个测试案例(Test Case)"></a>如何写一个测试案例(Test Case)</h4><ul>
+<li>通过实现一个XCTestCase子类。  </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@interface  MyTestClass : XCTestCase &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>实现相关Test方法。<br>  -(void)testMyFunctionWorks;<br>  类的test开头的方法为测试方法。</li>
+<li>使用断言API报告代码错误。<br>XCTAssertEqual(value, expectedValue);<br>XCUnit内置了很多断言，可到头文件中查看。</li>
+<li>setup, teardown方法。<br>可以在setup中提供测试的前置条件和获取资源，在teardown中重置前置条件和释放资源。在每个测试案例执行前调用setup方法，直行后调用teardown方法。<strong>所以特别留意setup和teardown的执行性能</strong></li>
+</ul>
+<h4 id="单元测试所需资源"><a href="#单元测试所需资源" class="headerlink" title="单元测试所需资源"></a>单元测试所需资源</h4><ul>
+<li>测试代码</li>
+<li>用到的资源文件<br>xcode创建项目时可以同时创建测试项目。测试项目也很容易添加到现有项目当中。</li>
+</ul>
+<h4 id="单元测试的执行环境"><a href="#单元测试的执行环境" class="headerlink" title="单元测试的执行环境"></a>单元测试的执行环境</h4><p>单元测试是注入到主项目代码中执行的。<br>但是测试项目的资源文件不会包含进主项目的资源文件。所以测试项目代码中不能使用[NSBundle mainBundle]方法获取资源。</p>
+<h4 id="执行单元测试"><a href="#执行单元测试" class="headerlink" title="执行单元测试"></a>执行单元测试</h4><ul>
+<li>用快捷键CMD+U执行单元测试。</li>
+<li>使用菜单”Product”-&gt;”Test”执行单元测试。</li>
+<li>使用导航栏的按钮执行单个测试案例。</li>
+<li>使用xcodebuild命令行工具执行。</li>
+</ul>
+<blockquote>
+<p> xcodebuild test <br>          -project ~/Documents/MyApp.xcodeproj <br>          -scheme MyApp <br>          -destination ‘platform=iOS,name=iPhone’</p>
+</blockquote>
+<h4 id="查看测试结果"><a href="#查看测试结果" class="headerlink" title="查看测试结果"></a>查看测试结果</h4><ul>
+<li>在Test Navigator 查看。</li>
+<li>在Issue Navigator查看。</li>
+<li>在Source Editor side bar中查看。</li>
+<li>在Test Reports中查看。</li>
+</ul>
+<h4 id="OCUnit-升级"><a href="#OCUnit-升级" class="headerlink" title="OCUnit 升级"></a>OCUnit 升级</h4><p>从xcode5.1开始，OCUnit框架被抛弃了。可以通过Edit &gt; Refactor &gt; Convert to XCTest把旧框架移植到XCUnit。</p>
+<h4 id="异步测试-Asynchronous-Testing"><a href="#异步测试-Asynchronous-Testing" class="headerlink" title="异步测试(Asynchronous Testing)"></a>异步测试(Asynchronous Testing)</h4><p>越来越多的APIs是异步执行的。</p>
+<ul>
+<li>Block调用</li>
+<li>委托回调(Delegate callbacks)</li>
+<li>网络请求</li>
+<li>后台处理(Background processing)<br>但是单元测试都是同步执行的。现在XCUnit提供了异步函数的测试支持。</li>
+</ul>
+<p>新增的支持异步测试的APIs:  </p>
+<p>使用XCTestExpectation对象描述一个期望的事件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (XCTestExpectation *)expectationWithDescription:(NSString *)description;</span><br></pre></td></tr></table></figure>
+
+<p>然后XCUnit框架会等待期望的事件的值被填充。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (void)waitForExpectationsWithTimeout:(NSTimeInterval)timeout</span><br><span class="line">                               handler:(XCWaitCompletionHandler)handlerOrNil;</span><br></pre></td></tr></table></figure>
+
+<p>一个测试例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)testDocumentOpening</span><br><span class="line">&#123;</span><br><span class="line">    XCTestExpectation *expectation = [self expectationWithDescription:@“open doc”];</span><br><span class="line">    UIDocument *doc = ...;</span><br><span class="line">    [doc openWithCompletionHandler:^(BOOL success) &#123;</span><br><span class="line">	     XCTAssert(success);</span><br><span class="line">		 [expectation fulfill];</span><br><span class="line">	&#125;];</span><br><span class="line">    [self waitForExpectationsWithTimeout:5.0 handler:nil];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h4><h5 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h5><ul>
+<li><p>代码的改变会影响性能的变化。</p>
+</li>
+<li><p>很难捕捉到这种变化。</p>
+</li>
+<li><p>单元测试可以自动监控这些变化。</p>
+<h5 id="性能测试的支持"><a href="#性能测试的支持" class="headerlink" title="性能测试的支持"></a>性能测试的支持</h5></li>
+<li><p>增加了测量性能的APIs。</p>
+</li>
+<li><p>使用新的UI来解释结果。</p>
+</li>
+<li><p>使用Instuments来分析(Profiling )性能。</p>
+</li>
+</ul>
+<h5 id="测量性能的新APIs"><a href="#测量性能的新APIs" class="headerlink" title="测量性能的新APIs"></a>测量性能的新APIs</h5><ul>
+<li><p>measureBlock API</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)measureBlock:(void (^)(void))block;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>measureBlock执行10次block代码，测量事件，然后把结果显示在xcode中。</p>
+<p>一个例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (void)testUseFileHandlePerformance</span><br><span class="line">&#123;</span><br><span class="line">    [self measureBlock:^&#123;</span><br><span class="line">        NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:PATH];</span><br><span class="line">        XCTAssertNotNil(fileHandle);</span><br><span class="line">        UseFileHandle(fileHandle);</span><br><span class="line">        [fileHandle closeFile];</span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>measureMetrics API</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (void)measureMetrics:(NSArray *)metrics automaticallyStartMeasuring:</span><br><span class="line">(BOOL)automaticallyStartMeasuring withBlock:(void (^)(void))block;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>startMeasuring API</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)startMeasuring;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>stopMeasuring API</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)stopMeasuring;</span><br></pre></td></tr></table></figure>
+
+<p>综合例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- (void)testUseFileHandlePerformance</span><br><span class="line">&#123;</span><br><span class="line">    [self measureMetrics:@[XCTPerformanceMetric_WallClockTime]</span><br><span class="line">          automaticallyStartMeasuring:NO forBlock:^&#123;</span><br><span class="line">        NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:PATH];</span><br><span class="line">        XCTAssertNotNil(fileHandle);</span><br><span class="line">        [self startMeasuring];</span><br><span class="line">        UseFileHandle(fileHandle);</span><br><span class="line">        [self stopMeasuring];</span><br><span class="line">        [fileHandle closeFile];</span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>important: 性能测试的关键是精确测量和建立测试基线.</strong><br><strong>基线的两种常见形式: 平均值基线和方差基线。</strong></p>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
+<li>使用测试项目资源<br>+[NSBundle bundleForClass:[MyTest class]]</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/单元测试/" rel="tag"># 单元测试</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/01/30/2015-01-30/" rel="next" title="AutoLayout 自动布局知识总结">
+                <i class="fa fa-chevron-left"></i> AutoLayout 自动布局知识总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/02/04/2015-02-04/" rel="prev" title="Xcode项目命名时慎用空格换行和特殊字符">
+                Xcode项目命名时慎用空格换行和特殊字符 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Erik Lu">
+            
+              <p class="site-author-name" itemprop="name">Erik Lu</p>
+              <div class="site-description motion-element" itemprop="description">从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/eriklu" title="GitHub &rarr; https://github.com/eriklu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#xCode6-单元测试-Uint-Test"><span class="nav-number">1.</span> <span class="nav-text">xCode6 单元测试(Uint Test)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#单元测试的意义-Motion"><span class="nav-number">1.1.</span> <span class="nav-text">单元测试的意义(Motion)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试框架-XCTest"><span class="nav-number">1.2.</span> <span class="nav-text">测试框架(XCTest)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何写一个测试案例-Test-Case"><span class="nav-number">1.3.</span> <span class="nav-text">如何写一个测试案例(Test Case)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单元测试所需资源"><span class="nav-number">1.4.</span> <span class="nav-text">单元测试所需资源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单元测试的执行环境"><span class="nav-number">1.5.</span> <span class="nav-text">单元测试的执行环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行单元测试"><span class="nav-number">1.6.</span> <span class="nav-text">执行单元测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看测试结果"><span class="nav-number">1.7.</span> <span class="nav-text">查看测试结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OCUnit-升级"><span class="nav-number">1.8.</span> <span class="nav-text">OCUnit 升级</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步测试-Asynchronous-Testing"><span class="nav-number">1.9.</span> <span class="nav-text">异步测试(Asynchronous Testing)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能测试"><span class="nav-number">1.10.</span> <span class="nav-text">性能测试</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#动机"><span class="nav-number">1.10.1.</span> <span class="nav-text">动机</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#性能测试的支持"><span class="nav-number">1.10.2.</span> <span class="nav-text">性能测试的支持</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#测量性能的新APIs"><span class="nav-number">1.10.3.</span> <span class="nav-text">测量性能的新APIs</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-number">1.11.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2014 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Erik Lu</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

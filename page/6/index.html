@@ -2,14 +2,23 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +29,6 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -37,48 +44,21 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
 
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
 
 
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
 
 
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, NexT" />
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
 
 
 
@@ -86,37 +66,20 @@
 
 
 
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
-
-
-
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="弦歌雅意的小屋">
-<meta property="og:url" content="http://eriklu.github.io/page/6/index.html">
-<meta property="og:site_name" content="弦歌雅意的小屋">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="弦歌雅意的小屋">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
     tabs: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -128,12 +91,38 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://eriklu.github.io/page/6/"/>
-
+  
 
 
 
+
+  <meta name="description" content="从事软件开发多年目前致力于移动开发 平时喜欢逆向工程现在学习人工智能中擅长Java、Swift、Python、Javascript喜爱Linux Shell">
+<meta name="keywords" content="逆向工程,移动开发">
+<meta property="og:type" content="website">
+<meta property="og:title" content="弦歌雅意的小屋">
+<meta property="og:url" content="http://eriklu.github.io/page/6/index.html">
+<meta property="og:site_name" content="弦歌雅意的小屋">
+<meta property="og:description" content="从事软件开发多年目前致力于移动开发 平时喜欢逆向工程现在学习人工智能中擅长Java、Swift、Python、Javascript喜爱Linux Shell">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="弦歌雅意的小屋">
+<meta name="twitter:description" content="从事软件开发多年目前致力于移动开发 平时喜欢逆向工程现在学习人工智能中擅长Java、Swift、Python、Javascript喜爱Linux Shell">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://eriklu.github.io/page/6/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>弦歌雅意的小屋</title>
   
@@ -149,11 +138,34 @@
 
 
 
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -161,29 +173,27 @@
   
 
   <div class="container sidebar-position-left 
-   page-home 
- ">
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">弦歌雅意的小屋</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -191,45 +201,69 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
 
       
+      
     </ul>
+  
+
   
 
   
@@ -237,12 +271,23 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -255,17 +300,19 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/25/2014-12-25-1001/">
+    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/03/2014-12-03/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Erik Lu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -279,11 +326,20 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2014/12/25/2014-12-25-1001/" itemprop="url">Locus Pro 3.53 APK Crack 笔记</a></h1>
+                
+                <a href="/2014/12/03/2014-12-03/" class="post-title-link" itemprop="url">绕过APK包签名检测机制</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -291,18 +347,35 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-12-25T08:00:00+08:00">
-                2014-12-25
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2014-12-03 00:00:00" itemprop="dateCreated datePublished" datetime="2014-12-03T00:00:00+08:00">2014-12-03</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-27 21:56:25" itemprop="dateModified" datetime="2019-06-27T21:56:25+08:00">2019-06-27</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -313,11 +386,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/逆向工程/" itemprop="url" rel="index">
-                    <span itemprop="name">逆向工程</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/逆向工程/" itemprop="url" rel="index"><span itemprop="name">逆向工程</span></a></span>
 
                 
                 
@@ -326,6 +395,7 @@
           
 
           
+            
             
           
 
@@ -352,23 +422,31 @@
 
       
         
-          <h3 id="Locus-Pro-3-53-crack手记"><a href="#Locus-Pro-3-53-crack手记" class="headerlink" title="Locus Pro 3.53 crack手记"></a>Locus Pro 3.53 crack手记</h3><h4 id="重打包"><a href="#重打包" class="headerlink" title="重打包"></a>重打包</h4><p>今天测试了下，在Windows平台，用标准Apktool解包重打包，安装测试可以运行。虽然类名，方法名还是存在uncidoe字符，但这次打包OK了。<br>
+          <h3 id="绕过APK包签名检测机制"><a href="#绕过APK包签名检测机制" class="headerlink" title="绕过APK包签名检测机制"></a>绕过APK包签名检测机制</h3><h4 id="APK文件的签名机制"><a href="#APK文件的签名机制" class="headerlink" title="APK文件的签名机制"></a>APK文件的签名机制</h4><p>为了保证APK数据的完整性和不被篡改。现代手机系统引入了app的签名机制。从Sybian、J2ME到现在的IOS APP和Android APP, 都采用了这一机制。这一机制的原理是对APP中的所有文件使用Hash算法生成文件指纹，然后用文件名和指纹数据生成一个签名文件列表文件，然后再用开发者的私钥对生成的文件进行签名。把开发者的公钥信息和签名信息保存在发布的APP文件中。设备安装应用时会重新计算文件的指纹，用APP中公钥来验证签名是否一致，来判断APP是否被篡改。因为逆向人员没有开发者的私钥，所以在对APK文件修改后，不能生成匹配的签名，为了能在设备上安装，只能使用自己的证书对APK重新签名。这样会导致APK中证书信息的变化。因为这个机制的存在，APK可以在代码中检查公钥信息是不是发生了变化，从而检测出APK包的内容是否被篡改。</p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/12/25/2014-12-25-1001/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2014/12/03/2014-12-03/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -401,17 +479,19 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/18/2014-12-18-解除功能限制--Locus Pro 3.40 APK Crack 分享六/">
+    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/02/2014-12-02/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Erik Lu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -425,11 +505,20 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2014/12/18/2014-12-18-解除功能限制--Locus Pro 3.40 APK Crack 分享六/" itemprop="url">解除功能限制--Locus Pro 3.40 APK Crack 分享六</a></h1>
+                
+                <a href="/2014/12/02/2014-12-02/" class="post-title-link" itemprop="url">Android apk 逆向 -- 工具篇</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -437,18 +526,35 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-12-18T08:00:00+08:00">
-                2014-12-18
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2014-12-02 08:00:00" itemprop="dateCreated datePublished" datetime="2014-12-02T08:00:00+08:00">2014-12-02</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-27 15:33:31" itemprop="dateModified" datetime="2019-06-27T15:33:31+08:00">2019-06-27</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -459,11 +565,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/逆向工程/" itemprop="url" rel="index">
-                    <span itemprop="name">逆向工程</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/逆向工程/" itemprop="url" rel="index"><span itemprop="name">逆向工程</span></a></span>
 
                 
                 
@@ -472,6 +574,7 @@
           
 
           
+            
             
           
 
@@ -498,24 +601,32 @@
 
       
         
-          <p>现在应用变成了免费版本，不但有广告，还有很多有用的功能用不了，真着急。</p>
-<h4 id="解除功能限制"><a href="#解除功能限制" class="headerlink" title="解除功能限制"></a>解除功能限制</h4><p>首先找到com/asamm/locus/utils/Native/Native.smali文件<br>
+          <h3 id="Android-apk-逆向-–-工具篇"><a href="#Android-apk-逆向-–-工具篇" class="headerlink" title="Android apk 逆向 – 工具篇"></a>Android apk 逆向 – 工具篇</h3><h4 id="常用工具介绍"><a href="#常用工具介绍" class="headerlink" title="常用工具介绍"></a>常用工具介绍</h4><ol>
+<li><p>ADT android应用开发工具包，用来开发一些代码，必要时可以给应用添加一些自己开发的功能，也可以写一些调试工具类代码。</p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/12/18/2014-12-18-解除功能限制--Locus Pro 3.40 APK Crack 分享六/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2014/12/02/2014-12-02/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
-    </div>
+    </li></ol></div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -548,17 +659,19 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/17/2014-12-17-处理资源中的非ascii字符--Locus Pro 3.40 APK Crack 分享五/">
+    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/01/2014-12-01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Erik Lu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -572,11 +685,20 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2014/12/17/2014-12-17-处理资源中的非ascii字符--Locus Pro 3.40 APK Crack 分享五/" itemprop="url">处理资源中的非ascii字符--Locus Pro 3.40 APK Crack 分享五</a></h1>
+                
+                <a href="/2014/12/01/2014-12-01/" class="post-title-link" itemprop="url">启航</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -584,18 +706,197 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-12-17T08:00:00+08:00">
-                2014-12-17
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2014-12-01 08:00:00" itemprop="dateCreated datePublished" datetime="2014-12-01T08:00:00+08:00">2014-12-01</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-27 11:33:53" itemprop="dateModified" datetime="2019-06-27T11:33:53+08:00">2019-06-27</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="启航"><a href="#启航" class="headerlink" title="启航"></a>启航</h3><p>折腾了一段时间，终于有点明白Github Blog的原理了。可以开始启动了。</p>
+<p>轻松一下，用个笑话开篇吧!</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2014/12/01/2014-12-01/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/01/2014-11-31/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Erik Lu">
+      <meta itemprop="description" content="从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="弦歌雅意的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2014/12/01/2014-11-31/" class="post-title-link" itemprop="url">发表在看雪论坛的旧文章</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2014-12-01 08:00:00" itemprop="dateCreated datePublished" datetime="2014-12-01T08:00:00+08:00">2014-12-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-28 00:08:23" itemprop="dateModified" datetime="2019-06-28T00:08:23+08:00">2019-06-28</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -606,11 +907,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/逆向工程/" itemprop="url" rel="index">
-                    <span itemprop="name">逆向工程</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/逆向工程/" itemprop="url" rel="index"><span itemprop="name">逆向工程</span></a></span>
 
                 
                 
@@ -620,6 +917,7 @@
 
           
             
+            
           
 
           
@@ -645,24 +943,35 @@
 
       
         
-          <p>下载数据终于想办法绕过去了，但是启动应用后，应用还是退出了，究竟是什么原因呢？</p>
-<h3 id="处理资源中的非ascii字符"><a href="#处理资源中的非ascii字符" class="headerlink" title="处理资源中的非ascii字符"></a>处理资源中的非ascii字符</h3><p>现在启动应用，应用异常退出，抛出异常信息如下:<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/12/17/2014-12-17-处理资源中的非ascii字符--Locus Pro 3.40 APK Crack 分享五/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h4 id="前几年在看雪论坛发的几篇旧文"><a href="#前几年在看雪论坛发的几篇旧文" class="headerlink" title="前几年在看雪论坛发的几篇旧文"></a>前几年在看雪论坛发的几篇旧文</h4><h5 id="翻译文章两篇"><a href="#翻译文章两篇" class="headerlink" title="翻译文章两篇"></a>翻译文章两篇</h5><ul>
+<li><a href="http://bbs.pediy.com/showthread.php?t=104054&highlight=" target="_blank" rel="noopener">【翻译】Load a Dll From Memory!</a></li>
+<li><a href="http://bbs.pediy.com/showthread.php?t=116190&highlight=" target="_blank" rel="noopener">【翻译】Exploit 编写系列教程第八篇：Win32 Egg Hunting </a></li>
+</ul>
+<h5 id="逆向分析文章5篇"><a href="#逆向分析文章5篇" class="headerlink" title="逆向分析文章5篇"></a>逆向分析文章5篇</h5><ul>
+<li><a href="http://bbs.pediy.com/showthread.php?t=79738&highlight=" target="_blank" rel="noopener">【原创】Blaze Video Magic 3.0 Crack 分享</a></li>
+<li><a href="http://bbs.pediy.com/showthread.php?t=80081&highlight=" target="_blank" rel="noopener">【原创】APISpy v2.5 Crack过程分享</a></li>
+<li><a href="http://bbs.pediy.com/showthread.php?t=106937&highlight=" target="_blank" rel="noopener">【原创】IDEA中2^16 + 1的模乘运算的一种优化实现</a></li>
+<li><a href="http://bbs.pediy.com/showthread.php?t=103847&highlight=" target="_blank" rel="noopener">【原创】读取MoleBox打包的可执行文件中的数据文件一法</a></li>
+<li><a href="http://bbs.pediy.com/showthread.php?t=102531&highlight=" target="_blank" rel="noopener">【原创】Net Meter保护机制分析</a></li>
+</ul>
+
+          
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -695,17 +1004,19 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/16/2014-12-16-准备运行需要的数据--Locus Pro 3.40 APK Crack 分享四/">
+    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2009/12/29/2009-12-29/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Erik Lu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -719,136 +1030,20 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2014/12/16/2014-12-16-准备运行需要的数据--Locus Pro 3.40 APK Crack 分享四/" itemprop="url">准备运行需要的数据--Locus Pro 3.40 APK Crack 分享四</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-12-16T08:00:00+08:00">
-                2014-12-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>应用程序可以运行了，但是提示运行需要下载大约5M的数据，点击下载，总是提示网络错误。怎么办呢？</p>
-<h3 id="准备运行需要的数据"><a href="#准备运行需要的数据" class="headerlink" title="准备运行需要的数据"></a>准备运行需要的数据</h3><p>分析代码，并综合热心网友提供的信息。发现所谓的需要的数据就是两个.so文件:libproj.so和libjsqlite.so。<br>下载数据需要验证用户的购买信息。支持google play、三星应用市场和德国应用市场的账户信息。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/12/16/2014-12-16-准备运行需要的数据--Locus Pro 3.40 APK Crack 分享四/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/15/2014-12-15-解密被加密的类-Locus Pro 3.40 APK Crack 分享三/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Erik Lu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="弦歌雅意的小屋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2014/12/15/2014-12-15-解密被加密的类-Locus Pro 3.40 APK Crack 分享三/" itemprop="url">解密被加密的类-Locus Pro 3.40 APK Crack 分享三</a></h1>
+                <a href="/2009/12/29/2009-12-29/" class="post-title-link" itemprop="url">翻译Load a Dll From Memory!</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -856,18 +1051,35 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-12-15T08:00:00+08:00">
-                2014-12-15
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2009-12-29 08:00:00" itemprop="dateCreated datePublished" datetime="2009-12-29T08:00:00+08:00">2009-12-29</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-27 15:33:54" itemprop="dateModified" datetime="2019-06-27T15:33:54+08:00">2019-06-27</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -878,11 +1090,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/逆向工程/" itemprop="url" rel="index">
-                    <span itemprop="name">逆向工程</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/翻译/" itemprop="url" rel="index"><span itemprop="name">翻译</span></a></span>
 
                 
                 
@@ -892,6 +1100,7 @@
 
           
             
+            
           
 
           
@@ -917,24 +1126,31 @@
 
       
         
-          <p>重新打包后，安装，程序直接退出。因为有些需要的类被加密了，解密后反射方法的方法名已经被映射为ascii，所以无法反射出相关方法，导致空指针异常。所以我们需要把类解密出来，并进行处理。</p>
-<h3 id="解密被加密的类"><a href="#解密被加密的类" class="headerlink" title="解密被加密的类"></a>解密被加密的类</h3><p>重新打包后，安装，程序直接退出，查看系统日志，提示如下异常信息。<br>程序出现空指针异常。<br>
+          <h3 id="Load-a-Dll-From-Memory"><a href="#Load-a-Dll-From-Memory" class="headerlink" title="Load a Dll From Memory!"></a>Load a Dll From Memory!</h3><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>本篇指南是讲解如何不借助文件系统的帮助来从内存中载入DLL的技术。<br>    作者：Joachim Bauch<br>    联系方式: mail◎joachim-bauch.de<br>    版权： Creative Commons License(by-sa)</p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/12/15/2014-12-15-解密被加密的类-Locus Pro 3.40 APK Crack 分享三/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2009/12/29/2009-12-29/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -967,17 +1183,19 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/14/2014-12-14-浅谈应用开发中通讯接口的数据保护/">
+    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2008/12/30/2008-12-30/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Erik Lu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="description" content="从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -991,136 +1209,20 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2014/12/14/2014-12-14-浅谈应用开发中通讯接口的数据保护/" itemprop="url">浅谈应用开发中通讯接口的数据保护</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-12-14T08:00:00+08:00">
-                2014-12-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>###浅谈应用开发中通讯接口的数据保护</p>
-<p>很多居心不良的人一直在企图窥测我们宝贵的数据，我们如何来保护我们的数据，实现真正的的安全性呢。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/12/14/2014-12-14-浅谈应用开发中通讯接口的数据保护/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/12/2014-12-12-系统头文件被修改导致项目不能编译/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Erik Lu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="弦歌雅意的小屋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2014/12/12/2014-12-12-系统头文件被修改导致项目不能编译/" itemprop="url">系统头文件被修改导致项目不能编译。</a></h1>
+                <a href="/2008/12/30/2008-12-30/" class="post-title-link" itemprop="url">Blaze Video Magic 3.0 注册机制分析</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -1128,18 +1230,35 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-12-12T08:00:00+08:00">
-                2014-12-12
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2008-12-30 00:00:00" itemprop="dateCreated datePublished" datetime="2008-12-30T00:00:00+08:00">2008-12-30</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-27 15:34:03" itemprop="dateModified" datetime="2019-06-27T15:34:03+08:00">2019-06-27</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -1150,11 +1269,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS开发/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS开发</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/逆向工程/" itemprop="url" rel="index"><span itemprop="name"> 逆向工程 </span></a></span>
 
                 
                 
@@ -1163,6 +1278,7 @@
           
 
           
+            
             
           
 
@@ -1189,462 +1305,32 @@
 
       
         
-          <p>今天查看了一下MAX宏的定义，竟然莫名奇妙的文件被修改了。<br>然后编译提示：/Applications/Xcode6.1.app/Contents/Developer/Platforms/<br>iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/<br>Frameworks/Foundation.framework/Headers/NSObjCRuntime.h被修改，<br>需要重新编译/Users/aoro/Library/Developer/Xcode/DerivedData/<br>ModuleCache/3J1KOOK0B7YSA/Foundation-192PA57SXBKVP.pcm。</p>
-<p>touch了一下/Users/aoro/Library/Developer/Xcode/DerivedData/ModuleCache/3J1KOOK0B7YSA/Foundation-192PA57SXBKVP.pcm<br>
+          <h3 id="Blaze-Video-Magic-3-0-注册机制分析"><a href="#Blaze-Video-Magic-3-0-注册机制分析" class="headerlink" title="Blaze Video Magic 3.0 注册机制分析"></a>Blaze Video Magic 3.0 注册机制分析</h3><h4 id="详细步骤"><a href="#详细步骤" class="headerlink" title="详细步骤"></a>详细步骤</h4><ol>
+<li><p>首先对GetDlgItemTextA, GetDlgItemTextW下断点， 注册测试时OD没有断下来.</p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/12/12/2014-12-12-系统头文件被修改导致项目不能编译/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2008/12/30/2008-12-30/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
-    </div>
-    
-    
-    
+    </li></ol></div>
 
     
 
     
-
+    
     
 
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
+    
 
     
       
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/10/2014-12-10-iOS IAP receipt 验证脚本/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Erik Lu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="弦歌雅意的小屋">
-    </span>
-
     
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/12/10/2014-12-10-iOS IAP receipt 验证脚本/" itemprop="url">iOS IAP receipt 验证脚本</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-12-10T08:00:00+08:00">
-                2014-12-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS开发/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>以前写的一个iap reciept脚本验证工具。完全借助操作系统自带的工具。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/12/10/2014-12-10-iOS IAP receipt 验证脚本/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/09/2014-12-09-语法错误导致文章不能显示/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Erik Lu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="弦歌雅意的小屋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/12/09/2014-12-09-语法错误导致文章不能显示/" itemprop="url">语法错误导致文章不能显示</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-12-09T08:00:00+08:00">
-                2014-12-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="语法错误导致文章不能显示"><a href="#语法错误导致文章不能显示" class="headerlink" title="语法错误导致文章不能显示"></a>语法错误导致文章不能显示</h3><p>前几天写了两篇blog，上传后不能显示，一直不知道什么问题。晚上没事上github faq里面查下。在查的时候，忽然回想起以前看过一篇文章说github会把编译错误发到邮箱里去。<br>登录久不登陆的邮箱，果然里面好几封来自github的邮件。打开一看，傻了。就一句话“编译失败，存在语法错误”。我去，也不提示具体哪里错了。<br>胡乱修改了几个自己认为存在问题的地方，都不行。最后发现是代码语言名字写错了。Objective-C写成了Object-C. 改正后终于显出来了。但是语法不能高亮。这该死的解析器都不支持，还费个什么劲提示错误阿。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/12/09/2014-12-09-语法错误导致文章不能显示/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/09/2014-12-09-ios IAP Receipt 字段分析/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Erik Lu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="弦歌雅意的小屋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/12/09/2014-12-09-ios IAP Receipt 字段分析/" itemprop="url">iOS IAP Receipt 字段分析</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-12-09T08:00:00+08:00">
-                2014-12-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS开发/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="ios-IAP-Receipt-字段分析"><a href="#ios-IAP-Receipt-字段分析" class="headerlink" title="ios IAP Receipt 字段分析"></a>ios IAP Receipt 字段分析</h3><p>从iOS 7开始，ios提供了本地iap信息验证功能。wwdc上也提供了代码例子片段。<br><a href="http://www.objc.io/" target="_blank" rel="external"><strong>objc.io</strong></a>上也有一篇文章<a href="http://www.objc.io/issue-17/receipt-validation.html" target="_blank" rel="external">Receipt Validation</a>介绍了如何进行recipt本地验证。但提供的例子中没有获取iap的字段的代码。<br>对于不熟悉asn语法的同学，分析这块信息也是个不小的挑战。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2014/12/09/2014-12-09-ios IAP Receipt 字段分析/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
     
 
     
@@ -1673,15 +1359,12 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
   </nav>
 
 
 
           </div>
-          
-
-
           
 
         </div>
@@ -1697,74 +1380,242 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.jpg"
-               alt="Erik Lu" />
-          <p class="site-author-name" itemprop="name">Erik Lu</p>
-           
-              <p class="site-description motion-element" itemprop="description"></p>
-          
-        </div>
-        <nav class="site-state motion-element">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Erik Lu">
+            
+              <p class="site-author-name" itemprop="name">Erik Lu</p>
+              <div class="site-description motion-element" itemprop="description">从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell</div>
+          </div>
 
           
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">72</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
+            <nav class="site-state motion-element">
               
-                <span class="site-state-item-count">38</span>
-                <span class="site-state-item-name">分类</span>
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/eriklu" title="GitHub &rarr; https://github.com/eriklu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
               
             </div>
           
 
           
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">79</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
+
+          
           
 
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
           
+            
+          
+          
+
         </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
+      </div>
 
       
 
@@ -1772,6 +1623,7 @@
 
     </div>
   </aside>
+  
 
 
         
@@ -1780,30 +1632,39 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
+        <div class="copyright">&copy; 2014 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Erik Lu</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
 
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.2</div>
+
+
 
 
         
+
+
+
+
+
+
+
 
         
       </div>
@@ -1816,11 +1677,16 @@
       </div>
     
 
+    
+
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -1834,7 +1700,6 @@
 
 
 
-  
 
 
 
@@ -1847,31 +1712,27 @@
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+
+
 
   
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+  <script src="/js/utils.js?v=7.1.2"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+  <script src="/js/motion.js?v=7.1.2"></script>
 
 
 
@@ -1879,36 +1740,27 @@
   
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+  <script src="/js/affix.js?v=7.1.2"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
 
 
-
-  
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
   
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
-
-
-
-  
+  <script src="/js/next-boot.js?v=7.1.2"></script>
 
 
   
 
+  
 
+  
 
-
-	
-
-
+  
 
 
 
@@ -1917,19 +1769,21 @@
 
 
 
+  
 
   
 
-
-
-
-
+  
 
   
 
+  
 
+  
 
+  
 
+  
 
   
 

@@ -307,6 +307,198 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2019/07/16/2019-07-16/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Erik Lu">
+      <meta itemprop="description" content="从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="弦歌雅意的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/07/16/2019-07-16/" class="post-title-link" itemprop="url">ffmpeg常见命令整理</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-16 08:00:00" itemprop="dateCreated datePublished" datetime="2019-07-16T08:00:00+08:00">2019-07-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-17 12:39:38" itemprop="dateModified" datetime="2019-07-17T12:39:38+08:00">2019-07-17</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ffmpeg/" itemprop="url" rel="index"><span itemprop="name">ffmpeg</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="ffmpeg常见命令整理"><a href="#ffmpeg常见命令整理" class="headerlink" title="ffmpeg常见命令整理"></a>ffmpeg常见命令整理</h3><p>视频输入流为：desktop<br>视频输入流格式：gdigrab</p>
+<p>//列数麦克风和摄像头信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -list_devices true -f dshow -i dummy</span><br></pre></td></tr></table></figure>
+
+<p>//录制30秒视频</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -f gdigrab -s 1920x1080 -t 30 -i /dev/video0 -vcodec libx264 -f mp4 out.mp4</span><br></pre></td></tr></table></figure>
+
+<p>//win10 ffmpeg获取桌面和麦克风</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -f gdigrab -i desktop -f dshow -i audio=&quot;@device_cm_&#123;33D9A762-90C8-11D0-BD43-00A0C911CE86&#125;\wave_&#123;EEFED86D-1A2A-45E9-95D1-C7DF1BC9211F&#125;&quot; -vcodec libx264 -qp 20 -acodec libvo_aacenc test_desktop_microphone.mp4</span><br></pre></td></tr></table></figure>
+
+<p>//linux 录制屏幕和摄像头（摄像头叠加在屏幕上右下角)和麦克风</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -thread_queue_size 96 -f x11grab -video_size 1920x1080 -i :0.0 -f video4linux2 -video_size 400x300  -i /dev/video0  -filter_complex &apos;[0:v][1:v]overlay=x=main_w-overlay_w-10:y=main_h-overlay_h-10[out]&apos; -map &apos;[out]&apos;  test_desktop_camera_microphone.mp4</span><br></pre></td></tr></table></figure>
+
+<p>//linux录制摄像头和麦克风</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -f alsa -ac 2 -ar 44100 -i pulse  -f video4linux2 -framerate 30 -i /dev/video0 -framerate 30 -vcodec libx264 -acodec ac3 test_camera_microphone.mp4</span><br></pre></td></tr></table></figure>
+
+<p>推流</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg.exe -re -i ..\..\16.mkv -vcodec libx264 -acodec aac -f flv rtmp://localhost:1935/live/home</span><br></pre></td></tr></table></figure>
+
+<p>拉流</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffplay.exe -fs rtmp://localhost:1935/live/home1</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2019/07/11/2019-07-11/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -369,7 +561,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-07-12 20:52:56" itemprop="dateModified" datetime="2019-07-12T20:52:56+08:00">2019-07-12</time>
+                <time title="修改时间：2019-07-12 21:31:41" itemprop="dateModified" datetime="2019-07-12T21:31:41+08:00">2019-07-12</time>
               
             
           </span>
@@ -1893,185 +2085,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2018/12/02/2018-12-02/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Erik Lu">
-      <meta itemprop="description" content="从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="弦歌雅意的小屋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2018/12/02/2018-12-02/" class="post-title-link" itemprop="url">用scale参数解决iOS图片模糊问题</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-12-02 08:00:00" itemprop="dateCreated datePublished" datetime="2018-12-02T08:00:00+08:00">2018-12-02</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-27 15:26:47" itemprop="dateModified" datetime="2019-06-27T15:26:47+08:00">2019-06-27</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS开发/" itemprop="url" rel="index"><span itemprop="name">iOS开发</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="用scale参数解决iOS图片模糊问题"><a href="#用scale参数解决iOS图片模糊问题" class="headerlink" title="用scale参数解决iOS图片模糊问题"></a>用scale参数解决iOS图片模糊问题</h3><p>iOS开发资源用到的图片有一倍图、二倍图(@2x)和三倍图(@3x， 主要是plus系列)。<br>程序资源包中的资源使用时，系统会自动适配屏幕分辨率，采用合适的图片或缩放需要的图片。<br>但是当在程序运行中动态生成的图片则有可能会模糊。<br>这主要是没有充分利用scale参数导致的。</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2018/12/02/2018-12-02/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2120,7 +2133,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">63</span>
+                    <span class="site-state-item-count">64</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2171,7 +2184,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2310,7 +2325,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">61</span>
+                      
+                    
+                    <span class="site-state-item-count">62</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

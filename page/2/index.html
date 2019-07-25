@@ -307,6 +307,193 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2019/05/01/2019-05-01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Erik Lu">
+      <meta itemprop="description" content="从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="弦歌雅意的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/01/2019-05-01/" class="post-title-link" itemprop="url">给aapt添加支持uincode类名功能</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-01 08:00:00" itemprop="dateCreated datePublished" datetime="2019-05-01T08:00:00+08:00">2019-05-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-27 15:25:23" itemprop="dateModified" datetime="2019-06-27T15:25:23+08:00">2019-06-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/逆向工程/" itemprop="url" rel="index"><span itemprop="name">逆向工程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="给aapt添加支持uincode类名功能"><a href="#给aapt添加支持uincode类名功能" class="headerlink" title="给aapt添加支持uincode类名功能"></a>给aapt添加支持uincode类名功能</h3><h4 id="aapt-是什么？"><a href="#aapt-是什么？" class="headerlink" title="aapt 是什么？"></a>aapt 是什么？</h4><p>aapt是Android App资源打包工具。</p>
+<h4 id="为什么有这个需求"><a href="#为什么有这个需求" class="headerlink" title="为什么有这个需求"></a>为什么有这个需求</h4><ol>
+<li>Android的开发语言Java用uincode字符作为类名、字段名和方法名。</li>
+<li>现实中专业开发人员很少用uincode字符作为类名、字段名和方法名。</li>
+<li>aapt在开发时没有考虑做这种支持，但其实资源文件中和AndroidManifest.xml中会引用到java类名(Activity类，自定义View类等)。</li>
+<li>一些商业代码混淆工具利用这个特性增加逆向工程的难度。如把类名混淆为不可见unicode字符，影响人类阅读分析，但不影响虚拟机执行。</li>
+<li>资源文件和AndroidManifest.xml中的类也需要替换为混淆后的类名。这些商业工具在混淆的时候也对资源文件和AndroidManifest.xml进行了相应处理。</li>
+<li>Android逆向人员重新打包App时，需要使用到aapt工具，但aapt无法处理这种情况。</li>
+</ol>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/01/2019-05-01/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2018/12/02/2018-12-02/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1918,185 +2105,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2016/08/05/2016-08-05/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Erik Lu">
-      <meta itemprop="description" content="从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="弦歌雅意的小屋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2016/08/05/2016-08-05/" class="post-title-link" itemprop="url">美颜滤镜的CoreImage版本滤镜实现</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2016-08-05 08:00:00" itemprop="dateCreated datePublished" datetime="2016-08-05T08:00:00+08:00">2016-08-05</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-27 12:39:59" itemprop="dateModified" datetime="2019-06-27T12:39:59+08:00">2019-06-27</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/iOS开发/" itemprop="url" rel="index"><span itemprop="name">iOS开发</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="美颜滤镜的CoreImage版本滤镜实现"><a href="#美颜滤镜的CoreImage版本滤镜实现" class="headerlink" title="美颜滤镜的CoreImage版本滤镜实现"></a>美颜滤镜的CoreImage版本滤镜实现</h3><p>本文是对下面文章中的美颜滤镜的CoreImage kernel filter的滤镜部分移植实现。<br><a href="https://github.com/Guikunzhi/BeautifyFaceDemo" target="_blank" rel="noopener">实战分享：实时美颜滤镜是怎样炼成的</a></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2016/08/05/2016-08-05/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2145,7 +2153,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">64</span>
+                    <span class="site-state-item-count">65</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2339,7 +2347,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">62</span>
+                      
+                    
+                    <span class="site-state-item-count">63</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

@@ -307,6 +307,185 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/03/2014-12-03/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Erik Lu">
+      <meta itemprop="description" content="从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="弦歌雅意的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2014/12/03/2014-12-03/" class="post-title-link" itemprop="url">绕过APK包签名检测机制</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2014-12-03 00:00:00" itemprop="dateCreated datePublished" datetime="2014-12-03T00:00:00+08:00">2014-12-03</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-27 21:56:25" itemprop="dateModified" datetime="2019-06-27T21:56:25+08:00">2019-06-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/逆向工程/" itemprop="url" rel="index"><span itemprop="name">逆向工程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="绕过APK包签名检测机制"><a href="#绕过APK包签名检测机制" class="headerlink" title="绕过APK包签名检测机制"></a>绕过APK包签名检测机制</h3><h4 id="APK文件的签名机制"><a href="#APK文件的签名机制" class="headerlink" title="APK文件的签名机制"></a>APK文件的签名机制</h4><p>为了保证APK数据的完整性和不被篡改。现代手机系统引入了app的签名机制。从Sybian、J2ME到现在的IOS APP和Android APP, 都采用了这一机制。这一机制的原理是对APP中的所有文件使用Hash算法生成文件指纹，然后用文件名和指纹数据生成一个签名文件列表文件，然后再用开发者的私钥对生成的文件进行签名。把开发者的公钥信息和签名信息保存在发布的APP文件中。设备安装应用时会重新计算文件的指纹，用APP中公钥来验证签名是否一致，来判断APP是否被篡改。因为逆向人员没有开发者的私钥，所以在对APK文件修改后，不能生成匹配的签名，为了能在设备上安装，只能使用自己的证书对APK重新签名。这样会导致APK中证书信息的变化。因为这个机制的存在，APK可以在代码中检查公钥信息是不是发生了变化，从而检测出APK包的内容是否被篡改。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2014/12/03/2014-12-03/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2014/12/02/2014-12-02/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1224,7 +1403,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">65</span>
+                    <span class="site-state-item-count">66</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1420,7 +1599,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">63</span>
+                      
+                    
+                    <span class="site-state-item-count">64</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

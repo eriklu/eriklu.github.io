@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.2">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.2" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="C语言开发的几个小经验总结选择正确的整数数据类型优先选择有符号整数32位无符号整数的范围为0-2的32次方-1。32为符号整数的范围为-2的31次方-2的31次方-1。这里面的陷阱在于减法操作。 123456uint32_t a = 0;if(a - 1 &amp;lt; 0)&amp;#123;    //代码不会进入这里    ....&amp;#125;  这里a为无符号整数，a-1的结果会转化为无符号整数。 当然">
+<meta name="keywords" content="C语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言开发的几个小经验总结">
+<meta property="og:url" content="http://eriklu.github.io/2022/04/16/2022-04-16/index.html">
+<meta property="og:site_name" content="弦歌雅意的小屋">
+<meta property="og:description" content="C语言开发的几个小经验总结选择正确的整数数据类型优先选择有符号整数32位无符号整数的范围为0-2的32次方-1。32为符号整数的范围为-2的31次方-2的31次方-1。这里面的陷阱在于减法操作。 123456uint32_t a = 0;if(a - 1 &amp;lt; 0)&amp;#123;    //代码不会进入这里    ....&amp;#125;  这里a为无符号整数，a-1的结果会转化为无符号整数。 当然">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2022-04-25T09:10:49.544Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C语言开发的几个小经验总结">
+<meta name="twitter:description" content="C语言开发的几个小经验总结选择正确的整数数据类型优先选择有符号整数32位无符号整数的范围为0-2的32次方-1。32为符号整数的范围为-2的31次方-2的31次方-1。这里面的陷阱在于减法操作。 123456uint32_t a = 0;if(a - 1 &amp;lt; 0)&amp;#123;    //代码不会进入这里    ....&amp;#125;  这里a为无符号整数，a-1的结果会转化为无符号整数。 当然">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://eriklu.github.io/2022/04/16/2022-04-16/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>C语言开发的几个小经验总结 | 弦歌雅意的小屋</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">弦歌雅意的小屋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://eriklu.github.io/2022/04/16/2022-04-16/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Erik Lu">
+      <meta itemprop="description" content="从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="弦歌雅意的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C语言开发的几个小经验总结
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2022-04-16 00:00:00" itemprop="dateCreated datePublished" datetime="2022-04-16T00:00:00+08:00">2022-04-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2022-04-25 17:10:49" itemprop="dateModified" datetime="2022-04-25T17:10:49+08:00">2022-04-25</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="C语言开发的几个小经验总结"><a href="#C语言开发的几个小经验总结" class="headerlink" title="C语言开发的几个小经验总结"></a>C语言开发的几个小经验总结</h3><h4 id="选择正确的整数数据类型"><a href="#选择正确的整数数据类型" class="headerlink" title="选择正确的整数数据类型"></a>选择正确的整数数据类型</h4><h5 id="优先选择有符号整数"><a href="#优先选择有符号整数" class="headerlink" title="优先选择有符号整数"></a>优先选择有符号整数</h5><p>32位无符号整数的范围为0-2的32次方-1。<br>32为符号整数的范围为-2的31次方-2的31次方-1。<br>这里面的陷阱在于减法操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">uint32_t a = 0;</span><br><span class="line"></span><br><span class="line">if(a - 1 &lt; 0)&#123;</span><br><span class="line">    //代码不会进入这里</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里a为无符号整数，a-1的结果会转化为无符号整数。</p>
+<p>当然正确的做法是不使用默认类型转换。但人总有打盹的时候是不？</p>
+<h5 id="谨慎使用bool类型"><a href="#谨慎使用bool类型" class="headerlink" title="谨慎使用bool类型"></a>谨慎使用bool类型</h5><p>新的C语言标准中是由bool类型的，编译器也有专有支持。</p>
+<p>这里的问题是bool类型表现出一定的整数特性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bool status = false;</span><br><span class="line"></span><br><span class="line">status += 1; // status 为true</span><br><span class="line"></span><br><span class="line">status += 1; // status 为true</span><br><span class="line"></span><br><span class="line">status == 2 //false, 这时status的值仍为1</span><br></pre></td></tr></table></figure>
+
+<p>bool的实现，编译器会有差异。所以这里代码可能和你的编译结果不一样。</p>
+<p>这里容易出错的地方有二：</p>
+<ul>
+<li>变量名没有数据类型的暗示，可能改为b_status会好很多.</li>
+<li>变量开始是两个值，后期需要支持三个值。</li>
+</ul>
+<h5 id="函数参数谨慎使用bool类型"><a href="#函数参数谨慎使用bool类型" class="headerlink" title="函数参数谨慎使用bool类型"></a>函数参数谨慎使用bool类型</h5><p>函数参数有bool这类较窄的数据时，调用函数时提供完整的函数声明。<br>建议优先使用字长参数。</p>
+<h4 id="提供完整的函数声明"><a href="#提供完整的函数声明" class="headerlink" title="提供完整的函数声明"></a>提供完整的函数声明</h4><p>C语言调用函数时不需要提供函数声明，只要link时能找到同名符号就可以link成功。<br>首先不提供函数声明是不好的习惯。<br>因为没有正确的函数声明，编译器编译代码时会根据调用函数时提供的参数来生成参数入栈代码。这时候因为参数类型推断错误导致代码运行时失败。前面提到到函数参数使用bool类型就可能会导致这种问题。</p>
+<h4 id="sscanf直接返回到结构体导致数据溢出"><a href="#sscanf直接返回到结构体导致数据溢出" class="headerlink" title="sscanf直接返回到结构体导致数据溢出"></a>sscanf直接返回到结构体导致数据溢出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123;</span><br><span class="line">    short a,</span><br><span class="line">    short b,</span><br><span class="line">    char c,</span><br><span class="line">    int d;</span><br><span class="line">&#125; T;</span><br><span class="line"></span><br><span class="line">T t;</span><br><span class="line">char *str = get_str();</span><br><span class="line">sscanf(str, &quot;%d&quot;, &amp;(t.d));</span><br><span class="line">sscanf(str, &quot;%c&quot;, &amp;(t.c)); //这里sscanf读出的内容为int类型，导致成员d的前三个字节被覆盖。</span><br></pre></td></tr></table></figure>
+
+<p>sscanf函数建议先读到临时变量中，再给struct结构成员赋值。</p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>上述经验只是最近参与开发的项目中遇到的比较隐蔽的问题。平时养成良好的编码习惯，上面的问题基本都能避免。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/C语言/" rel="tag"># C语言</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/02/18/2022-02-18/" rel="next" title="旁路攻击的现实生活例子">
+                <i class="fa fa-chevron-left"></i> 旁路攻击的现实生活例子
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/04/20/2022-04-20/" rel="prev" title="小程序上传文件nginx返回404原因排查">
+                小程序上传文件nginx返回404原因排查 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="Erik Lu">
+            
+              <p class="site-author-name" itemprop="name">Erik Lu</p>
+              <div class="site-description motion-element" itemprop="description">从事软件开发多年<br>目前致力于移动开发 <br>平时喜欢逆向工程<br>现在学习人工智能中<br>擅长Java、Swift、Python、Javascript<br>喜爱Linux Shell</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">72</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">71</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/eriklu" title="GitHub &rarr; https://github.com/eriklu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#C语言开发的几个小经验总结"><span class="nav-number">1.</span> <span class="nav-text">C语言开发的几个小经验总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#选择正确的整数数据类型"><span class="nav-number">1.1.</span> <span class="nav-text">选择正确的整数数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#优先选择有符号整数"><span class="nav-number">1.1.1.</span> <span class="nav-text">优先选择有符号整数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#谨慎使用bool类型"><span class="nav-number">1.1.2.</span> <span class="nav-text">谨慎使用bool类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#函数参数谨慎使用bool类型"><span class="nav-number">1.1.3.</span> <span class="nav-text">函数参数谨慎使用bool类型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提供完整的函数声明"><span class="nav-number">1.2.</span> <span class="nav-text">提供完整的函数声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sscanf直接返回到结构体导致数据溢出"><span class="nav-number">1.3.</span> <span class="nav-text">sscanf直接返回到结构体导致数据溢出</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结语"><span class="nav-number">2.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2014 – <span itemprop="copyrightYear">2022</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Erik Lu</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.2"></script>
+
+  <script src="/js/motion.js?v=7.1.2"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.2"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.2"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.2"></script>
+<script src="/js/post-details.js?v=7.1.2"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.2"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
